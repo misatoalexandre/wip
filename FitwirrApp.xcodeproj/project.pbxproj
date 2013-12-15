@@ -1,0 +1,475 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		5387817F185DE3AB00641237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5387817E185DE3AB00641237 /* Foundation.framework */; };
+		53878181185DE3AB00641237 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878180185DE3AB00641237 /* CoreGraphics.framework */; };
+		53878183185DE3AB00641237 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878182185DE3AB00641237 /* UIKit.framework */; };
+		53878189185DE3AB00641237 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 53878187185DE3AB00641237 /* InfoPlist.strings */; };
+		5387818B185DE3AB00641237 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387818A185DE3AB00641237 /* main.m */; };
+		5387818F185DE3AB00641237 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 5387818E185DE3AB00641237 /* AppDelegate.m */; };
+		53878192185DE3AB00641237 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53878190185DE3AB00641237 /* Main.storyboard */; };
+		53878195185DE3AB00641237 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53878194185DE3AB00641237 /* ViewController.m */; };
+		53878197185DE3AB00641237 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53878196185DE3AB00641237 /* Images.xcassets */; };
+		5387819E185DE3AB00641237 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5387819D185DE3AB00641237 /* XCTest.framework */; };
+		5387819F185DE3AB00641237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5387817E185DE3AB00641237 /* Foundation.framework */; };
+		538781A0185DE3AB00641237 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878182185DE3AB00641237 /* UIKit.framework */; };
+		538781A8185DE3AB00641237 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 538781A6185DE3AB00641237 /* InfoPlist.strings */; };
+		538781AA185DE3AB00641237 /* FitwirrAppTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 538781A9185DE3AB00641237 /* FitwirrAppTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		538781A1185DE3AB00641237 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 53878173185DE3AB00641237 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 5387817A185DE3AB00641237;
+			remoteInfo = FitwirrApp;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		5387817B185DE3AB00641237 /* FitwirrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitwirrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5387817E185DE3AB00641237 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		53878180185DE3AB00641237 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		53878182185DE3AB00641237 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		53878186185DE3AB00641237 /* FitwirrApp-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FitwirrApp-Info.plist"; sourceTree = "<group>"; };
+		53878188185DE3AB00641237 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		5387818A185DE3AB00641237 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		5387818C185DE3AB00641237 /* FitwirrApp-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "FitwirrApp-Prefix.pch"; sourceTree = "<group>"; };
+		5387818D185DE3AB00641237 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		5387818E185DE3AB00641237 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		53878191185DE3AB00641237 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		53878193185DE3AB00641237 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		53878194185DE3AB00641237 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		53878196185DE3AB00641237 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		5387819C185DE3AB00641237 /* FitwirrAppTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = FitwirrAppTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		5387819D185DE3AB00641237 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		538781A5185DE3AB00641237 /* FitwirrAppTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "FitwirrAppTests-Info.plist"; sourceTree = "<group>"; };
+		538781A7185DE3AB00641237 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		538781A9185DE3AB00641237 /* FitwirrAppTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FitwirrAppTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		53878178185DE3AB00641237 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53878181185DE3AB00641237 /* CoreGraphics.framework in Frameworks */,
+				53878183185DE3AB00641237 /* UIKit.framework in Frameworks */,
+				5387817F185DE3AB00641237 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53878199185DE3AB00641237 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				5387819E185DE3AB00641237 /* XCTest.framework in Frameworks */,
+				538781A0185DE3AB00641237 /* UIKit.framework in Frameworks */,
+				5387819F185DE3AB00641237 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		53878172185DE3AB00641237 = {
+			isa = PBXGroup;
+			children = (
+				53878184185DE3AB00641237 /* FitwirrApp */,
+				538781A3185DE3AB00641237 /* FitwirrAppTests */,
+				5387817D185DE3AB00641237 /* Frameworks */,
+				5387817C185DE3AB00641237 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		5387817C185DE3AB00641237 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				5387817B185DE3AB00641237 /* FitwirrApp.app */,
+				5387819C185DE3AB00641237 /* FitwirrAppTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		5387817D185DE3AB00641237 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				5387817E185DE3AB00641237 /* Foundation.framework */,
+				53878180185DE3AB00641237 /* CoreGraphics.framework */,
+				53878182185DE3AB00641237 /* UIKit.framework */,
+				5387819D185DE3AB00641237 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		53878184185DE3AB00641237 /* FitwirrApp */ = {
+			isa = PBXGroup;
+			children = (
+				5387818D185DE3AB00641237 /* AppDelegate.h */,
+				5387818E185DE3AB00641237 /* AppDelegate.m */,
+				53878190185DE3AB00641237 /* Main.storyboard */,
+				53878193185DE3AB00641237 /* ViewController.h */,
+				53878194185DE3AB00641237 /* ViewController.m */,
+				53878196185DE3AB00641237 /* Images.xcassets */,
+				53878185185DE3AB00641237 /* Supporting Files */,
+			);
+			path = FitwirrApp;
+			sourceTree = "<group>";
+		};
+		53878185185DE3AB00641237 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				53878186185DE3AB00641237 /* FitwirrApp-Info.plist */,
+				53878187185DE3AB00641237 /* InfoPlist.strings */,
+				5387818A185DE3AB00641237 /* main.m */,
+				5387818C185DE3AB00641237 /* FitwirrApp-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		538781A3185DE3AB00641237 /* FitwirrAppTests */ = {
+			isa = PBXGroup;
+			children = (
+				538781A9185DE3AB00641237 /* FitwirrAppTests.m */,
+				538781A4185DE3AB00641237 /* Supporting Files */,
+			);
+			path = FitwirrAppTests;
+			sourceTree = "<group>";
+		};
+		538781A4185DE3AB00641237 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				538781A5185DE3AB00641237 /* FitwirrAppTests-Info.plist */,
+				538781A6185DE3AB00641237 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		5387817A185DE3AB00641237 /* FitwirrApp */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 538781AD185DE3AB00641237 /* Build configuration list for PBXNativeTarget "FitwirrApp" */;
+			buildPhases = (
+				53878177185DE3AB00641237 /* Sources */,
+				53878178185DE3AB00641237 /* Frameworks */,
+				53878179185DE3AB00641237 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = FitwirrApp;
+			productName = FitwirrApp;
+			productReference = 5387817B185DE3AB00641237 /* FitwirrApp.app */;
+			productType = "com.apple.product-type.application";
+		};
+		5387819B185DE3AB00641237 /* FitwirrAppTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 538781B0185DE3AB00641237 /* Build configuration list for PBXNativeTarget "FitwirrAppTests" */;
+			buildPhases = (
+				53878198185DE3AB00641237 /* Sources */,
+				53878199185DE3AB00641237 /* Frameworks */,
+				5387819A185DE3AB00641237 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				538781A2185DE3AB00641237 /* PBXTargetDependency */,
+			);
+			name = FitwirrAppTests;
+			productName = FitwirrAppTests;
+			productReference = 5387819C185DE3AB00641237 /* FitwirrAppTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		53878173185DE3AB00641237 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0500;
+				ORGANIZATIONNAME = "Misato Tina Alexandre";
+				TargetAttributes = {
+					5387819B185DE3AB00641237 = {
+						TestTargetID = 5387817A185DE3AB00641237;
+					};
+				};
+			};
+			buildConfigurationList = 53878176185DE3AB00641237 /* Build configuration list for PBXProject "FitwirrApp" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 53878172185DE3AB00641237;
+			productRefGroup = 5387817C185DE3AB00641237 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				5387817A185DE3AB00641237 /* FitwirrApp */,
+				5387819B185DE3AB00641237 /* FitwirrAppTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		53878179185DE3AB00641237 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53878197185DE3AB00641237 /* Images.xcassets in Resources */,
+				53878189185DE3AB00641237 /* InfoPlist.strings in Resources */,
+				53878192185DE3AB00641237 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		5387819A185DE3AB00641237 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				538781A8185DE3AB00641237 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		53878177185DE3AB00641237 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				53878195185DE3AB00641237 /* ViewController.m in Sources */,
+				5387818F185DE3AB00641237 /* AppDelegate.m in Sources */,
+				5387818B185DE3AB00641237 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		53878198185DE3AB00641237 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				538781AA185DE3AB00641237 /* FitwirrAppTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		538781A2185DE3AB00641237 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 5387817A185DE3AB00641237 /* FitwirrApp */;
+			targetProxy = 538781A1185DE3AB00641237 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		53878187185DE3AB00641237 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53878188185DE3AB00641237 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		53878190185DE3AB00641237 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				53878191185DE3AB00641237 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		538781A6185DE3AB00641237 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				538781A7185DE3AB00641237 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		538781AB185DE3AB00641237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		538781AC185DE3AB00641237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		538781AE185DE3AB00641237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FitwirrApp/FitwirrApp-Prefix.pch";
+				INFOPLIST_FILE = "FitwirrApp/FitwirrApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		538781AF185DE3AB00641237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FitwirrApp/FitwirrApp-Prefix.pch";
+				INFOPLIST_FILE = "FitwirrApp/FitwirrApp-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		538781B1185DE3AB00641237 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FitwirrApp.app/FitwirrApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FitwirrApp/FitwirrApp-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "FitwirrAppTests/FitwirrAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		538781B2185DE3AB00641237 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ARCHS = "$(ARCHS_STANDARD_INCLUDING_64_BIT)";
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/FitwirrApp.app/FitwirrApp";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "FitwirrApp/FitwirrApp-Prefix.pch";
+				INFOPLIST_FILE = "FitwirrAppTests/FitwirrAppTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		53878176185DE3AB00641237 /* Build configuration list for PBXProject "FitwirrApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				538781AB185DE3AB00641237 /* Debug */,
+				538781AC185DE3AB00641237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		538781AD185DE3AB00641237 /* Build configuration list for PBXNativeTarget "FitwirrApp" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				538781AE185DE3AB00641237 /* Debug */,
+				538781AF185DE3AB00641237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		538781B0185DE3AB00641237 /* Build configuration list for PBXNativeTarget "FitwirrAppTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				538781B1185DE3AB00641237 /* Debug */,
+				538781B2185DE3AB00641237 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 53878173185DE3AB00641237 /* Project object */;
+}
