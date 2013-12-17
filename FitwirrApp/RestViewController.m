@@ -75,6 +75,7 @@
     else{
         cell.label.layer.cornerRadius=25.0;
         cell.label.layer.masksToBounds=YES;
+        cell.label.backgroundColor=UIColorFromRGB(0x000000);
         cell.checkmarkImage.image=nil;
     }
    

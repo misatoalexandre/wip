@@ -7,7 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5341856518602317007CC85D /* DumbbellOverheadSquat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5341856418602317007CC85D /* DumbbellOverheadSquat.jpg */; };
+		5341856B18602FAA007CC85D /* BoxJump.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5341856718602FAA007CC85D /* BoxJump.jpg */; };
+		5341856D18602FAA007CC85D /* easelly_visual (7).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5341856918602FAA007CC85D /* easelly_visual (7).jpg */; };
+		5341856F18602FE1007CC85D /* easelly_visual (8).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5341856E18602FE1007CC85D /* easelly_visual (8).jpg */; };
+		5341857118603168007CC85D /* CROSSEDARMCRUNCH.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5341857018603168007CC85D /* CROSSEDARMCRUNCH.jpg */; };
+		53418573186031F5007CC85D /* BENCHSIDEPLANK.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53418572186031F5007CC85D /* BENCHSIDEPLANK.jpg */; };
 		535869CD185F58D200B77920 /* buttcover.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869CC185F58D200B77920 /* buttcover.png */; };
 		535869CF185F5A1900B77920 /* abscover.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869CE185F5A1900B77920 /* abscover.png */; };
 		535869D2185F5BD900B77920 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D0185F5BD900B77920 /* account.png */; };
@@ -24,17 +28,12 @@
 		535869F9185F69E800B77920 /* abscoverTALL.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869F8185F69E800B77920 /* abscoverTALL.png */; };
 		535869FB185F6BE800B77920 /* WHITE LINE.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869FA185F6BE800B77920 /* WHITE LINE.png */; };
 		53586A05185F732100B77920 /* START (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 53586A04185F732100B77920 /* START (2).png */; };
-		53586A07185F851100B77920 /* OverheadSquat-jpg.png in Resources */ = {isa = PBXBuildFile; fileRef = 53586A06185F851100B77920 /* OverheadSquat-jpg.png */; };
 		53586A0A185F85ED00B77920 /* WorkoutStartVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A09185F85ED00B77920 /* WorkoutStartVCViewController.m */; };
 		53586A0D185F862F00B77920 /* ExerciseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A0C185F862F00B77920 /* ExerciseListCell.m */; };
 		53586A10185F8A3300B77920 /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A0F185F8A3300B77920 /* ExerciseCell.m */; };
 		53586A13185F8A7E00B77920 /* WorkoutStepVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A12185F8A7E00B77920 /* WorkoutStepVC.m */; };
 		53586A16185F927E00B77920 /* RestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A15185F927E00B77920 /* RestCell.m */; };
 		53586A19185F930500B77920 /* RestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A18185F930500B77920 /* RestViewController.m */; };
-		53586A1D185FAE1600B77920 /* ElevatedButtBridge.png in Resources */ = {isa = PBXBuildFile; fileRef = 53586A1C185FAE1600B77920 /* ElevatedButtBridge.png */; };
-		53586A1F185FBBBD00B77920 /* BenchSidePlank.png in Resources */ = {isa = PBXBuildFile; fileRef = 53586A1E185FBBBD00B77920 /* BenchSidePlank.png */; };
-		53586A21185FFF7C00B77920 /* BoxJump.png in Resources */ = {isa = PBXBuildFile; fileRef = 53586A20185FFF7C00B77920 /* BoxJump.png */; };
-		53586A23186008DD00B77920 /* Cross-Armed Crunch.png in Resources */ = {isa = PBXBuildFile; fileRef = 53586A22186008DD00B77920 /* Cross-Armed Crunch.png */; };
 		53586A251860142600B77920 /* New.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53586A241860142600B77920 /* New.storyboard */; };
 		5387817F185DE3AB00641237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5387817E185DE3AB00641237 /* Foundation.framework */; };
 		53878181185DE3AB00641237 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878180185DE3AB00641237 /* CoreGraphics.framework */; };
@@ -67,7 +66,11 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		5341856418602317007CC85D /* DumbbellOverheadSquat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DumbbellOverheadSquat.jpg; sourceTree = "<group>"; };
+		5341856718602FAA007CC85D /* BoxJump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BoxJump.jpg; sourceTree = "<group>"; };
+		5341856918602FAA007CC85D /* easelly_visual (7).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "easelly_visual (7).jpg"; sourceTree = "<group>"; };
+		5341856E18602FE1007CC85D /* easelly_visual (8).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "easelly_visual (8).jpg"; sourceTree = "<group>"; };
+		5341857018603168007CC85D /* CROSSEDARMCRUNCH.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CROSSEDARMCRUNCH.jpg; sourceTree = "<group>"; };
+		53418572186031F5007CC85D /* BENCHSIDEPLANK.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BENCHSIDEPLANK.jpg; sourceTree = "<group>"; };
 		535869CC185F58D200B77920 /* buttcover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttcover.png; sourceTree = "<group>"; };
 		535869CE185F5A1900B77920 /* abscover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abscover.png; sourceTree = "<group>"; };
 		535869D0185F5BD900B77920 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
@@ -84,7 +87,6 @@
 		535869F8185F69E800B77920 /* abscoverTALL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abscoverTALL.png; sourceTree = "<group>"; };
 		535869FA185F6BE800B77920 /* WHITE LINE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WHITE LINE.png"; sourceTree = "<group>"; };
 		53586A04185F732100B77920 /* START (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "START (2).png"; sourceTree = "<group>"; };
-		53586A06185F851100B77920 /* OverheadSquat-jpg.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "OverheadSquat-jpg.png"; sourceTree = "<group>"; };
 		53586A08185F85ED00B77920 /* WorkoutStartVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutStartVCViewController.h; path = ../WorkoutStartVCViewController.h; sourceTree = "<group>"; };
 		53586A09185F85ED00B77920 /* WorkoutStartVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutStartVCViewController.m; path = ../WorkoutStartVCViewController.m; sourceTree = "<group>"; };
 		53586A0B185F862F00B77920 /* ExerciseListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListCell.h; sourceTree = "<group>"; };
@@ -97,10 +99,6 @@
 		53586A15185F927E00B77920 /* RestCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestCell.m; sourceTree = "<group>"; };
 		53586A17185F930500B77920 /* RestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestViewController.h; sourceTree = "<group>"; };
 		53586A18185F930500B77920 /* RestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestViewController.m; sourceTree = "<group>"; };
-		53586A1C185FAE1600B77920 /* ElevatedButtBridge.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ElevatedButtBridge.png; sourceTree = "<group>"; };
-		53586A1E185FBBBD00B77920 /* BenchSidePlank.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BenchSidePlank.png; sourceTree = "<group>"; };
-		53586A20185FFF7C00B77920 /* BoxJump.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BoxJump.png; sourceTree = "<group>"; };
-		53586A22186008DD00B77920 /* Cross-Armed Crunch.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Cross-Armed Crunch.png"; sourceTree = "<group>"; };
 		53586A241860142600B77920 /* New.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = New.storyboard; sourceTree = "<group>"; };
 		5387817B185DE3AB00641237 /* FitwirrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitwirrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5387817E185DE3AB00641237 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -190,12 +188,11 @@
 		535869E7185F5D6200B77920 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
-				5341856418602317007CC85D /* DumbbellOverheadSquat.jpg */,
-				53586A1C185FAE1600B77920 /* ElevatedButtBridge.png */,
-				53586A22186008DD00B77920 /* Cross-Armed Crunch.png */,
-				53586A20185FFF7C00B77920 /* BoxJump.png */,
-				53586A1E185FBBBD00B77920 /* BenchSidePlank.png */,
-				53586A06185F851100B77920 /* OverheadSquat-jpg.png */,
+				53418572186031F5007CC85D /* BENCHSIDEPLANK.jpg */,
+				5341857018603168007CC85D /* CROSSEDARMCRUNCH.jpg */,
+				5341856718602FAA007CC85D /* BoxJump.jpg */,
+				5341856918602FAA007CC85D /* easelly_visual (7).jpg */,
+				5341856E18602FE1007CC85D /* easelly_visual (8).jpg */,
 				535869E8185F5D8600B77920 /* abs4.png */,
 				535869F8185F69E800B77920 /* abscoverTALL.png */,
 				535869F4185F651200B77920 /* abs5.png */,
@@ -371,10 +368,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53586A1F185FBBBD00B77920 /* BenchSidePlank.png in Resources */,
+				5341856F18602FE1007CC85D /* easelly_visual (8).jpg in Resources */,
 				535869D3185F5BD900B77920 /* account@2x.png in Resources */,
 				53586A05185F732100B77920 /* START (2).png in Resources */,
-				53586A23186008DD00B77920 /* Cross-Armed Crunch.png in Resources */,
+				5341856D18602FAA007CC85D /* easelly_visual (7).jpg in Resources */,
 				535869FB185F6BE800B77920 /* WHITE LINE.png in Resources */,
 				535869F7185F651200B77920 /* abs5.png in Resources */,
 				535869CD185F58D200B77920 /* buttcover.png in Resources */,
@@ -384,12 +381,10 @@
 				535869E9185F5D8600B77920 /* abs4.png in Resources */,
 				53878197185DE3AB00641237 /* Images.xcassets in Resources */,
 				535869E2185F5C5C00B77920 /* check.png in Resources */,
-				5341856518602317007CC85D /* DumbbellOverheadSquat.jpg in Resources */,
 				538781C2185DEF1400641237 /* zwartevilt.png in Resources */,
-				53586A21185FFF7C00B77920 /* BoxJump.png in Resources */,
 				535869CF185F5A1900B77920 /* abscover.png in Resources */,
+				5341857118603168007CC85D /* CROSSEDARMCRUNCH.jpg in Resources */,
 				53878189185DE3AB00641237 /* InfoPlist.strings in Resources */,
-				53586A07185F851100B77920 /* OverheadSquat-jpg.png in Resources */,
 				535869F9185F69E800B77920 /* abscoverTALL.png in Resources */,
 				53586A251860142600B77920 /* New.storyboard in Resources */,
 				535869D6185F5BE700B77920 /* settings.png in Resources */,
@@ -397,10 +392,11 @@
 				535869D7185F5BE700B77920 /* settings@2x.png in Resources */,
 				538781C1185DEF1400641237 /* zwartevilt_@2X.jpg in Resources */,
 				538781DA185DF86F00641237 /* SELECT.png in Resources */,
+				53418573186031F5007CC85D /* BENCHSIDEPLANK.jpg in Resources */,
 				535869F1185F615300B77920 /* bikini5.png in Resources */,
 				538781C5185DEF5000641237 /* twinkle_twinkle_@2X.png in Resources */,
-				53586A1D185FAE1600B77920 /* ElevatedButtBridge.png in Resources */,
 				535869E3185F5C5C00B77920 /* check@2x.png in Resources */,
+				5341856B18602FAA007CC85D /* BoxJump.jpg in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

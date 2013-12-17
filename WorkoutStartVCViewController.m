@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     [self.collectionView reloadData];
-    self.exerciseArray=[[NSArray alloc]initWithObjects:@"OverheadSquat-jpg.png",@"ElevatedButtBridge.png",@"BoxJump.png",@"BenchSidePlank.png",@"Cross-Armed Crunch.png",nil];
+    self.exerciseArray=[[NSArray alloc]initWithObjects:@"easelly_visual (8).jpg",@"easelly_visual (7).jpg",@"BoxJump.jpg",@"BENCHSIDEPLANK.jpg",@"CROSSEDARMCRUNCH.jpg",nil];
     
 	// Do any additional setup after loading the view.
 }
