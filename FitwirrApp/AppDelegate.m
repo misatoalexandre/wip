@@ -13,6 +13,10 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
+    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"twinkle_twinkle_@2X.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    
+
     return YES;
 }
 							
