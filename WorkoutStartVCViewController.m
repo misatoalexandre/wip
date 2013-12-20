@@ -29,6 +29,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.automaticallyAdjustsScrollViewInsets=YES;
     [self.collectionView reloadData];
     self.exerciseArray=[[NSArray alloc]initWithObjects:@"easelly_visual (8).jpg",@"easelly_visual (7).jpg",@"BoxJump.jpg",@"BENCHSIDEPLANK.jpg",@"CROSSEDARMCRUNCH.jpg",nil];
     

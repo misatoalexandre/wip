@@ -7,13 +7,42 @@
 //
 
 #import "AppDelegate.h"
+#import <Parse/Parse.h>
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+
+
 
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
     // Override point for customization after application launch.
-    [[UINavigationBar appearance] setBackgroundImage:[UIImage imageNamed:@"twinkle_twinkle_@2X.png"] forBarMetrics:UIBarMetricsDefault];
+    
+    [Parse setApplicationId:@"lw2iUINQfUEeHU1Op0e2VfsfqsIxVBT6XSfdvROK"
+                  clientKey:@"lZy4eOunpCf2or3800244r2wBqETSi7OUQJCmI3J"];
+   
+    
+    
+    [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
+    
+    //page view controller setup
+    UIPageControl *pageControl=[UIPageControl appearance];
+    pageControl.pageIndicatorTintColor=[UIColor lightGrayColor];
+    pageControl.currentPageIndicatorTintColor=[UIColor blackColor];
+    pageControl.backgroundColor=[UIColor clearColor];
+    
+    //Nav Bar Customization
+    [[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"light pink #fef9ffff.png"] forBarMetrics:UIBarMetricsDefault];
+    //[[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x202020)];
+   [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
+    
+   // NSShadow *shadow = [[NSShadow alloc] init];
+   // shadow.shadowColor = [UIColor blackColor];
+    //shadow.shadowOffset = CGSizeMake(0, 0.5);
+   /* [[UINavigationBar appearance] setTitleTextAttributes: [NSDictionary dictionaryWithObjectsAndKeys:
+                                                           UIColorFromRGB(0xFFFFCC), NSForegroundColorAttributeName,
+                                                           shadow, NSShadowAttributeName,
+                                                           [UIFont fontWithName:@"Gujarati Sangam MN " size:21.0], NSFontAttributeName, nil]]; */
     
     
 
