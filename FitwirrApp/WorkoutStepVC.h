@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "ExerciseCell.h"
+//#import "ExerciseCell.h"
 #import <QuartzCore/QuartzCore.h>
 
 

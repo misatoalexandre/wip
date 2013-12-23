@@ -29,6 +29,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
+    [self.collectionView reloadData];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,8 +45,7 @@
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return self.exerciseArray.count
-    ;
+    return 5;
 }
 
 -(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -62,6 +62,8 @@
     
     cell.imageView.layer.cornerRadius=25.0;
     cell.imageView.layer.masksToBounds=YES;
+    cell.imageView.image=[UIImage imageNamed:@"OverheadDumbbellSquat.jpg"];
+
     if (indexPath.row==0) {
         cell.label.backgroundColor=UIColorFromRGB(0xffcc66);
         cell.label.text=@"1";
@@ -80,8 +82,7 @@
     }
    
     
-    cell.imageView.image=[UIImage imageNamed:[self.exerciseArray objectAtIndex:indexPath.row]];
-    //cell.imageView.image=[UIImage imageWithData:[imageFile getData]];
+        //cell.imageView.image=[UIImage imageWithData:[imageFile getData]];
     
     return cell;
 }

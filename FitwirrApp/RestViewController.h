@@ -10,5 +10,6 @@
 
 @interface RestViewController : UIViewController
 @property (nonatomic, strong) NSArray *exerciseArray;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 
 @end

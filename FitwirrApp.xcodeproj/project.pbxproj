@@ -30,7 +30,6 @@
 		53586A05185F732100B77920 /* START (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 53586A04185F732100B77920 /* START (2).png */; };
 		53586A0A185F85ED00B77920 /* WorkoutStartVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A09185F85ED00B77920 /* WorkoutStartVCViewController.m */; };
 		53586A0D185F862F00B77920 /* ExerciseListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A0C185F862F00B77920 /* ExerciseListCell.m */; };
-		53586A10185F8A3300B77920 /* ExerciseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A0F185F8A3300B77920 /* ExerciseCell.m */; };
 		53586A13185F8A7E00B77920 /* WorkoutStepVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A12185F8A7E00B77920 /* WorkoutStepVC.m */; };
 		53586A16185F927E00B77920 /* RestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A15185F927E00B77920 /* RestCell.m */; };
 		53586A19185F930500B77920 /* RestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A18185F930500B77920 /* RestViewController.m */; };
@@ -64,13 +63,14 @@
 		53AEAB9618637A89006E0D48 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB9518637A89006E0D48 /* QuartzCore.framework */; };
 		53AEAB9818637A91006E0D48 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB9718637A91006E0D48 /* Security.framework */; };
 		53AEAB9A18637A9D006E0D48 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB9918637A9D006E0D48 /* SystemConfiguration.framework */; };
-		53AEAB9C1864BCDA006E0D48 /* OverheadSquatDumbbell.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53AEAB9B1864BCDA006E0D48 /* OverheadSquatDumbbell.jpg */; };
 		53AEAB9E1864C6B7006E0D48 /* light pink #fef9ffff.png in Resources */ = {isa = PBXBuildFile; fileRef = 53AEAB9D1864C6B7006E0D48 /* light pink #fef9ffff.png */; };
 		53AEABA01864C7F7006E0D48 /* barbell-512.png in Resources */ = {isa = PBXBuildFile; fileRef = 53AEAB9F1864C7F7006E0D48 /* barbell-512.png */; };
 		53AEABA21864C7FE006E0D48 /* jump_rope-100.png in Resources */ = {isa = PBXBuildFile; fileRef = 53AEABA11864C7FE006E0D48 /* jump_rope-100.png */; };
 		53AEABA61864CABA006E0D48 /* imageedit_12_3931115753.png in Resources */ = {isa = PBXBuildFile; fileRef = 53AEABA51864CABA006E0D48 /* imageedit_12_3931115753.png */; };
 		53AEABAA1864CEA3006E0D48 /* START Round Corner White Font.png in Resources */ = {isa = PBXBuildFile; fileRef = 53AEABA91864CEA3006E0D48 /* START Round Corner White Font.png */; };
 		53AEABAD1864DAD1006E0D48 /* WorkoutSelectionTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AEABAC1864DAD1006E0D48 /* WorkoutSelectionTVC.m */; };
+		53AEABB51865631B006E0D48 /* ExerciseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AEABB41865631B006E0D48 /* ExerciseViewController.m */; };
+		53AEABB718656E84006E0D48 /* DumbbellOverhaedSquat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53AEABB618656E84006E0D48 /* DumbbellOverhaedSquat.jpg */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -109,8 +109,6 @@
 		53586A09185F85ED00B77920 /* WorkoutStartVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutStartVCViewController.m; path = ../WorkoutStartVCViewController.m; sourceTree = "<group>"; };
 		53586A0B185F862F00B77920 /* ExerciseListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseListCell.h; sourceTree = "<group>"; };
 		53586A0C185F862F00B77920 /* ExerciseListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseListCell.m; sourceTree = "<group>"; };
-		53586A0E185F8A3300B77920 /* ExerciseCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ExerciseCell.h; sourceTree = "<group>"; };
-		53586A0F185F8A3300B77920 /* ExerciseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ExerciseCell.m; sourceTree = "<group>"; };
 		53586A11185F8A7E00B77920 /* WorkoutStepVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutStepVC.h; sourceTree = "<group>"; };
 		53586A12185F8A7E00B77920 /* WorkoutStepVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutStepVC.m; sourceTree = "<group>"; };
 		53586A14185F927E00B77920 /* RestCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestCell.h; sourceTree = "<group>"; };
@@ -153,7 +151,6 @@
 		53AEAB9518637A89006E0D48 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		53AEAB9718637A91006E0D48 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
 		53AEAB9918637A9D006E0D48 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
-		53AEAB9B1864BCDA006E0D48 /* OverheadSquatDumbbell.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = OverheadSquatDumbbell.jpg; sourceTree = "<group>"; };
 		53AEAB9D1864C6B7006E0D48 /* light pink #fef9ffff.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "light pink #fef9ffff.png"; sourceTree = "<group>"; };
 		53AEAB9F1864C7F7006E0D48 /* barbell-512.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "barbell-512.png"; sourceTree = "<group>"; };
 		53AEABA11864C7FE006E0D48 /* jump_rope-100.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "jump_rope-100.png"; sourceTree = "<group>"; };
@@ -161,6 +158,9 @@
 		53AEABA91864CEA3006E0D48 /* START Round Corner White Font.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "START Round Corner White Font.png"; sourceTree = "<group>"; };
 		53AEABAB1864DAD1006E0D48 /* WorkoutSelectionTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutSelectionTVC.h; path = ../WorkoutSelectionTVC.h; sourceTree = "<group>"; };
 		53AEABAC1864DAD1006E0D48 /* WorkoutSelectionTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = WorkoutSelectionTVC.m; path = ../WorkoutSelectionTVC.m; sourceTree = "<group>"; };
+		53AEABB31865631B006E0D48 /* ExerciseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ExerciseViewController.h; path = ../ExerciseViewController.h; sourceTree = "<group>"; };
+		53AEABB41865631B006E0D48 /* ExerciseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ExerciseViewController.m; path = ../ExerciseViewController.m; sourceTree = "<group>"; };
+		53AEABB618656E84006E0D48 /* DumbbellOverhaedSquat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = DumbbellOverhaedSquat.jpg; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -237,13 +237,13 @@
 			isa = PBXGroup;
 			children = (
 				53AEABA51864CABA006E0D48 /* imageedit_12_3931115753.png */,
+				53AEABB618656E84006E0D48 /* DumbbellOverhaedSquat.jpg */,
 				53AEABA91864CEA3006E0D48 /* START Round Corner White Font.png */,
 				53418572186031F5007CC85D /* BENCHSIDEPLANK.jpg */,
 				53AEABA11864C7FE006E0D48 /* jump_rope-100.png */,
 				53AEAB9F1864C7F7006E0D48 /* barbell-512.png */,
 				53AEAB9D1864C6B7006E0D48 /* light pink #fef9ffff.png */,
 				5341857018603168007CC85D /* CROSSEDARMCRUNCH.jpg */,
-				53AEAB9B1864BCDA006E0D48 /* OverheadSquatDumbbell.jpg */,
 				5341856718602FAA007CC85D /* BoxJump.jpg */,
 				5341856918602FAA007CC85D /* easelly_visual (7).jpg */,
 				5341856E18602FE1007CC85D /* easelly_visual (8).jpg */,
@@ -307,6 +307,12 @@
 				53878194185DE3AB00641237 /* ViewController.m */,
 				53AEABAB1864DAD1006E0D48 /* WorkoutSelectionTVC.h */,
 				53AEABAC1864DAD1006E0D48 /* WorkoutSelectionTVC.m */,
+				53AEABB31865631B006E0D48 /* ExerciseViewController.h */,
+				53AEABB41865631B006E0D48 /* ExerciseViewController.m */,
+				53586A17185F930500B77920 /* RestViewController.h */,
+				53586A18185F930500B77920 /* RestViewController.m */,
+				53586A14185F927E00B77920 /* RestCell.h */,
+				53586A15185F927E00B77920 /* RestCell.m */,
 				53AEABAE1864DAE2006E0D48 /* Old */,
 				53878196185DE3AB00641237 /* Images.xcassets */,
 				53AEAB8818636406006E0D48 /* In App Purchase */,
@@ -351,12 +357,8 @@
 		53AEAB7E1861FCC6006E0D48 /* Cells */ = {
 			isa = PBXGroup;
 			children = (
-				53586A0E185F8A3300B77920 /* ExerciseCell.h */,
-				53586A0F185F8A3300B77920 /* ExerciseCell.m */,
 				53586A0B185F862F00B77920 /* ExerciseListCell.h */,
 				53586A0C185F862F00B77920 /* ExerciseListCell.m */,
-				53586A14185F927E00B77920 /* RestCell.h */,
-				53586A15185F927E00B77920 /* RestCell.m */,
 			);
 			name = Cells;
 			sourceTree = "<group>";
@@ -379,8 +381,6 @@
 				53586A09185F85ED00B77920 /* WorkoutStartVCViewController.m */,
 				53586A11185F8A7E00B77920 /* WorkoutStepVC.h */,
 				53586A12185F8A7E00B77920 /* WorkoutStepVC.m */,
-				53586A17185F930500B77920 /* RestViewController.h */,
-				53586A18185F930500B77920 /* RestViewController.m */,
 			);
 			name = Old;
 			sourceTree = "<group>";
@@ -467,6 +467,7 @@
 				5341856F18602FE1007CC85D /* easelly_visual (8).jpg in Resources */,
 				535869D3185F5BD900B77920 /* account@2x.png in Resources */,
 				53586A05185F732100B77920 /* START (2).png in Resources */,
+				53AEABB718656E84006E0D48 /* DumbbellOverhaedSquat.jpg in Resources */,
 				5341856D18602FAA007CC85D /* easelly_visual (7).jpg in Resources */,
 				535869FB185F6BE800B77920 /* WHITE LINE.png in Resources */,
 				535869F7185F651200B77920 /* abs5.png in Resources */,
@@ -486,7 +487,6 @@
 				53878189185DE3AB00641237 /* InfoPlist.strings in Resources */,
 				535869F9185F69E800B77920 /* abscoverTALL.png in Resources */,
 				53586A251860142600B77920 /* New.storyboard in Resources */,
-				53AEAB9C1864BCDA006E0D48 /* OverheadSquatDumbbell.jpg in Resources */,
 				535869D6185F5BE700B77920 /* settings.png in Resources */,
 				535869D2185F5BD900B77920 /* account.png in Resources */,
 				535869D7185F5BE700B77920 /* settings@2x.png in Resources */,
@@ -519,10 +519,10 @@
 			files = (
 				53586A13185F8A7E00B77920 /* WorkoutStepVC.m in Sources */,
 				53878195185DE3AB00641237 /* ViewController.m in Sources */,
-				53586A10185F8A3300B77920 /* ExerciseCell.m in Sources */,
 				53586A16185F927E00B77920 /* RestCell.m in Sources */,
 				53586A19185F930500B77920 /* RestViewController.m in Sources */,
 				53AEAB8718635523006E0D48 /* PurchaseVC.m in Sources */,
+				53AEABB51865631B006E0D48 /* ExerciseViewController.m in Sources */,
 				53586A0D185F862F00B77920 /* ExerciseListCell.m in Sources */,
 				5387818F185DE3AB00641237 /* AppDelegate.m in Sources */,
 				53586A0A185F85ED00B77920 /* WorkoutStartVCViewController.m in Sources */,
