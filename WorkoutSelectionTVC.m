@@ -66,7 +66,7 @@
     }
 
     //Butts Query for the Free Butts Plan
-    [queryButts getObjectInBackgroundWithId:@"Tpugk5X6AZ" block:^(PFObject *object, NSError *erro){
+    [queryButts getObjectInBackgroundWithId:@"HoTjkEu6e0" block:^(PFObject *object, NSError *erro){
         self.buttsFree =[NSArray arrayWithObjects:object, nil];
     }
      ];
@@ -184,18 +184,22 @@ object:(PFObject *)object
             PFObject *object=[self.absFree objectAtIndex:indexPath.row];
             cell.textLabel.text=[object objectForKey:@"title"];
             cell.detailTextLabel.text=[object objectForKey:@"location"];
-      
         }
-     else cell.textLabel.text=@"Unlock the upgrade";
-        cell.detailTextLabel.text=@"$1.99";
+        else {
+            cell.textLabel.text=@"Unlock to upgrade";
+            cell.detailTextLabel.text=@"$1.99";
+            }
     }
     else if (self.segmentedControl.selectedSegmentIndex==1){
         if (indexPath.section==0) {
             PFObject *object=[self.buttsFree objectAtIndex:indexPath.row];
+            NSLog(@"title butts? %@", [object objectForKey:@"title"]);
             cell.textLabel.text=[object objectForKey:@"title"];
-        } else
-            cell.textLabel.text=@"Upgrade of Butts workout";
+            cell.detailTextLabel.text=[object objectForKey:@"location"];
+        } else {
+            cell.textLabel.text=@"Unlock to upgrade";
             cell.detailTextLabel.text=@"$1.99";
+               }
     }
     
     return cell;
@@ -228,7 +232,7 @@ object:(PFObject *)object
     
     else if (self.segmentedControl.selectedSegmentIndex==1){
         if (section==0) {
-            return @"Free Lean Abs Workout";
+            return @"Free Lean Butts Workout";
         }
         if (section==1) {
             return @"Level 1 Home ";
@@ -253,7 +257,12 @@ object:(PFObject *)object
  return @"title";
  
 }
-
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
+    self.currentWorkout=[self.absFree objectAtIndex:indexPath.row];
+    NSLog(@"Test%@", self.currentWorkout);
+    [self.delegate workoutWasSelectedOnWorkoutSelectionTVC:self];
+    
+}
 
 
 

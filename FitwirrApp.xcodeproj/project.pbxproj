@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5320920B18687FBE009B4F50 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5320920A18687FBE009B4F50 /* Workout.m */; };
 		5341856B18602FAA007CC85D /* BoxJump.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5341856718602FAA007CC85D /* BoxJump.jpg */; };
 		5341856D18602FAA007CC85D /* easelly_visual (7).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5341856918602FAA007CC85D /* easelly_visual (7).jpg */; };
 		5341856F18602FE1007CC85D /* easelly_visual (8).jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5341856E18602FE1007CC85D /* easelly_visual (8).jpg */; };
@@ -34,6 +35,8 @@
 		53586A16185F927E00B77920 /* RestCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A15185F927E00B77920 /* RestCell.m */; };
 		53586A19185F930500B77920 /* RestViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A18185F930500B77920 /* RestViewController.m */; };
 		53586A251860142600B77920 /* New.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53586A241860142600B77920 /* New.storyboard */; };
+		535C5DE718696D3E0063C256 /* LaunchTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DE618696D3E0063C256 /* LaunchTVC.m */; };
+		535C5DEA1869BD8F0063C256 /* SetsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DE91869BD8F0063C256 /* SetsTVC.m */; };
 		5387817F185DE3AB00641237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5387817E185DE3AB00641237 /* Foundation.framework */; };
 		53878181185DE3AB00641237 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878180185DE3AB00641237 /* CoreGraphics.framework */; };
 		53878183185DE3AB00641237 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878182185DE3AB00641237 /* UIKit.framework */; };
@@ -84,6 +87,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5320920918687FBE009B4F50 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
+		5320920A18687FBE009B4F50 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		5341856718602FAA007CC85D /* BoxJump.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BoxJump.jpg; sourceTree = "<group>"; };
 		5341856918602FAA007CC85D /* easelly_visual (7).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "easelly_visual (7).jpg"; sourceTree = "<group>"; };
 		5341856E18602FE1007CC85D /* easelly_visual (8).jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "easelly_visual (8).jpg"; sourceTree = "<group>"; };
@@ -116,6 +121,10 @@
 		53586A17185F930500B77920 /* RestViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RestViewController.h; sourceTree = "<group>"; };
 		53586A18185F930500B77920 /* RestViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RestViewController.m; sourceTree = "<group>"; };
 		53586A241860142600B77920 /* New.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = New.storyboard; sourceTree = "<group>"; };
+		535C5DE518696D3E0063C256 /* LaunchTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = LaunchTVC.h; path = ../LaunchTVC.h; sourceTree = "<group>"; };
+		535C5DE618696D3E0063C256 /* LaunchTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchTVC.m; path = ../LaunchTVC.m; sourceTree = "<group>"; };
+		535C5DE81869BD8F0063C256 /* SetsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetsTVC.h; path = ../SetsTVC.h; sourceTree = "<group>"; };
+		535C5DE91869BD8F0063C256 /* SetsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetsTVC.m; path = ../SetsTVC.m; sourceTree = "<group>"; };
 		5387817B185DE3AB00641237 /* FitwirrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitwirrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5387817E185DE3AB00641237 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53878180185DE3AB00641237 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -197,6 +206,26 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5320920C18687FCB009B4F50 /* Object Classes */ = {
+			isa = PBXGroup;
+			children = (
+				53878193185DE3AB00641237 /* ViewController.h */,
+				53878194185DE3AB00641237 /* ViewController.m */,
+				5320920918687FBE009B4F50 /* Workout.h */,
+				5320920A18687FBE009B4F50 /* Workout.m */,
+			);
+			name = "Object Classes";
+			sourceTree = "<group>";
+		};
+		5320920D1868A572009B4F50 /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				53586A14185F927E00B77920 /* RestCell.h */,
+				53586A15185F927E00B77920 /* RestCell.m */,
+			);
+			name = Cells;
+			sourceTree = "<group>";
+		};
 		535869E4185F5D1F00B77920 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
@@ -303,16 +332,18 @@
 			children = (
 				5387818D185DE3AB00641237 /* AppDelegate.h */,
 				5387818E185DE3AB00641237 /* AppDelegate.m */,
-				53878193185DE3AB00641237 /* ViewController.h */,
-				53878194185DE3AB00641237 /* ViewController.m */,
+				535C5DE518696D3E0063C256 /* LaunchTVC.h */,
+				535C5DE618696D3E0063C256 /* LaunchTVC.m */,
 				53AEABAB1864DAD1006E0D48 /* WorkoutSelectionTVC.h */,
 				53AEABAC1864DAD1006E0D48 /* WorkoutSelectionTVC.m */,
 				53AEABB31865631B006E0D48 /* ExerciseViewController.h */,
 				53AEABB41865631B006E0D48 /* ExerciseViewController.m */,
 				53586A17185F930500B77920 /* RestViewController.h */,
 				53586A18185F930500B77920 /* RestViewController.m */,
-				53586A14185F927E00B77920 /* RestCell.h */,
-				53586A15185F927E00B77920 /* RestCell.m */,
+				535C5DE81869BD8F0063C256 /* SetsTVC.h */,
+				535C5DE91869BD8F0063C256 /* SetsTVC.m */,
+				5320920D1868A572009B4F50 /* Cells */,
+				5320920C18687FCB009B4F50 /* Object Classes */,
 				53AEABAE1864DAE2006E0D48 /* Old */,
 				53878196185DE3AB00641237 /* Images.xcassets */,
 				53AEAB8818636406006E0D48 /* In App Purchase */,
@@ -519,15 +550,18 @@
 			files = (
 				53586A13185F8A7E00B77920 /* WorkoutStepVC.m in Sources */,
 				53878195185DE3AB00641237 /* ViewController.m in Sources */,
+				535C5DEA1869BD8F0063C256 /* SetsTVC.m in Sources */,
 				53586A16185F927E00B77920 /* RestCell.m in Sources */,
 				53586A19185F930500B77920 /* RestViewController.m in Sources */,
 				53AEAB8718635523006E0D48 /* PurchaseVC.m in Sources */,
 				53AEABB51865631B006E0D48 /* ExerciseViewController.m in Sources */,
 				53586A0D185F862F00B77920 /* ExerciseListCell.m in Sources */,
+				535C5DE718696D3E0063C256 /* LaunchTVC.m in Sources */,
 				5387818F185DE3AB00641237 /* AppDelegate.m in Sources */,
 				53586A0A185F85ED00B77920 /* WorkoutStartVCViewController.m in Sources */,
 				5387818B185DE3AB00641237 /* main.m in Sources */,
 				53AEABAD1864DAD1006E0D48 /* WorkoutSelectionTVC.m in Sources */,
+				5320920B18687FBE009B4F50 /* Workout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
