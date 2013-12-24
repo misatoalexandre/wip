@@ -219,7 +219,7 @@
             </objects>
             <point key="canvasLocation" x="2336" y="887"/>
         </scene>
-        <!--SetsTVC-->
+        <!--SetsTVC - SELECT YOUR SET-->
         <scene sceneID="an2-S6-1U1">
             <objects>
                 <tableViewController id="fwD-vk-kvS" customClass="SetsTVC" sceneMemberID="viewController">
@@ -258,7 +258,7 @@
                             <outlet property="delegate" destination="fwD-vk-kvS" id="rbT-j8-WI2"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="IWi-QO-uU1"/>
+                    <navigationItem key="navigationItem" title="SELECT YOUR SET" id="IWi-QO-uU1"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZWe-bY-mjZ" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -623,7 +623,7 @@
                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="wxO-y1-Z56" kind="embed" id="mGp-Br-0ye"/>
+                                <segue destination="wxO-y1-Z56" kind="embed" identifier="beginWorkout" id="mGp-Br-0ye"/>
                             </connections>
                         </containerView>
                         <sections>
@@ -701,10 +701,10 @@
             </objects>
             <point key="canvasLocation" x="2336" y="72"/>
         </scene>
-        <!--View Controller-->
+        <!--Begin Workout View Controller-->
         <scene sceneID="UDe-lJ-qOr">
             <objects>
-                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wxO-y1-Z56" sceneMemberID="viewController">
+                <viewController automaticallyAdjustsScrollViewInsets="NO" id="wxO-y1-Z56" customClass="BeginWorkoutViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uUs-jA-pV7"/>
                         <viewControllerLayoutGuide type="bottom" id="u11-P6-Gjo"/>
@@ -712,9 +712,46 @@
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="d6M-44-oJk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="353"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="acA-Re-mvF">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="353"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Vfm-Gz-M3R">
+                                <rect key="frame" x="60" y="82" width="187" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" image="START Round Corner White Font.png">
+                                    <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
+                                </state>
+                                <connections>
+                                    <action selector="beginWorkout:" destination="wxO-y1-Z56" eventType="touchUpInside" id="fJp-WX-qWg"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You'll need:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXQ-q4-MzI">
+                                <rect key="frame" x="20" y="179" width="280" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="17"/>
+                                <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hhj-Jw-UQV">
+                                <rect key="frame" x="111" y="208" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6sZ-wf-xAD">
+                                <rect key="frame" x="164" y="208" width="45" height="45"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <toolbarItems/>
+                    <connections>
+                        <outlet property="displayImageView" destination="acA-Re-mvF" id="y3S-aV-rh2"/>
+                        <outlet property="equipmentLabel" destination="gXQ-q4-MzI" id="KFF-j8-w1B"/>
+                        <outlet property="firstEpmtImageView" destination="Hhj-Jw-UQV" id="ikc-67-0w5"/>
+                        <outlet property="secondEmptImageView" destination="6sZ-wf-xAD" id="va6-ya-qZY"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDS-OU-FJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

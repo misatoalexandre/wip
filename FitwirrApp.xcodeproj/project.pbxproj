@@ -37,6 +37,7 @@
 		53586A251860142600B77920 /* New.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 53586A241860142600B77920 /* New.storyboard */; };
 		535C5DE718696D3E0063C256 /* LaunchTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DE618696D3E0063C256 /* LaunchTVC.m */; };
 		535C5DEA1869BD8F0063C256 /* SetsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DE91869BD8F0063C256 /* SetsTVC.m */; };
+		535C5DED1869D6630063C256 /* BeginWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DEC1869D6630063C256 /* BeginWorkoutViewController.m */; };
 		5387817F185DE3AB00641237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5387817E185DE3AB00641237 /* Foundation.framework */; };
 		53878181185DE3AB00641237 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878180185DE3AB00641237 /* CoreGraphics.framework */; };
 		53878183185DE3AB00641237 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878182185DE3AB00641237 /* UIKit.framework */; };
@@ -125,6 +126,8 @@
 		535C5DE618696D3E0063C256 /* LaunchTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = LaunchTVC.m; path = ../LaunchTVC.m; sourceTree = "<group>"; };
 		535C5DE81869BD8F0063C256 /* SetsTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SetsTVC.h; path = ../SetsTVC.h; sourceTree = "<group>"; };
 		535C5DE91869BD8F0063C256 /* SetsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetsTVC.m; path = ../SetsTVC.m; sourceTree = "<group>"; };
+		535C5DEB1869D6630063C256 /* BeginWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeginWorkoutViewController.h; path = ../BeginWorkoutViewController.h; sourceTree = "<group>"; };
+		535C5DEC1869D6630063C256 /* BeginWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeginWorkoutViewController.m; path = ../BeginWorkoutViewController.m; sourceTree = "<group>"; };
 		5387817B185DE3AB00641237 /* FitwirrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitwirrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5387817E185DE3AB00641237 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53878180185DE3AB00641237 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -209,8 +212,6 @@
 		5320920C18687FCB009B4F50 /* Object Classes */ = {
 			isa = PBXGroup;
 			children = (
-				53878193185DE3AB00641237 /* ViewController.h */,
-				53878194185DE3AB00641237 /* ViewController.m */,
 				5320920918687FBE009B4F50 /* Workout.h */,
 				5320920A18687FBE009B4F50 /* Workout.m */,
 			);
@@ -286,6 +287,30 @@
 			name = Photos;
 			sourceTree = "<group>";
 		};
+		535C5DEE1869D6820063C256 /* Selections TVC */ = {
+			isa = PBXGroup;
+			children = (
+				53AEABAB1864DAD1006E0D48 /* WorkoutSelectionTVC.h */,
+				53AEABAC1864DAD1006E0D48 /* WorkoutSelectionTVC.m */,
+				535C5DE81869BD8F0063C256 /* SetsTVC.h */,
+				535C5DE91869BD8F0063C256 /* SetsTVC.m */,
+			);
+			name = "Selections TVC";
+			sourceTree = "<group>";
+		};
+		535C5DEF1869D69C0063C256 /* WorkoutWalkThrough */ = {
+			isa = PBXGroup;
+			children = (
+				535C5DEB1869D6630063C256 /* BeginWorkoutViewController.h */,
+				535C5DEC1869D6630063C256 /* BeginWorkoutViewController.m */,
+				53AEABB31865631B006E0D48 /* ExerciseViewController.h */,
+				53AEABB41865631B006E0D48 /* ExerciseViewController.m */,
+				53586A17185F930500B77920 /* RestViewController.h */,
+				53586A18185F930500B77920 /* RestViewController.m */,
+			);
+			name = WorkoutWalkThrough;
+			sourceTree = "<group>";
+		};
 		53878172185DE3AB00641237 = {
 			isa = PBXGroup;
 			children = (
@@ -334,14 +359,8 @@
 				5387818E185DE3AB00641237 /* AppDelegate.m */,
 				535C5DE518696D3E0063C256 /* LaunchTVC.h */,
 				535C5DE618696D3E0063C256 /* LaunchTVC.m */,
-				53AEABAB1864DAD1006E0D48 /* WorkoutSelectionTVC.h */,
-				53AEABAC1864DAD1006E0D48 /* WorkoutSelectionTVC.m */,
-				53AEABB31865631B006E0D48 /* ExerciseViewController.h */,
-				53AEABB41865631B006E0D48 /* ExerciseViewController.m */,
-				53586A17185F930500B77920 /* RestViewController.h */,
-				53586A18185F930500B77920 /* RestViewController.m */,
-				535C5DE81869BD8F0063C256 /* SetsTVC.h */,
-				535C5DE91869BD8F0063C256 /* SetsTVC.m */,
+				535C5DEF1869D69C0063C256 /* WorkoutWalkThrough */,
+				535C5DEE1869D6820063C256 /* Selections TVC */,
 				5320920D1868A572009B4F50 /* Cells */,
 				5320920C18687FCB009B4F50 /* Object Classes */,
 				53AEABAE1864DAE2006E0D48 /* Old */,
@@ -412,6 +431,8 @@
 				53586A09185F85ED00B77920 /* WorkoutStartVCViewController.m */,
 				53586A11185F8A7E00B77920 /* WorkoutStepVC.h */,
 				53586A12185F8A7E00B77920 /* WorkoutStepVC.m */,
+				53878193185DE3AB00641237 /* ViewController.h */,
+				53878194185DE3AB00641237 /* ViewController.m */,
 			);
 			name = Old;
 			sourceTree = "<group>";
@@ -551,6 +572,7 @@
 				53586A13185F8A7E00B77920 /* WorkoutStepVC.m in Sources */,
 				53878195185DE3AB00641237 /* ViewController.m in Sources */,
 				535C5DEA1869BD8F0063C256 /* SetsTVC.m in Sources */,
+				535C5DED1869D6630063C256 /* BeginWorkoutViewController.m in Sources */,
 				53586A16185F927E00B77920 /* RestCell.m in Sources */,
 				53586A19185F930500B77920 /* RestViewController.m in Sources */,
 				53AEAB8718635523006E0D48 /* PurchaseVC.m in Sources */,

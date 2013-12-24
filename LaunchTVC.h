@@ -9,10 +9,17 @@
 #import <UIKit/UIKit.h>
 #import "SetsTVC.h"
 
+
 @interface LaunchTVC : UITableViewController<SetsTVCDelegate>
+//sets selection 
 @property (nonatomic, strong)NSString *selectedSets;
+@property(nonatomic,readwrite)int selectedCell;
+
+// data to pass to begin workout
+@property (nonatomic, strong)NSString *workoutPlantoBeginId;
+
 @property (weak, nonatomic) IBOutlet UILabel *selectedSetsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedWorkoutLabel;
-@property(nonatomic,readwrite)int selectedCell;
+
 
 @end
