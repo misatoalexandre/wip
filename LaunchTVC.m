@@ -25,22 +25,26 @@
     return self;
 }
 
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    self.workoutPlantoBeginId=@"Tpugk5X6AZ";
-    NSLog(@"Test%@", self.workoutPlantoBeginId);
+    
     self.selectedSets=@"2";
     self.selectedCell=1;
     self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
 
 }
--(void)viewWillDisappear:(BOOL)animated{
+- (void)viewDidAppear:(BOOL)animated{
+    self.workoutPlantoBeginId=@"Tpugk5X6AZ";
+    NSLog(@"LaunchTV viewDidLoad %@", self.workoutPlantoBeginId);
     
-    self.selectedSets=nil;
-    self.selectedSetsLabel=nil;
+    //Notification sending out
+    NSDictionary *workoutIdDictionary=[NSDictionary dictionaryWithObject:self.workoutPlantoBeginId forKey:@"workoutId"];
+    [[NSNotificationCenter defaultCenter]postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
 }
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -57,11 +61,14 @@
         setsTV.delegate=self;
         setsTV.selectedCell=self.selectedCell;
     }
+   
      else
      {
         BeginWorkoutViewController *bgVC=(BeginWorkoutViewController *)[segue destinationViewController];
-        bgVC.workoutId=self.workoutPlantoBeginId;
-         NSLog(@"current workoutPlantoBeginID? %@", self.workoutPlantoBeginId);
+        
+         //*****This gets called first before this VC's view loads.*****//
+        //bgVC.workoutId=self.workoutPlantoBeginId;
+        //NSLog(@"current workoutPlantoBeginID? %@", self.workoutPlantoBeginId);
     }
 }
 

@@ -110,17 +110,20 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DumbbellOverhaedSquat.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vH1-Fc-szz">
-                                <rect key="frame" x="-2" y="-2" width="324" height="466"/>
+                                <rect key="frame" x="-4" y="45" width="324" height="466"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btf-c9-1iu">
-                                <rect key="frame" x="86" y="430" width="136" height="65"/>
+                                <rect key="frame" x="86" y="511" width="136" height="49"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Light" family="Thonburi" pointSize="38"/>
                                 <state key="normal" title="00:45">
                                     <color key="titleColor" red="0.40000000000000002" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="timerPausePlay:" destination="hEK-fy-3JL" eventType="touchUpInside" id="FJ6-eR-0DD"/>
+                                </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Goal: 10 reps" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1nG-dd-aJJ">
                                 <rect key="frame" x="77" y="410" width="155" height="21"/>
@@ -130,7 +133,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5GQ-mA-xw4">
-                                <rect key="frame" x="263" y="445" width="32" height="32"/>
+                                <rect key="frame" x="268" y="520" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="35"/>
                                 <state key="normal" title=">">
@@ -138,26 +141,37 @@
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                                 <connections>
+                                    <action selector="nextPressed:" destination="hEK-fy-3JL" eventType="touchUpInside" id="gdw-Oh-59v"/>
                                     <segue destination="KqB-ah-cBp" kind="push" id="iPH-z5-233"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqD-Qn-x5c">
-                                <rect key="frame" x="20" y="445" width="32" height="32"/>
+                                <rect key="frame" x="14" y="520" width="32" height="32"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <fontDescription key="fontDescription" name="Thonburi" family="Thonburi" pointSize="35"/>
                                 <state key="normal" title="&lt;">
                                     <color key="titleColor" red="0.40000000000000002" green="0.59999999999999998" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
+                                <connections>
+                                    <action selector="previousPressed:" destination="hEK-fy-3JL" eventType="touchUpInside" id="Wzv-6l-j2d"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" title="Dumbbell Overhead Squat" id="qVT-L3-1gj"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics" type="retina4"/>
+                    <connections>
+                        <outlet property="exerciseImage" destination="vH1-Fc-szz" id="tAO-bN-r2T"/>
+                        <outlet property="nextButton" destination="5GQ-mA-xw4" id="kUJ-1L-KxG"/>
+                        <outlet property="previousButton" destination="WqD-Qn-x5c" id="Dda-jC-Tk9"/>
+                        <outlet property="timerButton" destination="btf-c9-1iu" id="Dxa-Xa-I88"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="QHu-GK-WRR" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2926" y="250"/>
+            <point key="canvasLocation" x="3085" y="-202"/>
         </scene>
         <!--Workout SelectionTVC-->
         <scene sceneID="6Se-nu-2bD">
@@ -725,6 +739,7 @@
                                 </state>
                                 <connections>
                                     <action selector="beginWorkout:" destination="wxO-y1-Z56" eventType="touchUpInside" id="fJp-WX-qWg"/>
+                                    <segue destination="hEK-fy-3JL" kind="push" identifier="start" id="b2X-ee-XyB"/>
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="You'll need:" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gXQ-q4-MzI">
@@ -755,7 +770,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xDS-OU-FJp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2685" y="-193"/>
+            <point key="canvasLocation" x="2694" y="-193"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="AGU-j6-Bu6">

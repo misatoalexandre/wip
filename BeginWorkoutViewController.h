@@ -7,10 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Workout.h"
 #import <Parse/Parse.h>
 @interface BeginWorkoutViewController : UIViewController
 
 @property (nonatomic, strong) NSString *workoutId;
+@property (nonatomic, strong) Workout *currentWorkout;
 
 //Interface views
 @property (weak, nonatomic) IBOutlet UIImageView *displayImageView;

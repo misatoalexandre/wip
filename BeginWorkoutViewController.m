@@ -26,16 +26,33 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    NSLog(@"%@ :Tpugk5X6AZ", self.workoutId);
-    [self query];
+     //*****This gets called first before Launch VC's view loads.*****//
+    //[self query];
+    
+    //Receive notification for workoutID
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(query:)
+                                                name:@"Passing selected workout ID"
+                                              object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(interfaceUpdates:) name:@"workoutObjectCameThrough"
+                                              object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(updateDisplayImage:) name:@"displayMainImage"
+                                              object:nil];
+
 
 	// Do any additional setup after loading the view.
+}
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [self.displayImageView setImage:nil];
     [self.firstEpmtImageView setImage:nil];
     [self.secondEmptImageView setImage:nil];
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,14 +60,68 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)query{
+
+-(void)query:(NSNotification *)note{
+    NSDictionary *theWorkoutID=[note userInfo];
+    if (theWorkoutID!=nil) {
+        self.workoutId=[theWorkoutID objectForKey:@"workoutId"];
+        NSLog(@"query: %@", self.workoutId);
+    }
+    
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
     query.cachePolicy=kPFCachePolicyCacheThenNetwork;
-    [query getObjectInBackgroundWithId:@"Tpugk5X6AZ" block:^(PFObject *object, NSError *error) {
-       
-        NSLog(@"%@", object);
-    }];
+    [query getObjectInBackgroundWithId:self.workoutId
+                                 block:^(PFObject *object, NSError *error)
+    {
+        if (!error) {
+            NSDictionary *pfObject=[NSDictionary dictionaryWithObject:object
+                                                               forKey:@"workoutObject"];
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"workoutObjectCameThrough"
+                                                               object:self
+                                                             userInfo:pfObject];
+            
+            NSLog(@"%@", [object objectForKey:@"title"]);
+
+        }else if (error){
+            UIAlertView *view=[[UIAlertView alloc]initWithTitle:@"error in query" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
+            [view show];
+        }
+            
+        
+           }];
+}
+-(void)interfaceUpdates:(NSNotification*)note{
+    NSDictionary *theWorkoutObject=[note userInfo];
+    if (theWorkoutObject!=nil)
+    {
+        PFObject *pfObject=[theWorkoutObject objectForKey:@"workoutObject"];
+        self.equipmentLabel.text=[pfObject objectForKey:@"title"];
+        PFFile *imageFile=[pfObject objectForKey:@"displayImage"];
+        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+           
+            UIImage *image=[UIImage imageWithData:data];
+            
+            NSDictionary *displayImageDictionary=[NSDictionary dictionaryWithObject:image
+                                                                            forKey:@"uiImage"];
+            
+            [[NSNotificationCenter defaultCenter]postNotificationName:@"displayMainImage"
+                                                               object:self
+                                                             userInfo:displayImageDictionary];
+        }];
+        NSLog(@"inside interfaceUpdates:%@", [pfObject objectForKey:@"title"]);
+    }
+}
+-(void)updateDisplayImage:(NSNotification*)note{
+    NSDictionary *thedisplayImage=[note userInfo];
+    if (thedisplayImage!=nil) {
+        UIImage *image=[thedisplayImage objectForKey:@"uiImage"];
+        self.displayImageView.image=image;
+        NSLog(@"inside update display image %@", image);
+    }
+    
 }
 - (IBAction)beginWorkout:(id)sender {
+    
 }
 @end

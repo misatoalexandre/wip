@@ -9,5 +9,14 @@
 #import <UIKit/UIKit.h>
 
 @interface ExerciseViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIImageView *exerciseImage;
+@property (weak, nonatomic) IBOutlet UIButton *timerButton;
+@property (weak, nonatomic) IBOutlet UIButton *nextButton;
+@property (weak, nonatomic) IBOutlet UIButton *previousButton;
+
+- (IBAction)timerPausePlay:(id)sender;
+- (IBAction)nextPressed:(id)sender;
+- (IBAction)previousPressed:(id)sender;
+
 
 @end
