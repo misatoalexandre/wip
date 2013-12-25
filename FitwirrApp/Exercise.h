@@ -11,7 +11,8 @@
 @interface Exercise : PFObject
 
 @property (nonatomic, strong) NSString *name;
-@property (nonatomic, strong) PFImageView *image;
-
+@property (nonatomic, strong) PFFile *imageFile;
+@property (nonatomic, strong) UIImage *image;
+@property NSInteger time;
 
 @end

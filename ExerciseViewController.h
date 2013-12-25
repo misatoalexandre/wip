@@ -8,12 +8,14 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "Exercise.h"
 
 @interface ExerciseViewController : UIViewController
 
 @property (nonatomic, strong) PFObject *currentWorkout;
 @property (nonatomic, strong) NSMutableArray *exerciseArray;
 @property NSUInteger index;
+@property (nonatomic, strong)Exercise *exercise;
 
 //interface elements
 @property (weak, nonatomic) IBOutlet UIImageView *exerciseImage;

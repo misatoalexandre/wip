@@ -38,6 +38,9 @@
     self.nextButton.hidden=YES;
     self.nextButton.enabled=NO;
     
+   self.exercise=[[Exercise alloc]initWithClassName:@"PFObject"];
+    
+    
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(updateInterface:)
                                                 name:@"ExerciseArrayFetched"
@@ -69,7 +72,9 @@
         if (!error) {
             
             
-            NSDictionary *resultsArrayDictionary=[NSDictionary dictionaryWithObject:results forKey:@"ExerciseArray"];
+            
+            NSDictionary *resultsArrayDictionary=[NSDictionary dictionaryWithObject:results
+                                                                             forKey:@"ExerciseArray"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ExerciseArrayFetched"
                                                                 object:self
                                                              userInfo:resultsArrayDictionary];
@@ -89,26 +94,22 @@
 -(void)updateInterface:(NSNotification*)note{
     NSDictionary *theExerciseArray=[note userInfo];
     if (theExerciseArray!=nil) {
-        self.exerciseArray=[theExerciseArray objectForKey:@"ExerciseArray"];
+       self.exerciseArray=[theExerciseArray objectForKey:@"ExerciseArray"];
         NSLog(@"Exercise VC Inside UpdateInterface %lu %@", self.exerciseArray.count, self.exerciseArray);
-        for (PFObject *object in self.exerciseArray) {
+        
+        NSMutableArray *arrayofExercisesModel=[[NSMutableArray alloc]init];
+        
+        for (PFObject *singleObject in self.exerciseArray) {
+            self.exercise.name=[singleObject objectForKey:@"name"];
+            self.exercise.time=(unsigned)[singleObject objectForKey:@"time"];
+            self.exercise.imageFile=[singleObject objectForKey:@"image"];
             
-            //Initiate and load setsArray
-            setsArray=[[NSMutableArray alloc]init];
-            minsbySet=[[NSMutableArray alloc]init];
-            
-            for (int x=1; x<=4; x++) {
-                
-                NSString *string=[NSString stringWithFormat:@"%d", 15 *x];
-                NSString *set=[NSString stringWithFormat:@"%d",x];
-                
-                [setsArray addObject:set];
-                [minsbySet addObject:string];
-                
-
-            
+            [arrayofExercisesModel addObject:self.exercise];
+            NSLog(@"Exercise VC. Update interface: Single Exercise Model \n %@:%lu: %@", self.exercise.name, self.exercise.time, self.exercise.imageFile);
+    
         }
-       /*
+        
+        /*
         PFObject *singleExercise=[self.exerciseArray objectAtIndex:self.index];
         PFFile *exerciseImageFile=[singleExercise objectForKey:@"image"];
         [exerciseImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
