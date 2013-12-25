@@ -7,6 +7,7 @@
 //
 
 #import "BeginWorkoutViewController.h"
+#import "ExerciseViewController.h"
 
 @interface BeginWorkoutViewController ()
 
@@ -69,7 +70,7 @@
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
-    query.cachePolicy=kPFCachePolicyCacheThenNetwork;
+    query.cachePolicy=kPFCachePolicyCacheOnly;
     [query getObjectInBackgroundWithId:self.workoutId
                                  block:^(PFObject *object, NSError *error)
     {
@@ -95,9 +96,9 @@
     NSDictionary *theWorkoutObject=[note userInfo];
     if (theWorkoutObject!=nil)
     {
-        PFObject *pfObject=[theWorkoutObject objectForKey:@"workoutObject"];
-        self.equipmentLabel.text=[pfObject objectForKey:@"title"];
-        PFFile *imageFile=[pfObject objectForKey:@"displayImage"];
+        self.currentWorkout=[theWorkoutObject objectForKey:@"workoutObject"];
+        self.equipmentLabel.text=[self.currentWorkout objectForKey:@"title"];
+        PFFile *imageFile=[self.currentWorkout objectForKey:@"displayImage"];
         [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
            
             UIImage *image=[UIImage imageWithData:data];
@@ -109,7 +110,7 @@
                                                                object:self
                                                              userInfo:displayImageDictionary];
         }];
-        NSLog(@"inside interfaceUpdates:%@", [pfObject objectForKey:@"title"]);
+        NSLog(@"Workout Start Page:inside interfaceUpdates:%@", [self.currentWorkout objectForKey:@"title"]);
     }
 }
 -(void)updateDisplayImage:(NSNotification*)note{
@@ -122,6 +123,10 @@
     
 }
 - (IBAction)beginWorkout:(id)sender {
-    
+    //[self prepareForSegue:@"start" sender:sender];
+}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    ExerciseViewController *evc=(ExerciseViewController *)[segue destinationViewController];
+    evc.currentWorkout=self.currentWorkout;
 }
 @end

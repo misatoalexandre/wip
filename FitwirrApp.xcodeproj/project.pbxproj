@@ -14,7 +14,6 @@
 		5341857118603168007CC85D /* CROSSEDARMCRUNCH.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 5341857018603168007CC85D /* CROSSEDARMCRUNCH.jpg */; };
 		53418573186031F5007CC85D /* BENCHSIDEPLANK.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53418572186031F5007CC85D /* BENCHSIDEPLANK.jpg */; };
 		535869CD185F58D200B77920 /* buttcover.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869CC185F58D200B77920 /* buttcover.png */; };
-		535869CF185F5A1900B77920 /* abscover.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869CE185F5A1900B77920 /* abscover.png */; };
 		535869D2185F5BD900B77920 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D0185F5BD900B77920 /* account.png */; };
 		535869D3185F5BD900B77920 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D1185F5BD900B77920 /* account@2x.png */; };
 		535869D6185F5BE700B77920 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D4185F5BE700B77920 /* settings.png */; };
@@ -26,7 +25,6 @@
 		535869E9185F5D8600B77920 /* abs4.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869E8185F5D8600B77920 /* abs4.png */; };
 		535869F1185F615300B77920 /* bikini5.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869F0185F615300B77920 /* bikini5.png */; };
 		535869F7185F651200B77920 /* abs5.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869F4185F651200B77920 /* abs5.png */; };
-		535869F9185F69E800B77920 /* abscoverTALL.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869F8185F69E800B77920 /* abscoverTALL.png */; };
 		535869FB185F6BE800B77920 /* WHITE LINE.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869FA185F6BE800B77920 /* WHITE LINE.png */; };
 		53586A05185F732100B77920 /* START (2).png in Resources */ = {isa = PBXBuildFile; fileRef = 53586A04185F732100B77920 /* START (2).png */; };
 		53586A0A185F85ED00B77920 /* WorkoutStartVCViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 53586A09185F85ED00B77920 /* WorkoutStartVCViewController.m */; };
@@ -38,6 +36,7 @@
 		535C5DE718696D3E0063C256 /* LaunchTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DE618696D3E0063C256 /* LaunchTVC.m */; };
 		535C5DEA1869BD8F0063C256 /* SetsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DE91869BD8F0063C256 /* SetsTVC.m */; };
 		535C5DED1869D6630063C256 /* BeginWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DEC1869D6630063C256 /* BeginWorkoutViewController.m */; };
+		535C5DF2186B19820063C256 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DF1186B19820063C256 /* Exercise.m */; };
 		5387817F185DE3AB00641237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5387817E185DE3AB00641237 /* Foundation.framework */; };
 		53878181185DE3AB00641237 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878180185DE3AB00641237 /* CoreGraphics.framework */; };
 		53878183185DE3AB00641237 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878182185DE3AB00641237 /* UIKit.framework */; };
@@ -96,7 +95,6 @@
 		5341857018603168007CC85D /* CROSSEDARMCRUNCH.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = CROSSEDARMCRUNCH.jpg; sourceTree = "<group>"; };
 		53418572186031F5007CC85D /* BENCHSIDEPLANK.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = BENCHSIDEPLANK.jpg; sourceTree = "<group>"; };
 		535869CC185F58D200B77920 /* buttcover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = buttcover.png; sourceTree = "<group>"; };
-		535869CE185F5A1900B77920 /* abscover.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abscover.png; sourceTree = "<group>"; };
 		535869D0185F5BD900B77920 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
 		535869D1185F5BD900B77920 /* account@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "account@2x.png"; sourceTree = "<group>"; };
 		535869D4185F5BE700B77920 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
@@ -108,7 +106,6 @@
 		535869E8185F5D8600B77920 /* abs4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abs4.png; sourceTree = "<group>"; };
 		535869F0185F615300B77920 /* bikini5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = bikini5.png; sourceTree = "<group>"; };
 		535869F4185F651200B77920 /* abs5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abs5.png; sourceTree = "<group>"; };
-		535869F8185F69E800B77920 /* abscoverTALL.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = abscoverTALL.png; sourceTree = "<group>"; };
 		535869FA185F6BE800B77920 /* WHITE LINE.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "WHITE LINE.png"; sourceTree = "<group>"; };
 		53586A04185F732100B77920 /* START (2).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "START (2).png"; sourceTree = "<group>"; };
 		53586A08185F85ED00B77920 /* WorkoutStartVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = WorkoutStartVCViewController.h; path = ../WorkoutStartVCViewController.h; sourceTree = "<group>"; };
@@ -128,6 +125,8 @@
 		535C5DE91869BD8F0063C256 /* SetsTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SetsTVC.m; path = ../SetsTVC.m; sourceTree = "<group>"; };
 		535C5DEB1869D6630063C256 /* BeginWorkoutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BeginWorkoutViewController.h; path = ../BeginWorkoutViewController.h; sourceTree = "<group>"; };
 		535C5DEC1869D6630063C256 /* BeginWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeginWorkoutViewController.m; path = ../BeginWorkoutViewController.m; sourceTree = "<group>"; };
+		535C5DF0186B19820063C256 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
+		535C5DF1186B19820063C256 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		5387817B185DE3AB00641237 /* FitwirrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitwirrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5387817E185DE3AB00641237 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53878180185DE3AB00641237 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -212,6 +211,8 @@
 		5320920C18687FCB009B4F50 /* Object Classes */ = {
 			isa = PBXGroup;
 			children = (
+				535C5DF0186B19820063C256 /* Exercise.h */,
+				535C5DF1186B19820063C256 /* Exercise.m */,
 				5320920918687FBE009B4F50 /* Workout.h */,
 				5320920A18687FBE009B4F50 /* Workout.m */,
 			);
@@ -278,10 +279,8 @@
 				5341856918602FAA007CC85D /* easelly_visual (7).jpg */,
 				5341856E18602FE1007CC85D /* easelly_visual (8).jpg */,
 				535869E8185F5D8600B77920 /* abs4.png */,
-				535869F8185F69E800B77920 /* abscoverTALL.png */,
 				535869F4185F651200B77920 /* abs5.png */,
 				535869F0185F615300B77920 /* bikini5.png */,
-				535869CE185F5A1900B77920 /* abscover.png */,
 				535869CC185F58D200B77920 /* buttcover.png */,
 			);
 			name = Photos;
@@ -290,10 +289,10 @@
 		535C5DEE1869D6820063C256 /* Selections TVC */ = {
 			isa = PBXGroup;
 			children = (
-				53AEABAB1864DAD1006E0D48 /* WorkoutSelectionTVC.h */,
-				53AEABAC1864DAD1006E0D48 /* WorkoutSelectionTVC.m */,
 				535C5DE81869BD8F0063C256 /* SetsTVC.h */,
 				535C5DE91869BD8F0063C256 /* SetsTVC.m */,
+				53AEABAB1864DAD1006E0D48 /* WorkoutSelectionTVC.h */,
+				53AEABAC1864DAD1006E0D48 /* WorkoutSelectionTVC.m */,
 			);
 			name = "Selections TVC";
 			sourceTree = "<group>";
@@ -533,11 +532,9 @@
 				53878197185DE3AB00641237 /* Images.xcassets in Resources */,
 				535869E2185F5C5C00B77920 /* check.png in Resources */,
 				538781C2185DEF1400641237 /* zwartevilt.png in Resources */,
-				535869CF185F5A1900B77920 /* abscover.png in Resources */,
 				5341857118603168007CC85D /* CROSSEDARMCRUNCH.jpg in Resources */,
 				53AEAB9E1864C6B7006E0D48 /* light pink #fef9ffff.png in Resources */,
 				53878189185DE3AB00641237 /* InfoPlist.strings in Resources */,
-				535869F9185F69E800B77920 /* abscoverTALL.png in Resources */,
 				53586A251860142600B77920 /* New.storyboard in Resources */,
 				535869D6185F5BE700B77920 /* settings.png in Resources */,
 				535869D2185F5BD900B77920 /* account.png in Resources */,
@@ -582,6 +579,7 @@
 				5387818F185DE3AB00641237 /* AppDelegate.m in Sources */,
 				53586A0A185F85ED00B77920 /* WorkoutStartVCViewController.m in Sources */,
 				5387818B185DE3AB00641237 /* main.m in Sources */,
+				535C5DF2186B19820063C256 /* Exercise.m in Sources */,
 				53AEABAD1864DAD1006E0D48 /* WorkoutSelectionTVC.m in Sources */,
 				5320920B18687FBE009B4F50 /* Workout.m in Sources */,
 			);

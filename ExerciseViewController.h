@@ -7,8 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
 
 @interface ExerciseViewController : UIViewController
+
+@property (nonatomic, strong) PFObject *currentWorkout;
+@property (nonatomic, strong) NSMutableArray *exerciseArray;
+@property NSUInteger index;
+
+//interface elements
 @property (weak, nonatomic) IBOutlet UIImageView *exerciseImage;
 @property (weak, nonatomic) IBOutlet UIButton *timerButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;

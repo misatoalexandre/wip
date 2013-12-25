@@ -142,7 +142,7 @@
                                 </state>
                                 <connections>
                                     <action selector="nextPressed:" destination="hEK-fy-3JL" eventType="touchUpInside" id="gdw-Oh-59v"/>
-                                    <segue destination="KqB-ah-cBp" kind="push" id="iPH-z5-233"/>
+                                    <segue destination="KqB-ah-cBp" kind="push" identifier="rest" id="iPH-z5-233"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WqD-Qn-x5c">

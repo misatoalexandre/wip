@@ -7,6 +7,9 @@
 //
 
 #import "ExerciseViewController.h"
+#import <Parse/Parse.h>
+#import "Workout.h"
+#import "RestViewController.h"
 
 @interface ExerciseViewController ()
 
@@ -22,34 +25,136 @@
     }
     return self;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self query];
+   }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.index=0;
+    self.previousButton.hidden=YES;
+    self.previousButton.enabled=NO;
+    self.nextButton.hidden=YES;
+    self.nextButton.enabled=NO;
+    
     [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(query:)
-                                                name:@"workoutObjectCameThroug"
+                                            selector:@selector(updateInterface:)
+                                                name:@"ExerciseArrayFetched"
                                               object:nil];
-	// Do any additional setup after loading the view.
+    NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(updateExerciseImage:)
+                                                name:@"ExerciseImage"
+                                              object:nil];
+    	// Do any additional setup after loading the view.
 }
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)query:(NSNotification*)note{
-    NSDictionary *workoutObject=[note userInfo];
-    if (workoutObject!=nil) {
+-(void)query{
+    //Fetch all the objects in the relations and load them into an array
+    PFRelation *relation=[self.currentWorkout relationforKey:@"exercise"];
+    PFQuery *query=[relation query];
+    query.cachePolicy=kPFCachePolicyCacheOnly;
+    [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error){
+    NSLog(@"Exercise cout %lu: %@", results.count, results);
+        if (!error) {
+            
+            
+            NSDictionary *resultsArrayDictionary=[NSDictionary dictionaryWithObject:results forKey:@"ExerciseArray"];
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"ExerciseArrayFetched"
+                                                                object:self
+                                                             userInfo:resultsArrayDictionary];
+            
+        }else
+        {
+            UIAlertView *view=[[UIAlertView alloc]initWithTitle:@"Query Error"
+                                                        message:[error localizedDescription]
+                                                       delegate:nil
+                                              cancelButtonTitle:@"OK"
+                                              otherButtonTitles:nil, nil];
+            [view show];
+        }
         
+    }];
+}
+-(void)updateInterface:(NSNotification*)note{
+    NSDictionary *theExerciseArray=[note userInfo];
+    if (theExerciseArray!=nil) {
+        self.exerciseArray=[theExerciseArray objectForKey:@"ExerciseArray"];
+        NSLog(@"Exercise VC Inside UpdateInterface %lu %@", self.exerciseArray.count, self.exerciseArray);
+        for (PFObject *object in self.exerciseArray) {
+            
+            //Initiate and load setsArray
+            setsArray=[[NSMutableArray alloc]init];
+            minsbySet=[[NSMutableArray alloc]init];
+            
+            for (int x=1; x<=4; x++) {
+                
+                NSString *string=[NSString stringWithFormat:@"%d", 15 *x];
+                NSString *set=[NSString stringWithFormat:@"%d",x];
+                
+                [setsArray addObject:set];
+                [minsbySet addObject:string];
+                
+
+            
+        }
+       /*
+        PFObject *singleExercise=[self.exerciseArray objectAtIndex:self.index];
+        PFFile *exerciseImageFile=[singleExercise objectForKey:@"image"];
+        [exerciseImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+           
+            if (!error) {
+                UIImage *image=[UIImage imageWithData:data];
+                
+                NSDictionary *exerciseImageDictionary=[NSDictionary dictionaryWithObject:image forKey:@"exerciseImage"];
+                [[NSNotificationCenter defaultCenter]postNotificationName:@"ExerciseImage"
+                                                                   object:self
+                                                                 userInfo:exerciseImageDictionary];
+            }
+            else{
+                NSLog(@"%@:Image data fetching error. %@", self, [error localizedDescription]);
+            }
+        }];*/
     }
     
-    
+}
+-(void)updateExerciseImage:(NSNotification*)note{
+    NSDictionary *exerciseImage=[note userInfo];
+    if (exerciseImage!=nil) {
+        UIImage *image=[exerciseImage objectForKey:@"exerciseImage"];
+        self.exerciseImage.image=image;
+        NSLog(@"%@:updateExerciseImage. %@",self, image);
+    }
 }
 - (IBAction)timerPausePlay:(id)sender {
+    self.nextButton.hidden=NO;
+    self.nextButton.enabled=YES;
+    
+    if (self.index!=0) {
+        self.previousButton.hidden=NO;
+        self.previousButton.enabled=YES;
+    }
+    
+
 }
 
 - (IBAction)nextPressed:(id)sender {
+    }
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
+    if ([segue.identifier isEqualToString:@"rest"]) {
+        RestViewController *restVC=(RestViewController *)[segue destinationViewController];
+        restVC.index=self.index;
+    }
 }
 
 - (IBAction)previousPressed:(id)sender {

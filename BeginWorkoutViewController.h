@@ -12,7 +12,7 @@
 @interface BeginWorkoutViewController : UIViewController
 
 @property (nonatomic, strong) NSString *workoutId;
-@property (nonatomic, strong) Workout *currentWorkout;
+@property (nonatomic, strong) PFObject *currentWorkout;
 
 //Interface views
 @property (weak, nonatomic) IBOutlet UIImageView *displayImageView;
