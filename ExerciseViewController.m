@@ -13,6 +13,7 @@
 
 @interface ExerciseViewController ()
 
+
 @end
 
 @implementation ExerciseViewController
@@ -27,18 +28,20 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self query];
-   }
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    self.arrayofExerciseModel=[[NSMutableArray alloc]initWithCapacity:4];
+    
     self.index=0;
     self.previousButton.hidden=YES;
     self.previousButton.enabled=NO;
     self.nextButton.hidden=YES;
     self.nextButton.enabled=NO;
     
-   self.exercise=[[Exercise alloc]initWithClassName:@"PFObject"];
+    self.exercise=[[Exercise alloc]initWithClassName:@"PFObject"];
     
     
     [[NSNotificationCenter defaultCenter]addObserver:self
@@ -47,15 +50,12 @@
                                               object:nil];
     NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
     
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(updateExerciseImage:)
-                                                name:@"ExerciseImage"
-                                              object:nil];
-    	// Do any additional setup after loading the view.
+    // Do any additional setup after loading the view.
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
+    self.arrayofExerciseModel=nil;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -68,16 +68,13 @@
     PFQuery *query=[relation query];
     query.cachePolicy=kPFCachePolicyCacheOnly;
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error){
-    NSLog(@"Exercise cout %lu: %@", results.count, results);
+        NSLog(@"Exercise cout Inside query %lu: %@", results.count, results);
         if (!error) {
-            
-            
-            
             NSDictionary *resultsArrayDictionary=[NSDictionary dictionaryWithObject:results
-                                                                             forKey:@"ExerciseArray"];
+                                                                             forKey:@"results"];
             [[NSNotificationCenter defaultCenter] postNotificationName:@"ExerciseArrayFetched"
                                                                 object:self
-                                                             userInfo:resultsArrayDictionary];
+                                                              userInfo:resultsArrayDictionary];
             
         }else
         {
@@ -94,49 +91,36 @@
 -(void)updateInterface:(NSNotification*)note{
     NSDictionary *theExerciseArray=[note userInfo];
     if (theExerciseArray!=nil) {
-       self.exerciseArray=[theExerciseArray objectForKey:@"ExerciseArray"];
-        NSLog(@"Exercise VC Inside UpdateInterface %lu %@", self.exerciseArray.count, self.exerciseArray);
+        self.exerciseArray=[theExerciseArray objectForKey:@"results"];
         
-        NSMutableArray *arrayofExercisesModel=[[NSMutableArray alloc]init];
+        NSLog(@"Exercise VC Inside UpdateInterface %lu %@", self.exerciseArray.count, self.exerciseArray);
         
         for (PFObject *singleObject in self.exerciseArray) {
             self.exercise.name=[singleObject objectForKey:@"name"];
             self.exercise.time=(unsigned)[singleObject objectForKey:@"time"];
             self.exercise.imageFile=[singleObject objectForKey:@"image"];
-            
-            [arrayofExercisesModel addObject:self.exercise];
-            NSLog(@"Exercise VC. Update interface: Single Exercise Model \n %@:%lu: %@", self.exercise.name, self.exercise.time, self.exercise.imageFile);
-    
+            [self.arrayofExerciseModel addObject:self.exercise];
+            NSLog(@"Exercise VC. Update interface: Single Exercise Model \n %@:%lu: %@", self.exercise.name, self.exercise.time,
+                  self.exercise.image);
         }
+        [self displayUI];
         
-        /*
-        PFObject *singleExercise=[self.exerciseArray objectAtIndex:self.index];
-        PFFile *exerciseImageFile=[singleExercise objectForKey:@"image"];
-        [exerciseImageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
-           
-            if (!error) {
-                UIImage *image=[UIImage imageWithData:data];
-                
-                NSDictionary *exerciseImageDictionary=[NSDictionary dictionaryWithObject:image forKey:@"exerciseImage"];
-                [[NSNotificationCenter defaultCenter]postNotificationName:@"ExerciseImage"
-                                                                   object:self
-                                                                 userInfo:exerciseImageDictionary];
-            }
-            else{
-                NSLog(@"%@:Image data fetching error. %@", self, [error localizedDescription]);
-            }
-        }];*/
+        
     }
     
 }
--(void)updateExerciseImage:(NSNotification*)note{
-    NSDictionary *exerciseImage=[note userInfo];
-    if (exerciseImage!=nil) {
-        UIImage *image=[exerciseImage objectForKey:@"exerciseImage"];
-        self.exerciseImage.image=image;
-        NSLog(@"%@:updateExerciseImage. %@",self, image);
-    }
+-(void)displayUI{
+    
+    
+    self.timerButton.titleLabel.text=[NSString
+                                      stringWithFormat:@"%lu",
+                                      [[self.arrayofExerciseModel objectAtIndex:self.index]time]];
+    
+    self.exerciseImage.file=[[self.arrayofExerciseModel objectAtIndex:self.index]imageFile];
+    [self.exerciseImage loadInBackground];
+    
 }
+
 - (IBAction)timerPausePlay:(id)sender {
     self.nextButton.hidden=NO;
     self.nextButton.enabled=YES;
@@ -146,14 +130,15 @@
         self.previousButton.enabled=YES;
     }
     
-
+    
 }
 
 - (IBAction)nextPressed:(id)sender {
-    }
+}
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"rest"]) {
         RestViewController *restVC=(RestViewController *)[segue destinationViewController];
+        restVC.exerciseArray=self.arrayofExerciseModel;
         restVC.index=self.index;
     }
 }

@@ -16,9 +16,10 @@
 @property (nonatomic, strong) NSMutableArray *exerciseArray;
 @property NSUInteger index;
 @property (nonatomic, strong)Exercise *exercise;
+@property (nonatomic, strong) NSMutableArray *arrayofExerciseModel;
 
 //interface elements
-@property (weak, nonatomic) IBOutlet UIImageView *exerciseImage;
+@property (weak, nonatomic) IBOutlet PFImageView *exerciseImage;
 @property (weak, nonatomic) IBOutlet UIButton *timerButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 @property (weak, nonatomic) IBOutlet UIButton *previousButton;

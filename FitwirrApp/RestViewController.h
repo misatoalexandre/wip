@@ -7,9 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <Parse/Parse.h>
+
 
 @interface RestViewController : UIViewController
 @property (nonatomic, strong) NSArray *exerciseArray;
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property NSUInteger index;
+@property (weak, nonatomic) IBOutlet PFImageView *nextExerciseImage;
+@property (weak, nonatomic) IBOutlet UIButton *nextExerciseTitlteLabel;
 @end

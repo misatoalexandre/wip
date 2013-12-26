@@ -109,8 +109,8 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DumbbellOverhaedSquat.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vH1-Fc-szz">
-                                <rect key="frame" x="-4" y="45" width="324" height="466"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DumbbellOverhaedSquat.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="vH1-Fc-szz" customClass="PFImageView">
+                                <rect key="frame" x="-4" y="46" width="324" height="466"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="btf-c9-1iu">
@@ -563,10 +563,10 @@
                                 </state>
                             </button>
                             <collectionView opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" minimumZoomScale="0.0" maximumZoomScale="0.0" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="f6m-FE-t6h">
-                                <rect key="frame" x="0.0" y="444" width="320" height="124"/>
+                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
-                                <inset key="scrollIndicatorInsets" minX="15" minY="5" maxX="15" maxY="5"/>
+                                <inset key="scrollIndicatorInsets" minX="15" minY="10" maxX="15" maxY="5"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="L0s-3F-mP6">
                                     <size key="itemSize" width="50" height="50"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -581,7 +581,7 @@
                                             <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DumbbellOverhaedSquat.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-2I-aa9">
+                                                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DumbbellOverhaedSquat.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="aPb-2I-aa9" customClass="PFImageView">
                                                     <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                                 </imageView>
@@ -590,7 +590,7 @@
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                 </imageView>
                                                 <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="BhO-uA-cMa">
-                                                    <rect key="frame" x="-6" y="0.0" width="50" height="50"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
                                                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -606,9 +606,13 @@
                                         </connections>
                                     </collectionViewCell>
                                 </cells>
+                                <connections>
+                                    <outlet property="dataSource" destination="KqB-ah-cBp" id="pbW-wV-7TL"/>
+                                    <outlet property="delegate" destination="KqB-ah-cBp" id="vw3-Sn-LIL"/>
+                                </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DumbbellOverhaedSquat.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bBI-eb-G1A">
-                                <rect key="frame" x="97" y="237" width="127" height="128"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="DumbbellOverhaedSquat.jpg" translatesAutoresizingMaskIntoConstraints="NO" id="bBI-eb-G1A" customClass="PFImageView">
+                                <rect key="frame" x="97" y="252" width="127" height="128"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -617,6 +621,8 @@
                     <navigationItem key="navigationItem" id="oUI-y2-6Zb"/>
                     <connections>
                         <outlet property="collectionView" destination="f6m-FE-t6h" id="Hfw-BE-PmD"/>
+                        <outlet property="nextExerciseImage" destination="bBI-eb-G1A" id="stm-d2-p3g"/>
+                        <outlet property="nextExerciseTitlteLabel" destination="pY1-ty-0Dp" id="pqW-LE-q7y"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XeX-2c-zCZ" userLabel="First Responder" sceneMemberID="firstResponder"/>

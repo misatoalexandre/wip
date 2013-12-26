@@ -9,6 +9,8 @@
 #import "RestViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RestCell.h"
+#import "Exercise.h"
+
 
 @interface RestViewController ()
 
@@ -24,12 +26,16 @@
     }
     return self;
 }
+-(void)viewWillAppear:(BOOL)animated{
+    [self displayNextExerciseInLarge];
+}
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view.
     [self.collectionView reloadData];
+    NSLog(@"array check. %@ count %lu. contents %@", [[self.exerciseArray objectAtIndex:self.index]imageFile], self.exerciseArray.count, self.exerciseArray);
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,7 +43,10 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)displayNextExerciseInLarge{
+    self.nextExerciseImage.file=[[self.exerciseArray objectAtIndex:self.index+1]imageFile];
+    [self.nextExerciseImage loadInBackground];
+}
 #pragma mark-UICollectionView Data Source
 -(NSInteger) numberofSelectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -45,7 +54,7 @@
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
     
-    return 5;
+    return self.exerciseArray.count;
 }
 
 -(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
@@ -62,15 +71,17 @@
     
     cell.imageView.layer.cornerRadius=25.0;
     cell.imageView.layer.masksToBounds=YES;
-    cell.imageView.image=[UIImage imageNamed:@"OverheadDumbbellSquat.jpg"];
+    cell.imageView.file=[[self.exerciseArray objectAtIndex:self.index]imageFile];
+    [cell.imageView loadInBackground];
 
-    if (indexPath.row==0) {
+   
+    if (indexPath.row>=self.index) {
         cell.label.backgroundColor=UIColorFromRGB(0xffcc66);
         cell.label.text=@"1";
         cell.label.layer.cornerRadius=25.0;
         cell.label.layer.masksToBounds=YES;
         
-    } else if (indexPath.row==1){
+    } else if (indexPath.row==self.index+1){
          cell.label.backgroundColor=[UIColor clearColor];
         cell.checkmarkImage.image=nil;
     }
