@@ -27,15 +27,17 @@
     return self;
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [self displayNextExerciseInLarge];
+    
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self displayNextExerciseInLarge:self.index];
 	// Do any additional setup after loading the view.
+    
     [self.collectionView reloadData];
-    NSLog(@"array check. %@ count %lu. contents %@", [[self.exerciseArray objectAtIndex:self.index]imageFile], self.exerciseArray.count, self.exerciseArray);
+    NSLog(@"array check. Current Index  %lu, %@ count %lu",self.index, self.exerciseArray, self.exerciseArray.count);
 }
 
 - (void)didReceiveMemoryWarning
@@ -43,8 +45,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
--(void)displayNextExerciseInLarge{
-    self.nextExerciseImage.file=[[self.exerciseArray objectAtIndex:self.index+1]imageFile];
+-(void)displayNextExerciseInLarge:(NSInteger)index{
+   
+    self.nextExerciseImage.file=[[self.exerciseArray objectAtIndex:index]objectForKey:@"image"];
     [self.nextExerciseImage loadInBackground];
 }
 #pragma mark-UICollectionView Data Source
@@ -65,17 +68,15 @@
     RestCell *cell=(RestCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     //Configure the cell
-    /*PFObject *exercise=[self.workout.exerciseList objectAtIndex:indexPath.row];
-     PFFile *imageFile=[exercise objectForKey:@"image"];
-     UIImage *image=[UIImage imageWithData:[imageFile getData]];*/
-    
+   
     cell.imageView.layer.cornerRadius=25.0;
     cell.imageView.layer.masksToBounds=YES;
-    cell.imageView.file=[[self.exerciseArray objectAtIndex:self.index]imageFile];
+    
+    cell.imageView.file=[[self.exerciseArray objectAtIndex:indexPath.row]objectForKey:@"image"];
     [cell.imageView loadInBackground];
 
    
-    if (indexPath.row>=self.index) {
+    if (indexPath.row<=self.index) {
         cell.label.backgroundColor=UIColorFromRGB(0xffcc66);
         cell.label.text=@"1";
         cell.label.layer.cornerRadius=25.0;
@@ -92,8 +93,6 @@
         cell.checkmarkImage.image=nil;
     }
    
-    
-        //cell.imageView.image=[UIImage imageWithData:[imageFile getData]];
     
     return cell;
 }

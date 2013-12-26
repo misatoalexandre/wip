@@ -16,7 +16,7 @@
 @property (nonatomic, strong) NSMutableArray *exerciseArray;
 @property NSUInteger index;
 @property (nonatomic, strong)Exercise *exercise;
-@property (nonatomic, strong) NSMutableArray *arrayofExerciseModel;
+//@property (nonatomic, strong) NSMutableArray *arrayofExerciseModel;
 
 //interface elements
 @property (weak, nonatomic) IBOutlet PFImageView *exerciseImage;

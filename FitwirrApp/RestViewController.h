@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
+#import "Exercise.h"
 
 
 @interface RestViewController : UIViewController
@@ -16,4 +17,5 @@
 @property NSUInteger index;
 @property (weak, nonatomic) IBOutlet PFImageView *nextExerciseImage;
 @property (weak, nonatomic) IBOutlet UIButton *nextExerciseTitlteLabel;
+@property (nonatomic, strong)Exercise *exercise;
 @end

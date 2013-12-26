@@ -33,7 +33,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    self.arrayofExerciseModel=[[NSMutableArray alloc]initWithCapacity:4];
+    
     
     self.index=0;
     self.previousButton.hidden=YES;
@@ -48,14 +48,19 @@
                                             selector:@selector(updateInterface:)
                                                 name:@"ExerciseArrayFetched"
                                               object:nil];
+    /*[[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(updateUI:)
+                                                name:@"PassingExerciseArray"
+                                              object:nil];*/
     NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
     
     // Do any additional setup after loading the view.
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-    self.arrayofExerciseModel=nil;
+   // [[NSNotificationCenter defaultCenter]removeObserver:self];
+    
+    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -66,7 +71,7 @@
     //Fetch all the objects in the relations and load them into an array
     PFRelation *relation=[self.currentWorkout relationforKey:@"exercise"];
     PFQuery *query=[relation query];
-    query.cachePolicy=kPFCachePolicyCacheOnly;
+    query.cachePolicy=kPFCachePolicyCacheThenNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error){
         NSLog(@"Exercise cout Inside query %lu: %@", results.count, results);
         if (!error) {
@@ -92,33 +97,17 @@
     NSDictionary *theExerciseArray=[note userInfo];
     if (theExerciseArray!=nil) {
         self.exerciseArray=[theExerciseArray objectForKey:@"results"];
-        
-        NSLog(@"Exercise VC Inside UpdateInterface %lu %@", self.exerciseArray.count, self.exerciseArray);
-        
-        for (PFObject *singleObject in self.exerciseArray) {
-            self.exercise.name=[singleObject objectForKey:@"name"];
-            self.exercise.time=(unsigned)[singleObject objectForKey:@"time"];
-            self.exercise.imageFile=[singleObject objectForKey:@"image"];
-            [self.arrayofExerciseModel addObject:self.exercise];
-            NSLog(@"Exercise VC. Update interface: Single Exercise Model \n %@:%lu: %@", self.exercise.name, self.exercise.time,
-                  self.exercise.image);
-        }
-        [self displayUI];
-        
-        
+        [self presentUI];
     }
-    
 }
--(void)displayUI{
-    
-    
-    self.timerButton.titleLabel.text=[NSString
-                                      stringWithFormat:@"%lu",
-                                      [[self.arrayofExerciseModel objectAtIndex:self.index]time]];
-    
-    self.exerciseImage.file=[[self.arrayofExerciseModel objectAtIndex:self.index]imageFile];
+-(void)presentUI{
+    NSLog(@"present UI %lu %@", self.exerciseArray.count, self.exerciseArray);
+    self.exercise.name=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"name"];
+    self.exercise.imageFile=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"image"];
+    self.timerButton.titleLabel.text=self.exercise.name;
+    self.exerciseImage.file=self.exercise.imageFile;
     [self.exerciseImage loadInBackground];
-    
+  
 }
 
 - (IBAction)timerPausePlay:(id)sender {
@@ -138,8 +127,11 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"rest"]) {
         RestViewController *restVC=(RestViewController *)[segue destinationViewController];
-        restVC.exerciseArray=self.arrayofExerciseModel;
+        NSLog(@"prepare for segue %@", self.exerciseArray);
+        restVC.exerciseArray=self.exerciseArray;
+        
         restVC.index=self.index;
+        
     }
 }
 
