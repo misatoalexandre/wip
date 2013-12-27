@@ -13,6 +13,6 @@
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) PFFile *imageFile;
 @property (nonatomic, strong) UIImage *image;
-@property NSInteger time;
+@property NSNumber *time;
 
 @end

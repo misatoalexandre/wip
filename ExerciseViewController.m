@@ -71,7 +71,7 @@
     //Fetch all the objects in the relations and load them into an array
     PFRelation *relation=[self.currentWorkout relationforKey:@"exercise"];
     PFQuery *query=[relation query];
-    query.cachePolicy=kPFCachePolicyCacheThenNetwork;
+    query.cachePolicy=kPFCachePolicyCacheOnly;
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error){
         NSLog(@"Exercise cout Inside query %lu: %@", results.count, results);
         if (!error) {
@@ -104,7 +104,10 @@
     NSLog(@"present UI %lu %@", self.exerciseArray.count, self.exerciseArray);
     self.exercise.name=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"name"];
     self.exercise.imageFile=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"image"];
-    self.timerButton.titleLabel.text=self.exercise.name;
+    self.exercise.time=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"time"];
+    self.title=self.exercise.name;
+    int timerSetFor=[self.exercise.time intValue];
+    self.timerButton.titleLabel.text=[NSString stringWithFormat:@"%d",timerSetFor];
     self.exerciseImage.file=self.exercise.imageFile;
     [self.exerciseImage loadInBackground];
   
@@ -119,10 +122,10 @@
         self.previousButton.enabled=YES;
     }
     
-    
 }
 
 - (IBAction)nextPressed:(id)sender {
+    //prepareForSegue gets called.
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     if ([segue.identifier isEqualToString:@"rest"]) {
