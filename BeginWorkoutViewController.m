@@ -70,7 +70,7 @@
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
-    query.cachePolicy=kPFCachePolicyCacheOnly;
+    query.cachePolicy=kPFCachePolicyCacheElseNetwork;
     [query getObjectInBackgroundWithId:self.workoutId
                                  block:^(PFObject *object, NSError *error)
     {

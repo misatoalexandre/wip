@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <Parse/Parse.h>
 #import "Exercise.h"
+#import "RestViewController.h"
 
-@interface ExerciseViewController : UIViewController
+@interface ExerciseViewController : UIViewController<RestVCDelegate>
 
 @property (nonatomic, strong) PFObject *currentWorkout;
 @property (nonatomic, strong) Exercise *exercise;
@@ -23,10 +24,10 @@
 @property BOOL timerPaused;
 
 //interface elements
+@property (weak, nonatomic) IBOutlet UILabel *timerDisplay;
 @property (weak, nonatomic) IBOutlet PFImageView *exerciseImage;
-@property (weak, nonatomic) IBOutlet UIButton *timerButton;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
-@property (weak, nonatomic) IBOutlet UIButton *previousButton;
+//@property (weak, nonatomic) IBOutlet UIButton *previousButton;
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
 
 //- (IBAction)timerPausePlay:(id)sender;

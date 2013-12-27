@@ -13,6 +13,11 @@
 
 
 @interface RestViewController ()
+{
+    NSDate *pauseStart;
+    NSDate *previousFireDate;
+    int seconds;
+}
 
 @end
 
@@ -33,6 +38,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self beginTimer];
     [self displayNextExerciseInLarge:self.index];
 	// Do any additional setup after loading the view.
     
@@ -51,10 +57,57 @@
     [self.nextExerciseImage loadInBackground];
 }
 - (IBAction)timerPressed:(id)sender {
-    
-    [self.navigationController popViewControllerAnimated:YES];
+    [self.delegate restIsUp:self];
 }
 
+
+#pragma mark-Timer
+- (IBAction)pausePressed:(id)sender {
+    
+    if (self.timerPaused==NO) {
+        self.timerPaused=YES;
+        [self.pauseButton setImage:[UIImage imageNamed:@"playII.png"] forState:UIControlStateNormal];
+       // [self.timerButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+       // [self.timerButton setTitle:@"Paused" forState:UIControlStateNormal];
+        
+        pauseStart=[NSDate dateWithTimeIntervalSinceNow:0];
+        previousFireDate=[self.timer fireDate];
+        [self.timer setFireDate:[NSDate distantFuture]];
+                
+    }else{
+        self.timerPaused=NO;
+        [self.pauseButton setImage:[UIImage imageNamed:@"pauseThick (1).png"] forState:UIControlStateNormal];
+        
+        float pauseTime=-1*[pauseStart timeIntervalSinceNow];
+        [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
+        
+    }
+    
+}
+-(void)timerFireMethods:(NSTimer *)theTimer{
+    
+    
+    if (seconds>=10) {
+        self.timeDisplay.text=[NSString stringWithFormat:@"00:%d",seconds];
+        seconds--;
+    } else if (seconds>=0){
+        self.timeDisplay.text=[NSString
+                                          stringWithFormat:@"00:0%d",seconds];
+        seconds--;
+    }else{
+        [self.timer invalidate];
+        [self.delegate restIsUp:self];
+    }
+}
+-(void)beginTimer{
+    
+    self.timer=[NSTimer scheduledTimerWithTimeInterval:1.0
+                                                target:self
+                                              selector:@selector(timerFireMethods:)
+                                              userInfo:nil
+                                               repeats:YES];
+    seconds=20;
+}
 #pragma mark-UICollectionView Data Source
 -(NSInteger) numberofSelectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -81,13 +134,13 @@
     [cell.imageView loadInBackground];
 
    
-    if (indexPath.row<=self.index) {
+    if (indexPath.row<self.index) {
         cell.label.backgroundColor=UIColorFromRGB(0xffcc66);
         cell.label.text=@"1";
         cell.label.layer.cornerRadius=25.0;
         cell.label.layer.masksToBounds=YES;
         
-    } else if (indexPath.row==self.index+1){
+    } else if (indexPath.row==self.index){
          cell.label.backgroundColor=[UIColor clearColor];
         cell.checkmarkImage.image=nil;
     }
@@ -98,12 +151,6 @@
         cell.checkmarkImage.image=nil;
     }
    
-    
     return cell;
 }
-
-
-
-
-
 @end

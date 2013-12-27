@@ -11,13 +11,34 @@
 #import "Exercise.h"
 
 
+@protocol RestVCDelegate;
+
 @interface RestViewController : UIViewController
 @property (nonatomic, strong) NSArray *exerciseArray;
-@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
+@property (nonatomic, strong)Exercise *exercise;
 @property NSUInteger index;
+
+@property (weak, nonatomic) id<RestVCDelegate>delegate;
+
+//UI Elements
+@property (weak, nonatomic) IBOutlet UILabel *timeDisplay;
+@property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet PFImageView *nextExerciseImage;
 @property (weak, nonatomic) IBOutlet UIButton *nextExerciseTitlteLabel;
-@property (nonatomic, strong)Exercise *exercise;
-@property (weak, nonatomic) IBOutlet UIButton *timerButton;
+@property (weak, nonatomic) IBOutlet UIButton *pauseButton;
+
+//Timer related
+@property (nonatomic, strong) NSTimer *timer;
+@property BOOL timerPaused;
+
+
 - (IBAction)timerPressed:(id)sender;
+- (IBAction)pausePressed:(id)sender;
+
+@end
+
+@protocol RestVCDelegate
+
+-(void)restIsUp:(RestViewController*)controller;
+
 @end
