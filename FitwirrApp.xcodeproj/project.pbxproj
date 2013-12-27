@@ -37,6 +37,11 @@
 		535C5DEA1869BD8F0063C256 /* SetsTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DE91869BD8F0063C256 /* SetsTVC.m */; };
 		535C5DED1869D6630063C256 /* BeginWorkoutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DEC1869D6630063C256 /* BeginWorkoutViewController.m */; };
 		535C5DF2186B19820063C256 /* Exercise.m in Sources */ = {isa = PBXBuildFile; fileRef = 535C5DF1186B19820063C256 /* Exercise.m */; };
+		535C5DF6186DE1A90063C256 /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = 535C5DF5186DE1A90063C256 /* pause.png */; };
+		535C5DF8186DE1E90063C256 /* stop.png in Resources */ = {isa = PBXBuildFile; fileRef = 535C5DF7186DE1E90063C256 /* stop.png */; };
+		535C5DFA186DE3110063C256 /* pauseThick.png in Resources */ = {isa = PBXBuildFile; fileRef = 535C5DF9186DE3110063C256 /* pauseThick.png */; };
+		535C5DFC186DFB4F0063C256 /* pauseThick (1).png in Resources */ = {isa = PBXBuildFile; fileRef = 535C5DFB186DFB4F0063C256 /* pauseThick (1).png */; };
+		535C5DFE186DFBA90063C256 /* playII.png in Resources */ = {isa = PBXBuildFile; fileRef = 535C5DFD186DFBA90063C256 /* playII.png */; };
 		5387817F185DE3AB00641237 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5387817E185DE3AB00641237 /* Foundation.framework */; };
 		53878181185DE3AB00641237 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878180185DE3AB00641237 /* CoreGraphics.framework */; };
 		53878183185DE3AB00641237 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53878182185DE3AB00641237 /* UIKit.framework */; };
@@ -127,6 +132,11 @@
 		535C5DEC1869D6630063C256 /* BeginWorkoutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BeginWorkoutViewController.m; path = ../BeginWorkoutViewController.m; sourceTree = "<group>"; };
 		535C5DF0186B19820063C256 /* Exercise.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Exercise.h; sourceTree = "<group>"; };
 		535C5DF1186B19820063C256 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
+		535C5DF5186DE1A90063C256 /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
+		535C5DF7186DE1E90063C256 /* stop.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stop.png; sourceTree = "<group>"; };
+		535C5DF9186DE3110063C256 /* pauseThick.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pauseThick.png; sourceTree = "<group>"; };
+		535C5DFB186DFB4F0063C256 /* pauseThick (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "pauseThick (1).png"; sourceTree = "<group>"; };
+		535C5DFD186DFBA90063C256 /* playII.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = playII.png; sourceTree = "<group>"; };
 		5387817B185DE3AB00641237 /* FitwirrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitwirrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5387817E185DE3AB00641237 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		53878180185DE3AB00641237 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -267,7 +277,12 @@
 		535869E7185F5D6200B77920 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				535C5DFB186DFB4F0063C256 /* pauseThick (1).png */,
+				535C5DFD186DFBA90063C256 /* playII.png */,
 				53AEABA51864CABA006E0D48 /* imageedit_12_3931115753.png */,
+				535C5DF5186DE1A90063C256 /* pause.png */,
+				535C5DF9186DE3110063C256 /* pauseThick.png */,
+				535C5DF7186DE1E90063C256 /* stop.png */,
 				53AEABB618656E84006E0D48 /* DumbbellOverhaedSquat.jpg */,
 				53AEABA91864CEA3006E0D48 /* START Round Corner White Font.png */,
 				53418572186031F5007CC85D /* BENCHSIDEPLANK.jpg */,
@@ -522,6 +537,7 @@
 				5341856D18602FAA007CC85D /* easelly_visual (7).jpg in Resources */,
 				535869FB185F6BE800B77920 /* WHITE LINE.png in Resources */,
 				535869F7185F651200B77920 /* abs5.png in Resources */,
+				535C5DFE186DFBA90063C256 /* playII.png in Resources */,
 				53AEABA61864CABA006E0D48 /* imageedit_12_3931115753.png in Resources */,
 				535869CD185F58D200B77920 /* buttcover.png in Resources */,
 				535869DD185F5C2800B77920 /* menu.png in Resources */,
@@ -532,6 +548,7 @@
 				53878197185DE3AB00641237 /* Images.xcassets in Resources */,
 				535869E2185F5C5C00B77920 /* check.png in Resources */,
 				538781C2185DEF1400641237 /* zwartevilt.png in Resources */,
+				535C5DF6186DE1A90063C256 /* pause.png in Resources */,
 				5341857118603168007CC85D /* CROSSEDARMCRUNCH.jpg in Resources */,
 				53AEAB9E1864C6B7006E0D48 /* light pink #fef9ffff.png in Resources */,
 				53878189185DE3AB00641237 /* InfoPlist.strings in Resources */,
@@ -545,9 +562,12 @@
 				53AEABA01864C7F7006E0D48 /* barbell-512.png in Resources */,
 				535869F1185F615300B77920 /* bikini5.png in Resources */,
 				53AEABA21864C7FE006E0D48 /* jump_rope-100.png in Resources */,
+				535C5DF8186DE1E90063C256 /* stop.png in Resources */,
 				538781C5185DEF5000641237 /* twinkle_twinkle_@2X.png in Resources */,
 				535869E3185F5C5C00B77920 /* check@2x.png in Resources */,
+				535C5DFA186DE3110063C256 /* pauseThick.png in Resources */,
 				5341856B18602FAA007CC85D /* BoxJump.jpg in Resources */,
+				535C5DFC186DFB4F0063C256 /* pauseThick (1).png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

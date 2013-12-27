@@ -18,4 +18,6 @@
 @property (weak, nonatomic) IBOutlet PFImageView *nextExerciseImage;
 @property (weak, nonatomic) IBOutlet UIButton *nextExerciseTitlteLabel;
 @property (nonatomic, strong)Exercise *exercise;
+@property (weak, nonatomic) IBOutlet UIButton *timerButton;
+- (IBAction)timerPressed:(id)sender;
 @end

@@ -50,6 +50,11 @@
     self.nextExerciseImage.file=[[self.exerciseArray objectAtIndex:index]objectForKey:@"image"];
     [self.nextExerciseImage loadInBackground];
 }
+- (IBAction)timerPressed:(id)sender {
+    
+    [self.navigationController popViewControllerAnimated:YES];
+}
+
 #pragma mark-UICollectionView Data Source
 -(NSInteger) numberofSelectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
@@ -96,6 +101,7 @@
     
     return cell;
 }
+
 
 
 

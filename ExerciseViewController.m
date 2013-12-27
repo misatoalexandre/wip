@@ -11,7 +11,11 @@
 #import "Workout.h"
 #import "RestViewController.h"
 
-@interface ExerciseViewController ()
+@interface ExerciseViewController (){
+    NSDate *pauseStart;
+    NSDate *previousFireDate;
+    int seconds;
+}
 
 
 @end
@@ -33,13 +37,14 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+   // [self beginTimer];
     
     
     self.index=0;
-    self.previousButton.hidden=YES;
+    //self.timerPaused=NO;
+  
     self.previousButton.enabled=NO;
-    self.nextButton.hidden=YES;
-    self.nextButton.enabled=NO;
+    self.nextButton.enabled=YES;
     
     self.exercise=[[Exercise alloc]initWithClassName:@"PFObject"];
     
@@ -48,24 +53,75 @@
                                             selector:@selector(updateInterface:)
                                                 name:@"ExerciseArrayFetched"
                                               object:nil];
-    /*[[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(updateUI:)
-                                                name:@"PassingExerciseArray"
-                                              object:nil];*/
-    NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(beginTimer:)
+                                                name:@"secondsValue"
+                                              object:nil];
+      NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
     
     // Do any additional setup after loading the view.
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
-   // [[NSNotificationCenter defaultCenter]removeObserver:self];
-    
-    
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    self.timerButton=nil;
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+-(void)timerFireMethods:(NSTimer *)theTimer{
+   
+   
+        if (seconds>=10) {
+            self.timerButton.titleLabel.text=[NSString
+                                              stringWithFormat:@"00:%d",seconds];
+            seconds--;
+        } else if (seconds>=0){
+            self.timerButton.titleLabel.text=[NSString
+                                             stringWithFormat:@"00:0%d",seconds];
+            seconds--;
+        }else{
+            [self.timer invalidate];
+            [self performSegueWithIdentifier:@"rest" sender:self];
+        }
+        
+  
+    
+    /*
+    if (seconds>=10) {
+        self.timerButton.titleLabel.text=[NSString
+                                          stringWithFormat:@"00:%d",seconds];
+        seconds--;
+        NSLog(@"seconds %d", seconds);
+    } else if (seconds<=9){
+        self.timerButton.titleLabel.text=[NSString
+                                          stringWithFormat:@"00:0%d",seconds];
+        seconds--;
+    }
+    else if(seconds<=0){
+        [self.timer invalidate];
+        [self performSegueWithIdentifier:@"rest" sender:self];
+    }
+    else{
+        [self.timer invalidate];
+    }*/
+}
+-(void)beginTimer:(NSNotification *)note{
+    NSDictionary *secondsNSNumber=[note userInfo];
+    if (secondsNSNumber!=nil) {
+        seconds=[[secondsNSNumber objectForKey:@"secondsNSNumber"]intValue];
+        self.timer=[NSTimer scheduledTimerWithTimeInterval:1.0
+                                                    target:self
+                                                  selector:@selector(timerFireMethods:)
+                    
+                                                  userInfo:nil
+                                                   repeats:YES];
+        
+    }else{
+        NSLog(@"Begin Tiemr Error");
+    }
 }
 -(void)query{
     //Fetch all the objects in the relations and load them into an array
@@ -106,24 +162,19 @@
     self.exercise.imageFile=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"image"];
     self.exercise.time=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"time"];
     self.title=self.exercise.name;
-    int timerSetFor=[self.exercise.time intValue];
-    self.timerButton.titleLabel.text=[NSString stringWithFormat:@"%d",timerSetFor];
+    //self.seconds=[self.exercise.time intValue];
+    
+    NSDictionary *sec=[NSDictionary dictionaryWithObject:self.exercise.time
+                                                                     forKey:@"secondsNSNumber"];
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"secondsValue"
+                                                        object:self
+                                                      userInfo:sec];
+    //self.timerButton.titleLabel.text=[NSString stringWithFormat:@"00:%d",timerSetFor];
     self.exerciseImage.file=self.exercise.imageFile;
     [self.exerciseImage loadInBackground];
   
 }
-
-- (IBAction)timerPausePlay:(id)sender {
-    self.nextButton.hidden=NO;
-    self.nextButton.enabled=YES;
-    
-    if (self.index!=0) {
-        self.previousButton.hidden=NO;
-        self.previousButton.enabled=YES;
-    }
-    
-}
-
+#pragma mark-IBActions
 - (IBAction)nextPressed:(id)sender {
     //prepareForSegue gets called.
 }
@@ -132,12 +183,70 @@
         RestViewController *restVC=(RestViewController *)[segue destinationViewController];
         NSLog(@"prepare for segue %@", self.exerciseArray);
         restVC.exerciseArray=self.exerciseArray;
-        
         restVC.index=self.index;
-        
     }
 }
 
-- (IBAction)previousPressed:(id)sender {
+- (IBAction)PausePressed:(id)sender {
+    if (self.timerPaused==NO) {
+        self.timerPaused=YES;
+        [self.pauseButton setImage:[UIImage imageNamed:@"playII.png"] forState:UIControlStateNormal];
+        [self.timerButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
+        [self.timerButton setTitle:@"Paused" forState:UIControlStateNormal];
+       
+        pauseStart=[NSDate dateWithTimeIntervalSinceNow:0];
+        previousFireDate=[self.timer fireDate];
+        [self.timer setFireDate:[NSDate distantFuture]];
+   
+        
+        
+    
+    }else{
+        self.timerPaused=NO;
+        [self.pauseButton setImage:[UIImage imageNamed:@"pauseThick (1).png"] forState:UIControlStateNormal];
+        
+        float pauseTime=-1*[pauseStart timeIntervalSinceNow];
+        [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
+        
+    }
+    
 }
+
+/*- (IBAction)stopPressed:(id)sender {
+}*/
+/*- (IBAction)previousPressed:(id)sender {
+ }*/
+/*- (IBAction)timerPausePlay:(id)sender {
+ self.nextButton.hidden=NO;
+ self.nextButton.enabled=YES;
+ 
+ if (self.index!=0) {
+ self.previousButton.hidden=NO;
+ self.previousButton.enabled=YES;
+ }
+ 
+ }*/
+
 @end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
