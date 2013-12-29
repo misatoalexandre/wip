@@ -38,9 +38,9 @@
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(interfaceUpdates:) name:@"workoutObjectCameThrough"
                                               object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self
+   /* [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(updateDisplayImage:) name:@"displayMainImage"
-                                              object:nil];
+                                              object:nil];*/
 
 
 	// Do any additional setup after loading the view.
@@ -85,12 +85,13 @@
             NSLog(@"%@", [object objectForKey:@"title"]);
 
         }else if (error){
-            UIAlertView *view=[[UIAlertView alloc]initWithTitle:@"error in query" message:[error localizedDescription] delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil, nil];
-            [view show];
+            NSLog(@"error in query beginWorkoutVC %@", [error localizedDescription]);
         }
+        
             
         
            }];
+    
 }
 -(void)interfaceUpdates:(NSNotification*)note{
     NSDictionary *theWorkoutObject=[note userInfo];
@@ -98,8 +99,8 @@
     {
         self.currentWorkout=[theWorkoutObject objectForKey:@"workoutObject"];
         self.equipmentLabel.text=[self.currentWorkout objectForKey:@"title"];
-        PFFile *imageFile=[self.currentWorkout objectForKey:@"displayImage"];
-        [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
+        //PFFile *imageFile=[self.currentWorkout objectForKey:@"displayImage"];
+       /* [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
            
             UIImage *image=[UIImage imageWithData:data];
             
@@ -109,11 +110,11 @@
             [[NSNotificationCenter defaultCenter]postNotificationName:@"displayMainImage"
                                                                object:self
                                                              userInfo:displayImageDictionary];
-        }];
+        }];*/
         NSLog(@"Workout Start Page:inside interfaceUpdates:%@", [self.currentWorkout objectForKey:@"title"]);
     }
 }
--(void)updateDisplayImage:(NSNotification*)note{
+/*-(void)updateDisplayImage:(NSNotification*)note{
     NSDictionary *thedisplayImage=[note userInfo];
     if (thedisplayImage!=nil) {
         UIImage *image=[thedisplayImage objectForKey:@"uiImage"];
@@ -121,7 +122,7 @@
         NSLog(@"inside update display image %@", image);
     }
     
-}
+}*/
 - (IBAction)beginWorkout:(id)sender {
     //[self prepareForSegue:@"start" sender:sender];
 }

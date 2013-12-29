@@ -75,7 +75,7 @@
 }
 -(void)onSegmentedControlChanged{
     [self.tableView reloadData];
-    NSLog(@"Selected segment is %lu", self.segmentedControl.selectedSegmentIndex);
+    NSLog(@"Selected segment is %lu", (long)self.segmentedControl.selectedSegmentIndex);
 }
 - (void)didReceiveMemoryWarning
 {
@@ -117,54 +117,9 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (self.segmentedControl.selectedSegmentIndex==0) {
-      /*  if (section==0) {
-            return 1;
-        }
-        if (section==1) {
-            return 1;
-        }
-        if (section==2) {
-            return 1;
-        }
-        if (section==3) {
-            return 1;
-        }
-        if (section==4) {
-            return 1;
-        }
-        if (section==5) {
-            return 1;
-        }
-        if (section==6) {
-            return 1;
-        }*/
         return self.absFree.count;
-        // return objects.count;
-       // return abWorkoutArrayPostPurchase.count;
-        
     }else if(self.segmentedControl.selectedSegmentIndex==1){
-      /*  if (section==0) {
-            return 1;
-        }
-        if (section==1) {
-            return 1;
-        }
-        if (section==2) {
-            return 1;
-        }
-        if (section==3) {
-            return 1;
-        }
-        if (section==4) {
-            return 1;
-        }
-        if (section==5) {
-            return 1;
-        }
-        if (section==6) {
-            return 1;
-        }*/
-        return self.buttsFree.count;
+              return self.buttsFree.count;
     }
     return 1;
   }

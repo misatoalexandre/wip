@@ -61,21 +61,13 @@
         setsTV.delegate=self;
         setsTV.selectedCell=self.selectedCell;
     }
-   
-     else
-     {
-        BeginWorkoutViewController *bgVC=(BeginWorkoutViewController *)[segue destinationViewController];
-        
-         //*****This gets called first before this VC's view loads.*****//
-        //bgVC.workoutId=self.workoutPlantoBeginId;
-        //NSLog(@"current workoutPlantoBeginID? %@", self.workoutPlantoBeginId);
-    }
 }
 
 #pragma mark-SetsTVC Delegate Method
 -(void)setsSelected:(SetsTVC *)controller{
     self.selectedSets=controller.selectedSets;
     self.selectedCell=controller.selectedCell;
+    
     if ([self.selectedSets isEqualToString:@"1"]) {
         self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ set", self.selectedSets];
     } else{
@@ -84,6 +76,5 @@
     [controller.navigationController popViewControllerAnimated:YES];
    
 }
-
 
 @end

@@ -31,19 +31,18 @@
     }
     return self;
 }
--(void)viewWillAppear:(BOOL)animated{
-    
-}
+
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     [self beginTimer];
     [self displayNextExerciseInLarge:self.index];
+    self.setsLabel.text=[NSString stringWithFormat:@"%d / %d sets", self.currentSet, self.setsCount];
 	// Do any additional setup after loading the view.
     
     [self.collectionView reloadData];
-    NSLog(@"array check. Current Index  %lu, %@ count %lu",self.index, self.exerciseArray, self.exerciseArray.count);
+    NSLog(@"array check. Current Index  %lu, %@ count %lu",(unsigned long)self.index, self.exerciseArray, self.exerciseArray.count);
 }
 
 - (void)didReceiveMemoryWarning

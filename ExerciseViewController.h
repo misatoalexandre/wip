@@ -17,7 +17,8 @@
 @property (nonatomic, strong) Exercise *exercise;
 @property (nonatomic, strong) NSMutableArray *exerciseArray;
 @property NSUInteger index;
-
+@property  int setsCount;
+@property  int currentSet;
 
 //Timer related
 @property (nonatomic, strong) NSTimer *timer;
@@ -25,15 +26,19 @@
 
 //interface elements
 @property (weak, nonatomic) IBOutlet UILabel *timerDisplay;
+@property (weak, nonatomic) IBOutlet UILabel *nextTimerLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nextLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *exerciseImage;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
 //@property (weak, nonatomic) IBOutlet UIButton *previousButton;
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
+@property (weak, nonatomic) IBOutlet UIButton *lastExerciseButton;
 
 //- (IBAction)timerPausePlay:(id)sender;
 - (IBAction)nextPressed:(id)sender;
 //- (IBAction)previousPressed:(id)sender;
 - (IBAction)PausePressed:(id)sender;
+- (IBAction)lastExercisePressed:(id)sender;
 
 
 @end

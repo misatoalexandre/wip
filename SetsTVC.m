@@ -13,9 +13,9 @@
 @end
 
 @implementation SetsTVC{
+    
     NSMutableArray *setsArray;
     NSMutableArray *minsbySet;
-    
     
 }
 
@@ -48,6 +48,7 @@
     }
     
     [self.tableView reloadData];
+    
        // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
  
@@ -106,8 +107,8 @@
     self.selectedCell=indexPath.row;
     self.selectedSets=[setsArray objectAtIndex:indexPath.row];
     
-    [self.tableView reloadData];
     
+    [self.tableView reloadData];
     [self.delegate setsSelected:self];
 }
 

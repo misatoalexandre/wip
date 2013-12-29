@@ -10,11 +10,15 @@
 #import <Parse/Parse.h>
 #import "Workout.h"
 #import "RestViewController.h"
+#import "EndPageVC.h"
+
 
 @interface ExerciseViewController (){
     NSDate *pauseStart;
     NSDate *previousFireDate;
     int seconds;
+    BOOL lastExercise;
+    BOOL lastSet;
 }
 
 
@@ -32,6 +36,14 @@
 }
 -(void)viewWillAppear:(BOOL)animated{
     [self query];
+   if ((lastExercise)&&(lastSet)) {
+        self.nextButton.hidden=YES;
+        self.nextButton.enabled=NO;
+        //self.lastExerciseButton.hidden=NO;
+        self.nextLabel.text=@"Last One";
+        self.nextTimerLabel.text=@"End Next";
+       
+    }
 }
 
 - (void)viewDidLoad
@@ -41,6 +53,8 @@
     
     self.index=0;
     //self.timerPaused=NO;
+    self.currentSet=1;
+    self.setsCount=2;
  
     self.exercise=[[Exercise alloc]initWithClassName:@"PFObject"];
     
@@ -53,45 +67,58 @@
                                             selector:@selector(beginTimer:)
                                                 name:@"secondsValue"
                                               object:nil];
+ 
       NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
-    
-    // Do any additional setup after loading the view.
 }
 
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
     self.timer=nil;
+    //self.exercise=nil;
+    
 }
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+/*-(void)setsCountNotified:(NSNotification *)note{
+    NSDictionary *setsNumber=[note userInfo];
+    if (setsNumber!=nil) {
+        self.setsCount=[[setsNumber objectForKey:@"setsCount"]intValue];
+        NSLog(@"self.setsCount ExerciseVC %d", self.setsCount);
+    }
+    NSLog(@"sets NOtification Error");
+}*/
+
+#pragma mark-Rest View Controller Delegate
 -(void)restIsUp:(RestViewController *)controller {
     [controller.navigationController popViewControllerAnimated:YES];
-    if (self.index<=4) {
-        self.index=self.index+1;
+    
+    if (controller.index<self.exerciseArray.count-1) {
+         self.index=controller.index;
+        lastExercise=NO;
+        NSLog(@"case 1");
+    }else if(controller.index==self.exerciseArray.count-1){
+        self.index=controller.index;
+        lastExercise=YES;
+            if (controller.currentSet<self.setsCount) {
+                lastSet=NO;
+                self.currentSet++;
+                NSLog(@"case 2 current set%d %d", self.currentSet, lastSet);
+            }
+            else if(controller.currentSet==self.setsCount){
+                NSLog(@"case 3");
+                lastSet=YES;
+            }
+    }else {
+        NSLog(@"Index, set Error");
     }
-        
-
-    
 }
--(void)timerFireMethods:(NSTimer *)theTimer{
-    
-        if (seconds>=10) {
-            self.timerDisplay.text=[NSString
-                                              stringWithFormat:@"00:%d",seconds];
-            seconds--;
-        } else if (seconds>=0){
-            self.timerDisplay.text=[NSString
-                                             stringWithFormat:@"00:0%d",seconds];
-            seconds--;
-        }else{
-            [self.timer invalidate];
-            [self performSegueWithIdentifier:@"rest" sender:self];
-        }
-   }
+#pragma mark-Timer Methods
 -(void)beginTimer:(NSNotification *)note{
     NSDictionary *secondsNSNumber=[note userInfo];
     if (secondsNSNumber!=nil) {
@@ -107,13 +134,34 @@
         NSLog(@"Begin Tiemr Error");
     }
 }
+-(void)timerFireMethods:(NSTimer *)theTimer{
+    
+        if (seconds>=10) {
+            self.timerDisplay.text=[NSString
+                                              stringWithFormat:@"00:%d",seconds];
+            seconds--;
+        } else if (seconds>=0){
+            self.timerDisplay.text=[NSString
+                                             stringWithFormat:@"00:0%d",seconds];
+            seconds--;
+        }else{
+            [self.timer invalidate];
+            if ((lastExercise)&&(lastSet)) {
+                [self performSegueWithIdentifier:@"end" sender:self];
+            }else{
+                 [self performSegueWithIdentifier:@"rest" sender:self];
+            }
+        }
+   }
+
+#pragma mark-Query
 -(void)query{
     //Fetch all the objects in the relations and load them into an array
     PFRelation *relation=[self.currentWorkout relationforKey:@"exercise"];
     PFQuery *query=[relation query];
     query.cachePolicy=kPFCachePolicyCacheElseNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error){
-        NSLog(@"Exercise cout Inside query %lu: %@", results.count, results);
+        NSLog(@"Exercise cout Inside query %lu: %@", (unsigned long)results.count, results);
         if (!error) {
             NSDictionary *resultsArrayDictionary=[NSDictionary dictionaryWithObject:results
                                                                              forKey:@"results"];
@@ -123,12 +171,8 @@
             
         }else
         {
-            UIAlertView *view=[[UIAlertView alloc]initWithTitle:@"Query Error"
-                                                        message:[error localizedDescription]
-                                                       delegate:nil
-                                              cancelButtonTitle:@"OK"
-                                              otherButtonTitles:nil, nil];
-            [view show];
+            NSLog(@"Query error ExerciseVC %@", [error localizedDescription]);
+           
         }
         
     }];
@@ -141,36 +185,49 @@
     }
 }
 -(void)presentUI{
-    NSLog(@"present UI %lu %@", self.exerciseArray.count, self.exerciseArray);
+    NSLog(@"present UI %lu %@", (unsigned long)self.exerciseArray.count, self.exerciseArray);
     self.exercise.name=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"name"];
     self.exercise.imageFile=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"image"];
     self.exercise.time=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"time"];
     self.title=self.exercise.name;
-    //self.seconds=[self.exercise.time intValue];
     
     NSDictionary *sec=[NSDictionary dictionaryWithObject:self.exercise.time
                                                                      forKey:@"secondsNSNumber"];
     [[NSNotificationCenter defaultCenter] postNotificationName:@"secondsValue"
                                                         object:self
                                                       userInfo:sec];
-    //self.timerButton.titleLabel.text=[NSString stringWithFormat:@"00:%d",timerSetFor];
+   
     self.exerciseImage.file=self.exercise.imageFile;
     [self.exerciseImage loadInBackground];
   
 }
 #pragma mark-IBActions
 - (IBAction)nextPressed:(id)sender {
-    //prepareForSegue gets called.
     [self.timer invalidate];
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    if ([segue.identifier isEqualToString:@"rest"]) {
-        RestViewController *restVC=(RestViewController *)[segue destinationViewController];
-        NSLog(@"prepare for segue %@", self.exerciseArray);
-        restVC.exerciseArray=self.exerciseArray;
-        restVC.index=self.index+1;
-        restVC.delegate=self;
+    
+    if ([segue.identifier isEqualToString:@"rest"])
+        {
+            RestViewController *restVC=(RestViewController *)[segue destinationViewController];
+            NSLog(@"prepare for segue %@", self.exerciseArray);
+            restVC.delegate=self;
+            restVC.exerciseArray=self.exerciseArray;
+            restVC.currentSet=self.currentSet;
+            restVC.setsCount=self.setsCount;
+            
+            if ((lastExercise)&&(!lastSet)) {
+                restVC.index=0;
+            }else if (!lastExercise){
+                restVC.index=self.index+1;
+            }
+            
+        }
+    if ([segue.identifier isEqualToString:@"end"]) {
+        EndPageVC *lastVC=(EndPageVC *)[segue destinationViewController];
+        lastVC.title=@"Congrats!";
     }
+   
 }
 
 - (IBAction)PausePressed:(id)sender {
@@ -193,20 +250,10 @@
     }
 }
 
-/*- (IBAction)stopPressed:(id)sender {
-}*/
-/*- (IBAction)previousPressed:(id)sender {
- }*/
-/*- (IBAction)timerPausePlay:(id)sender {
- self.nextButton.hidden=NO;
- self.nextButton.enabled=YES;
- 
- if (self.index!=0) {
- self.previousButton.hidden=NO;
- self.previousButton.enabled=YES;
- }
- 
- }*/
+- (IBAction)lastExercisePressed:(id)sender {
+    NSLog(@"share");
+}
+
 
 @end
 

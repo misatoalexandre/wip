@@ -19,21 +19,9 @@
 @property (weak, nonatomic) id<WorkoutSelectionDelegate>delegate;
 
 //Abs Workout Plans
-/*@property (nonatomic, strong)NSArray *absLevel1Home;
-@property (nonatomic, strong)NSArray *absLevel1Gym;
-@property (nonatomic, strong)NSArray *absLevel2Home;
-@property (nonatomic, strong)NSArray *absLevel2Gym;
-@property (nonatomic, strong)NSArray *absLevel3Home;
-@property (nonatomic, strong)NSArray *absLevel3Gym;*/
 @property (nonatomic, strong)NSArray *absFree;
 
 //Butts Workout Plans
-/*@property (nonatomic, strong)NSArray *buttsLevel1Home;
-@property (nonatomic, strong)NSArray *buttsLevel1Gym;
-@property (nonatomic, strong)NSArray *buttsLevel2Home;
-@property (nonatomic, strong)NSArray *buttsLevel2Gym;
-@property (nonatomic, strong)NSArray *buttsLevel3Home;
-@property (nonatomic, strong)NSArray *buttsLevel3Gym;*/
 @property (nonatomic, strong)NSArray *buttsFree;
 
 -(void)onSegmentedControlChanged;

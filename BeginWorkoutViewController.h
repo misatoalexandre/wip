@@ -14,11 +14,14 @@
 @property (nonatomic, strong) NSString *workoutId;
 @property (nonatomic, strong) PFObject *currentWorkout;
 
+@property int setCount;
+
 //Interface views
 @property (weak, nonatomic) IBOutlet UIImageView *displayImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *firstEpmtImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *secondEmptImageView;
 @property (weak, nonatomic) IBOutlet UILabel *equipmentLabel;
+
 
 - (IBAction)beginWorkout:(id)sender;
 @end
