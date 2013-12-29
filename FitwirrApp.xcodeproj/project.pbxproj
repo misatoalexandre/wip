@@ -300,12 +300,20 @@
 			name = WorkoutWalkThrough;
 			sourceTree = "<group>";
 		};
+		53844EF718705A9F00D24240 /* Workout Selection */ = {
+			isa = PBXGroup;
+			children = (
+				53844EF4187058A700D24240 /* SelectWorkoutTVCViewController.h */,
+				53844EF5187058A700D24240 /* SelectWorkoutTVCViewController.m */,
+			);
+			name = "Workout Selection";
+			path = ..;
+			sourceTree = "<group>";
+		};
 		53878172185DE3AB00641237 = {
 			isa = PBXGroup;
 			children = (
 				53586A241860142600B77920 /* New.storyboard */,
-				53844EF4187058A700D24240 /* SelectWorkoutTVCViewController.h */,
-				53844EF5187058A700D24240 /* SelectWorkoutTVCViewController.m */,
 				53878184185DE3AB00641237 /* FitwirrApp */,
 				538781A3185DE3AB00641237 /* FitwirrAppTests */,
 				5387817D185DE3AB00641237 /* Frameworks */,
@@ -351,6 +359,7 @@
 				535C5DE518696D3E0063C256 /* LaunchTVC.h */,
 				535C5DE618696D3E0063C256 /* LaunchTVC.m */,
 				535C5DEF1869D69C0063C256 /* WorkoutWalkThrough */,
+				53844EF718705A9F00D24240 /* Workout Selection */,
 				535C5DEE1869D6820063C256 /* Selections TVC */,
 				5320920D1868A572009B4F50 /* Cells */,
 				5320920C18687FCB009B4F50 /* Object Classes */,
