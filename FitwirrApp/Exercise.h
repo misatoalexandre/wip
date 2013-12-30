@@ -12,7 +12,9 @@
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) PFFile *imageFile;
-@property (nonatomic, strong) UIImage *image;
+//@property (nonatomic, strong) UIImage *image;
 @property NSNumber *time;
+@property BOOL repeat;
+@property (nonatomic, strong) NSString *goal;
 
 @end

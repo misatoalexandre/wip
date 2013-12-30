@@ -48,6 +48,13 @@
                                                            shadow, NSShadowAttributeName,
                                                            [UIFont fontWithName:@"Gujarati Sangam MN " size:21.0], NSFontAttributeName, nil]]; */
     
+    NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
+    if (! [defaults boolForKey:@"notFirstRun"]) {
+        // display alert...
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Use of App Policy" message:@"CONSCENT \n I have my physician’s permission to engage in fitness activities and use Fitwirr at my own risk." delegate:nil cancelButtonTitle:@"OK" otherButtonTitles:nil];
+        [alert show];
+        [defaults setBool:YES forKey:@"notFirstRun"];
+    }
     
 
     return YES;

@@ -9,7 +9,7 @@
 #import "Exercise.h"
 
 @implementation Exercise
-@synthesize name, image, time, imageFile;
+@synthesize name, time, imageFile, repeat, goal ;
 
 
 @end
