@@ -29,9 +29,10 @@
 	// Do any additional setup after loading the view.
     
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"< MENU " style:UIBarButtonItemStyleBordered target:self action:@selector(initializeBackButton)];
-    UIBarButtonItem *shareButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(showShare)];
+    UIBarButtonItem *backButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(initializeBackButton)];
     self.navigationItem.leftBarButtonItem = backButton;
+    
+    UIBarButtonItem *shareButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemAction target:self action:@selector(showShare)];
     self.navigationItem.rightBarButtonItem =shareButton;
     
 }
@@ -45,7 +46,20 @@
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 -(void)showShare{
-    NSLog(@"");
+    NSString *title= [NSString stringWithFormat:@"Just finished my Fitwirr workout. I feel great! \n Check them out at www.fitwirr.com"];
+    UIImage *icon=[UIImage imageNamed:@"FitwirrIcon120.png"];
+    
+    
+    NSMutableArray *activitiesItem=[[NSMutableArray alloc]initWithObjects:title, icon,nil];
+    
+    UIActivityViewController *avc=[[UIActivityViewController alloc]initWithActivityItems:activitiesItem applicationActivities:nil];
+    [self presentViewController:avc animated:YES completion:nil];
+    
+    title=nil;
+    icon=nil;
+    activitiesItem=nil;
+    avc=nil;
+
 }
 
 

@@ -26,17 +26,14 @@
 
 //interface elements
 @property (weak, nonatomic) IBOutlet UILabel *timerDisplay;
-@property (weak, nonatomic) IBOutlet UILabel *nextTimerLabel;
-@property (weak, nonatomic) IBOutlet UILabel *nextLabel;
 @property (weak, nonatomic) IBOutlet PFImageView *exerciseImage;
 @property (weak, nonatomic) IBOutlet UIButton *nextButton;
-//@property (weak, nonatomic) IBOutlet UIButton *previousButton;
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *lastExerciseButton;
+@property (weak, nonatomic) IBOutlet UILabel *goalLabel;
 
-//- (IBAction)timerPausePlay:(id)sender;
+
 - (IBAction)nextPressed:(id)sender;
-//- (IBAction)previousPressed:(id)sender;
 - (IBAction)PausePressed:(id)sender;
 - (IBAction)lastExercisePressed:(id)sender;
 

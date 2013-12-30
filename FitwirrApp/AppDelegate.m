@@ -26,18 +26,18 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     //page view controller setup
-    UIPageControl *pageControl=[UIPageControl appearance];
+    /*UIPageControl *pageControl=[UIPageControl appearance];
     pageControl.pageIndicatorTintColor=[UIColor lightGrayColor];
     pageControl.currentPageIndicatorTintColor=[UIColor blackColor];
-    pageControl.backgroundColor=[UIColor clearColor];
+    pageControl.backgroundColor=[UIColor clearColor];*/
     
     
-    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xfef9ff)];
-    
+     //Nav Bar Customization
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x191919)];
 
-    //Nav Bar Customization
-    //[[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"light pink #fef9ffff.png"] forBarMetrics:UIBarMetricsDefault];
-    //[[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x202020)];
+   
+    
+    
   // [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
     
    // NSShadow *shadow = [[NSShadow alloc] init];
@@ -47,7 +47,7 @@
                                                            UIColorFromRGB(0xFFFFCC), NSForegroundColorAttributeName,
                                                            shadow, NSShadowAttributeName,
                                                            [UIFont fontWithName:@"Gujarati Sangam MN " size:21.0], NSFontAttributeName, nil]]; */
-    
+    //Conscent Alert first time launching
     NSUserDefaults* defaults = [NSUserDefaults standardUserDefaults];
     if (! [defaults boolForKey:@"notFirstRun"]) {
         // display alert...

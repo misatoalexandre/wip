@@ -30,7 +30,7 @@
 {
     [super viewDidLoad];
     
-    
+   
     self.selectedSets=@"2";
     self.selectedCell=1;
     self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
@@ -41,8 +41,6 @@
     NSLog(@"LaunchTV viewDidLoad %@", self.workoutPlantoBeginId);
     
     //Notification sending out
-    
-    
     NSMutableDictionary *workoutIdDictionary=[[NSMutableDictionary alloc]init];
     [workoutIdDictionary setObject:self.workoutPlantoBeginId forKey:@"workoutId"];
     [workoutIdDictionary setObject:self.selectedSets forKey:@"setsCount"];
@@ -82,7 +80,7 @@
          self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
     }
     [controller.navigationController popViewControllerAnimated:YES];
-   
 }
+
 
 @end

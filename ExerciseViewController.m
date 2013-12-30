@@ -48,7 +48,7 @@
   
     self.index=0;
     self.currentSet=1;
-   
+    
     self.exercise=[[Exercise alloc]initWithClassName:@"PFObject"];
     
     
@@ -188,7 +188,9 @@
     self.exercise.name=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"name"];
     self.exercise.imageFile=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"image"];
     self.exercise.time=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"time"];
+    self.exercise.goal=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"goal"];
     self.title=self.exercise.name;
+    self.goalLabel.text=[NSString stringWithFormat:@"GOAL   %@", self.exercise.goal];
     
     NSDictionary *sec=[NSDictionary dictionaryWithObject:self.exercise.time
                                                                      forKey:@"secondsNSNumber"];

@@ -48,6 +48,9 @@
 		539D29641871491E0015B46A /* Next Button.png in Resources */ = {isa = PBXBuildFile; fileRef = 539D29631871491E0015B46A /* Next Button.png */; };
 		539D296718714B750015B46A /* Pause button blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 539D296518714B750015B46A /* Pause button blue.png */; };
 		539D296818714B750015B46A /* play button blue.png in Resources */ = {isa = PBXBuildFile; fileRef = 539D296618714B750015B46A /* play button blue.png */; };
+		539D296A187204560015B46A /* FitwirrIcon120.png in Resources */ = {isa = PBXBuildFile; fileRef = 539D2969187204560015B46A /* FitwirrIcon120.png */; };
+		539D296C187211050015B46A /* settings-128Pink.png in Resources */ = {isa = PBXBuildFile; fileRef = 539D296B187211050015B46A /* settings-128Pink.png */; };
+		539D296F187211C20015B46A /* SettingTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 539D296E187211C20015B46A /* SettingTVC.m */; };
 		53AEAB7A18615382006E0D48 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB7918615382006E0D48 /* StoreKit.framework */; };
 		53AEAB8718635523006E0D48 /* PurchaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AEAB8618635523006E0D48 /* PurchaseVC.m */; };
 		53AEAB8A186379F3006E0D48 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB89186379F3006E0D48 /* Parse.framework */; };
@@ -133,6 +136,10 @@
 		539D29631871491E0015B46A /* Next Button.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Next Button.png"; sourceTree = "<group>"; };
 		539D296518714B750015B46A /* Pause button blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Pause button blue.png"; sourceTree = "<group>"; };
 		539D296618714B750015B46A /* play button blue.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "play button blue.png"; sourceTree = "<group>"; };
+		539D2969187204560015B46A /* FitwirrIcon120.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = FitwirrIcon120.png; path = Images.xcassets/AppIcon.appiconset/FitwirrIcon120.png; sourceTree = "<group>"; };
+		539D296B187211050015B46A /* settings-128Pink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings-128Pink.png"; sourceTree = "<group>"; };
+		539D296D187211C20015B46A /* SettingTVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingTVC.h; sourceTree = "<group>"; };
+		539D296E187211C20015B46A /* SettingTVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingTVC.m; sourceTree = "<group>"; };
 		53AEAB7918615382006E0D48 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		53AEAB8518635523006E0D48 /* PurchaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseVC.h; sourceTree = "<group>"; };
 		53AEAB8618635523006E0D48 /* PurchaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseVC.m; sourceTree = "<group>"; };
@@ -238,6 +245,8 @@
 		535869E7185F5D6200B77920 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
+				539D2969187204560015B46A /* FitwirrIcon120.png */,
+				539D296B187211050015B46A /* settings-128Pink.png */,
 				539D29631871491E0015B46A /* Next Button.png */,
 				53844EFC18706B1C00D24240 /* START Round Corner Pink Font (1).png */,
 				53844EFA1870699600D24240 /* FitwirrFinalLarge.png */,
@@ -293,6 +302,8 @@
 			isa = PBXGroup;
 			children = (
 				53586A241860142600B77920 /* New.storyboard */,
+				539D296D187211C20015B46A /* SettingTVC.h */,
+				539D296E187211C20015B46A /* SettingTVC.m */,
 				53878184185DE3AB00641237 /* FitwirrApp */,
 				538781A3185DE3AB00641237 /* FitwirrAppTests */,
 				5387817D185DE3AB00641237 /* Frameworks */,
@@ -487,6 +498,7 @@
 				535869FB185F6BE800B77920 /* WHITE LINE.png in Resources */,
 				535C5DFE186DFBA90063C256 /* playII.png in Resources */,
 				53AEABA61864CABA006E0D48 /* imageedit_12_3931115753.png in Resources */,
+				539D296C187211050015B46A /* settings-128Pink.png in Resources */,
 				535869DD185F5C2800B77920 /* menu.png in Resources */,
 				535869DF185F5C4100B77920 /* menu@2x.png in Resources */,
 				53878197185DE3AB00641237 /* Images.xcassets in Resources */,
@@ -496,6 +508,7 @@
 				53AEAB9E1864C6B7006E0D48 /* light pink #fef9ffff.png in Resources */,
 				53844EFD18706B1C00D24240 /* START Round Corner Pink Font (1).png in Resources */,
 				53878189185DE3AB00641237 /* InfoPlist.strings in Resources */,
+				539D296A187204560015B46A /* FitwirrIcon120.png in Resources */,
 				53586A251860142600B77920 /* New.storyboard in Resources */,
 				535869D6185F5BE700B77920 /* settings.png in Resources */,
 				535869D2185F5BD900B77920 /* account.png in Resources */,
@@ -536,6 +549,7 @@
 				53844EF6187058A700D24240 /* SelectWorkoutTVCViewController.m in Sources */,
 				5387818B185DE3AB00641237 /* main.m in Sources */,
 				535C5DF2186B19820063C256 /* Exercise.m in Sources */,
+				539D296F187211C20015B46A /* SettingTVC.m in Sources */,
 				535C5E01186E34470063C256 /* EndPageVC.m in Sources */,
 				53AEABAD1864DAD1006E0D48 /* WorkoutSelectionTVC.m in Sources */,
 				5320920B18687FBE009B4F50 /* Workout.m in Sources */,
