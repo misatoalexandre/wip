@@ -11,7 +11,15 @@
 #import "Workout.h"
 #import "RestViewController.h"
 #import "EndPageVC.h"
-
+/*
+ Check timer. when workout runs for the second time, timer gets messed up.
+ Check set and exercise count
+ Add repeat timer for exercises with two sides. 
+ Memory management issues.
+ 
+ 
+ 
+ */
 
 @interface ExerciseViewController (){
     NSDate *pauseStart;
