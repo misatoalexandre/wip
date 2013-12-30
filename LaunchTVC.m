@@ -41,8 +41,16 @@
     NSLog(@"LaunchTV viewDidLoad %@", self.workoutPlantoBeginId);
     
     //Notification sending out
-    NSDictionary *workoutIdDictionary=[NSDictionary dictionaryWithObject:self.workoutPlantoBeginId forKey:@"workoutId"];
+    
+    
+    NSMutableDictionary *workoutIdDictionary=[[NSMutableDictionary alloc]init];
+    [workoutIdDictionary setObject:self.workoutPlantoBeginId forKey:@"workoutId"];
+    [workoutIdDictionary setObject:self.selectedSets forKey:@"setsCount"];
+                                          
+    //dictionaryWithObject:self.workoutPlantoBeginId forKey:@"workoutId"];
+    
     [[NSNotificationCenter defaultCenter]postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
+    workoutIdDictionary=nil;
 }
 
 - (void)didReceiveMemoryWarning

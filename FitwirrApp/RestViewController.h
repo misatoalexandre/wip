@@ -23,12 +23,15 @@
 @property int setsCount;
 
 //UI Elements
+@property (weak, nonatomic) IBOutlet UILabel *setsLabel;
+@property (weak, nonatomic) IBOutlet UILabel *nextExerciseTitleLabel;
 @property (weak, nonatomic) IBOutlet UILabel *timeDisplay;
+
 @property (weak, nonatomic) IBOutlet UICollectionView *collectionView;
 @property (weak, nonatomic) IBOutlet PFImageView *nextExerciseImage;
 @property (weak, nonatomic) IBOutlet UIButton *nextExerciseTitlteLabel;
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
-@property (weak, nonatomic) IBOutlet UILabel *setsLabel;
+
 
 //Timer related
 @property (nonatomic, strong) NSTimer *timer;

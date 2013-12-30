@@ -38,7 +38,7 @@
    
     for (int x=1; x<=4; x++) {
         
-        NSString *string=[NSString stringWithFormat:@"%d", 15 *x];
+        NSString *string=[NSString stringWithFormat:@"%d", 7 *x];
         NSString *set=[NSString stringWithFormat:@"%d",x];
         
         [setsArray addObject:set];
@@ -106,7 +106,6 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath{
     self.selectedCell=indexPath.row;
     self.selectedSets=[setsArray objectAtIndex:indexPath.row];
-    
     
     [self.tableView reloadData];
     [self.delegate setsSelected:self];

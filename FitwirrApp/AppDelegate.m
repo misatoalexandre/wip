@@ -8,7 +8,7 @@
 
 #import "AppDelegate.h"
 #import <Parse/Parse.h>
-#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:1.0]
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:0.75]
 
 
 
@@ -31,10 +31,14 @@
     pageControl.currentPageIndicatorTintColor=[UIColor blackColor];
     pageControl.backgroundColor=[UIColor clearColor];
     
+    
+    [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0xfef9ff)];
+    
+
     //Nav Bar Customization
-    [[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"light pink #fef9ffff.png"] forBarMetrics:UIBarMetricsDefault];
+    //[[UINavigationBar appearance]setBackgroundImage:[UIImage imageNamed:@"light pink #fef9ffff.png"] forBarMetrics:UIBarMetricsDefault];
     //[[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x202020)];
-   [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
+  // [[UINavigationBar appearance] setTintColor:[UIColor lightGrayColor]];
     
    // NSShadow *shadow = [[NSShadow alloc] init];
    // shadow.shadowColor = [UIColor blackColor];

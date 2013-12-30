@@ -39,23 +39,16 @@
    if ((lastExercise)&&(lastSet)) {
         self.nextButton.hidden=YES;
         self.nextButton.enabled=NO;
-        //self.lastExerciseButton.hidden=NO;
-        self.nextLabel.text=@"Last One";
-        self.nextTimerLabel.text=@"End Next";
-       
     }
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-   // [self beginTimer];
-    
+  
     self.index=0;
-    //self.timerPaused=NO;
     self.currentSet=1;
-    self.setsCount=2;
- 
+   
     self.exercise=[[Exercise alloc]initWithClassName:@"PFObject"];
     
     
@@ -67,8 +60,15 @@
                                             selector:@selector(beginTimer:)
                                                 name:@"secondsValue"
                                               object:nil];
- 
-      NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
+    [[NSNotificationCenter defaultCenter]addObserver:self
+                                            selector:@selector(setsCount:)
+                                                name:@"Passing SetsCount"
+                                              object:nil];
+    
+    
+    
+    
+    NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
 }
 
 -(void)dealloc{
@@ -76,7 +76,7 @@
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     self.timer=nil;
-    //self.exercise=nil;
+  
     
 }
 - (void)didReceiveMemoryWarning
@@ -85,15 +85,14 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*-(void)setsCountNotified:(NSNotification *)note{
-    NSDictionary *setsNumber=[note userInfo];
-    if (setsNumber!=nil) {
-        self.setsCount=[[setsNumber objectForKey:@"setsCount"]intValue];
-        NSLog(@"self.setsCount ExerciseVC %d", self.setsCount);
+-(void)setsCount:(NSNotification *)note{
+    NSDictionary *theSetsData=[note userInfo];
+    if (theSetsData!=nil) {
+        self.setsCount=[[theSetsData objectForKey:@"setsCount"]intValue];
+        NSLog(@"sets count %d notified", self.setsCount);
     }
-    NSLog(@"sets NOtification Error");
-}*/
-
+    
+}
 #pragma mark-Rest View Controller Delegate
 -(void)restIsUp:(RestViewController *)controller {
     [controller.navigationController popViewControllerAnimated:YES];
@@ -202,6 +201,7 @@
   
 }
 #pragma mark-IBActions
+
 - (IBAction)nextPressed:(id)sender {
     [self.timer invalidate];
 }
@@ -216,6 +216,7 @@
             restVC.currentSet=self.currentSet;
             restVC.setsCount=self.setsCount;
             
+            
             if ((lastExercise)&&(!lastSet)) {
                 restVC.index=0;
             }else if (!lastExercise){
@@ -225,7 +226,7 @@
         }
     if ([segue.identifier isEqualToString:@"end"]) {
         EndPageVC *lastVC=(EndPageVC *)[segue destinationViewController];
-        lastVC.title=@"Congrats!";
+        lastVC.title=@"YOU DID IT!";
     }
    
 }
@@ -233,9 +234,7 @@
 - (IBAction)PausePressed:(id)sender {
     if (self.timerPaused==NO) {
         self.timerPaused=YES;
-        [self.pauseButton setImage:[UIImage imageNamed:@"playII.png"] forState:UIControlStateNormal];
-       // [self.timerButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-        //[self.timerButton setTitle:@"Paused" forState:UIControlStateNormal];
+        [self.pauseButton setImage:[UIImage imageNamed:@"play button blue.png"] forState:UIControlStateNormal];
        
         pauseStart=[NSDate dateWithTimeIntervalSinceNow:0];
         previousFireDate=[self.timer fireDate];
@@ -243,7 +242,7 @@
 
     }else{
         self.timerPaused=NO;
-        [self.pauseButton setImage:[UIImage imageNamed:@"pauseThick (1).png"] forState:UIControlStateNormal];
+        [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
         
         float pauseTime=-1*[pauseStart timeIntervalSinceNow];
         [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];

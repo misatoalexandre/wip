@@ -13,7 +13,6 @@
 
 @property (nonatomic, strong) NSString *workoutId;
 @property (nonatomic, strong) PFObject *currentWorkout;
-
 @property int setCount;
 
 //Interface views

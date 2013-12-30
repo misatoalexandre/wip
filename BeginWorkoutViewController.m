@@ -66,7 +66,8 @@
     NSDictionary *theWorkoutID=[note userInfo];
     if (theWorkoutID!=nil) {
         self.workoutId=[theWorkoutID objectForKey:@"workoutId"];
-        NSLog(@"query: %@", self.workoutId);
+        self.setCount=[[theWorkoutID objectForKey:@"setsCount"]intValue];
+        NSLog(@"query: %@ setsCount :%d", self.workoutId, self.setCount);
     }
     
     PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
@@ -114,20 +115,13 @@
         NSLog(@"Workout Start Page:inside interfaceUpdates:%@", [self.currentWorkout objectForKey:@"title"]);
     }
 }
-/*-(void)updateDisplayImage:(NSNotification*)note{
-    NSDictionary *thedisplayImage=[note userInfo];
-    if (thedisplayImage!=nil) {
-        UIImage *image=[thedisplayImage objectForKey:@"uiImage"];
-        self.displayImageView.image=image;
-        NSLog(@"inside update display image %@", image);
-    }
-    
-}*/
+
 - (IBAction)beginWorkout:(id)sender {
     //[self prepareForSegue:@"start" sender:sender];
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
     ExerciseViewController *evc=(ExerciseViewController *)[segue destinationViewController];
     evc.currentWorkout=self.currentWorkout;
+    evc.setsCount=self.setCount;
 }
 @end

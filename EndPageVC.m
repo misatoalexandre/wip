@@ -29,10 +29,11 @@
 	// Do any additional setup after loading the view.
     
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"FITWIRR" style:UIBarButtonItemStyleBordered target:self action:@selector(initializeBackButton)];
-    UIBarButtonItem *shareButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemOrganize target:self action:@selector(showShare)];
+    UIBarButtonItem* backButton = [[UIBarButtonItem alloc] initWithTitle:@"< MENU " style:UIBarButtonItemStyleBordered target:self action:@selector(initializeBackButton)];
+    UIBarButtonItem *shareButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemPlay target:self action:@selector(showShare)];
     self.navigationItem.leftBarButtonItem = backButton;
     self.navigationItem.rightBarButtonItem =shareButton;
+    
 }
 
 - (void)didReceiveMemoryWarning

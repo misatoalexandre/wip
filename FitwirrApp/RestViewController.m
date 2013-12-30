@@ -5,7 +5,7 @@
 //  Created by Misato Tina Alexandre on 12/16/13.
 //  Copyright (c) 2013 Misato Tina Alexandre. All rights reserved.
 //
-#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:0.5]
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:0.4]
 #import "RestViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RestCell.h"
@@ -39,7 +39,8 @@
     [self beginTimer];
     [self displayNextExerciseInLarge:self.index];
     self.setsLabel.text=[NSString stringWithFormat:@"%d / %d sets", self.currentSet, self.setsCount];
-	// Do any additional setup after loading the view.
+    self.nextExerciseTitleLabel.text=[NSString stringWithFormat:@"NEXT: %@",[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"name"]];
+    
     
     [self.collectionView reloadData];
     NSLog(@"array check. Current Index  %lu, %@ count %lu",(unsigned long)self.index, self.exerciseArray, self.exerciseArray.count);
@@ -65,7 +66,7 @@
     
     if (self.timerPaused==NO) {
         self.timerPaused=YES;
-        [self.pauseButton setImage:[UIImage imageNamed:@"playII.png"] forState:UIControlStateNormal];
+        [self.pauseButton setImage:[UIImage imageNamed:@"play button blue.png"] forState:UIControlStateNormal];
        // [self.timerButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
        // [self.timerButton setTitle:@"Paused" forState:UIControlStateNormal];
         
@@ -75,7 +76,7 @@
                 
     }else{
         self.timerPaused=NO;
-        [self.pauseButton setImage:[UIImage imageNamed:@"pauseThick (1).png"] forState:UIControlStateNormal];
+        [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
         
         float pauseTime=-1*[pauseStart timeIntervalSinceNow];
         [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
