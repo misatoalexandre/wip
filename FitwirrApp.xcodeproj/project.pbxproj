@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A64C07318729C4F0009FA94 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A64C07218729C4F0009FA94 /* Parse.framework */; };
 		5320920B18687FBE009B4F50 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5320920A18687FBE009B4F50 /* Workout.m */; };
 		535869D2185F5BD900B77920 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D0185F5BD900B77920 /* account.png */; };
 		535869D3185F5BD900B77920 /* account@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D1185F5BD900B77920 /* account@2x.png */; };
@@ -53,7 +54,6 @@
 		539D296F187211C20015B46A /* SettingTVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 539D296E187211C20015B46A /* SettingTVC.m */; };
 		53AEAB7A18615382006E0D48 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB7918615382006E0D48 /* StoreKit.framework */; };
 		53AEAB8718635523006E0D48 /* PurchaseVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53AEAB8618635523006E0D48 /* PurchaseVC.m */; };
-		53AEAB8A186379F3006E0D48 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB89186379F3006E0D48 /* Parse.framework */; };
 		53AEAB8C18637A4F006E0D48 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB8B18637A4F006E0D48 /* AudioToolbox.framework */; };
 		53AEAB8E18637A55006E0D48 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB8D18637A55006E0D48 /* CFNetwork.framework */; };
 		53AEAB9018637A68006E0D48 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53AEAB8F18637A68006E0D48 /* CoreLocation.framework */; };
@@ -82,6 +82,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A64C07218729C4F0009FA94 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5320920918687FBE009B4F50 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		5320920A18687FBE009B4F50 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		535869D0185F5BD900B77920 /* account.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = account.png; sourceTree = "<group>"; };
@@ -143,7 +144,6 @@
 		53AEAB7918615382006E0D48 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		53AEAB8518635523006E0D48 /* PurchaseVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PurchaseVC.h; sourceTree = "<group>"; };
 		53AEAB8618635523006E0D48 /* PurchaseVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PurchaseVC.m; sourceTree = "<group>"; };
-		53AEAB89186379F3006E0D48 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		53AEAB8B18637A4F006E0D48 /* AudioToolbox.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AudioToolbox.framework; path = System/Library/Frameworks/AudioToolbox.framework; sourceTree = SDKROOT; };
 		53AEAB8D18637A55006E0D48 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
 		53AEAB8F18637A68006E0D48 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
@@ -174,13 +174,13 @@
 				53AEAB9418637A82006E0D48 /* MobileCoreServices.framework in Frameworks */,
 				53AEAB9218637A79006E0D48 /* libz.1.1.3.dylib in Frameworks */,
 				53AEAB9018637A68006E0D48 /* CoreLocation.framework in Frameworks */,
+				4A64C07318729C4F0009FA94 /* Parse.framework in Frameworks */,
 				53878181185DE3AB00641237 /* CoreGraphics.framework in Frameworks */,
 				53AEAB8E18637A55006E0D48 /* CFNetwork.framework in Frameworks */,
 				53AEAB8C18637A4F006E0D48 /* AudioToolbox.framework in Frameworks */,
 				53AEAB7A18615382006E0D48 /* StoreKit.framework in Frameworks */,
 				53878183185DE3AB00641237 /* UIKit.framework in Frameworks */,
 				5387817F185DE3AB00641237 /* Foundation.framework in Frameworks */,
-				53AEAB8A186379F3006E0D48 /* Parse.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -323,6 +323,7 @@
 		5387817D185DE3AB00641237 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A64C07218729C4F0009FA94 /* Parse.framework */,
 				53AEAB9918637A9D006E0D48 /* SystemConfiguration.framework */,
 				53AEAB9718637A91006E0D48 /* Security.framework */,
 				53AEAB9518637A89006E0D48 /* QuartzCore.framework */,
@@ -331,7 +332,6 @@
 				53AEAB8F18637A68006E0D48 /* CoreLocation.framework */,
 				53AEAB8D18637A55006E0D48 /* CFNetwork.framework */,
 				53AEAB8B18637A4F006E0D48 /* AudioToolbox.framework */,
-				53AEAB89186379F3006E0D48 /* Parse.framework */,
 				53AEAB7918615382006E0D48 /* StoreKit.framework */,
 				5387817E185DE3AB00641237 /* Foundation.framework */,
 				53878180185DE3AB00641237 /* CoreGraphics.framework */,
@@ -676,6 +676,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/misatotinaalexandre/Documents/Developer/FitwirrApp,
+					/Volumes/DATA/Work/Fitness/wip,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FitwirrApp/FitwirrApp-Prefix.pch";
@@ -696,6 +697,7 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/misatotinaalexandre/Documents/Developer/FitwirrApp,
+					/Volumes/DATA/Work/Fitness/wip,
 				);
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "FitwirrApp/FitwirrApp-Prefix.pch";
