@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4A0E1DFF1873C0CD0041A8B4 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1DFE1873C0CD0041A8B4 /* IAPHelper.m */; };
+		4A0E1E021875A00F0041A8B4 /* FitwirrHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */; };
 		4A64C07318729C4F0009FA94 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A64C07218729C4F0009FA94 /* Parse.framework */; };
 		5320920B18687FBE009B4F50 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5320920A18687FBE009B4F50 /* Workout.m */; };
 		535869D2185F5BD900B77920 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D0185F5BD900B77920 /* account.png */; };
@@ -82,6 +84,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		4A0E1DFD1873C0CD0041A8B4 /* IAPHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IAPHelper.h; sourceTree = "<group>"; };
+		4A0E1DFE1873C0CD0041A8B4 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
+		4A0E1E001875A00E0041A8B4 /* FitwirrHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitwirrHelper.h; sourceTree = "<group>"; };
+		4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitwirrHelper.m; sourceTree = "<group>"; };
 		4A64C07218729C4F0009FA94 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5320920918687FBE009B4F50 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		5320920A18687FBE009B4F50 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
@@ -168,6 +174,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53AEAB7A18615382006E0D48 /* StoreKit.framework in Frameworks */,
 				53AEAB9A18637A9D006E0D48 /* SystemConfiguration.framework in Frameworks */,
 				53AEAB9818637A91006E0D48 /* Security.framework in Frameworks */,
 				53AEAB9618637A89006E0D48 /* QuartzCore.framework in Frameworks */,
@@ -178,7 +185,6 @@
 				53878181185DE3AB00641237 /* CoreGraphics.framework in Frameworks */,
 				53AEAB8E18637A55006E0D48 /* CFNetwork.framework in Frameworks */,
 				53AEAB8C18637A4F006E0D48 /* AudioToolbox.framework in Frameworks */,
-				53AEAB7A18615382006E0D48 /* StoreKit.framework in Frameworks */,
 				53878183185DE3AB00641237 /* UIKit.framework in Frameworks */,
 				5387817F185DE3AB00641237 /* Foundation.framework in Frameworks */,
 			);
@@ -301,6 +307,10 @@
 		53878172185DE3AB00641237 = {
 			isa = PBXGroup;
 			children = (
+				4A0E1E001875A00E0041A8B4 /* FitwirrHelper.h */,
+				4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */,
+				4A0E1DFD1873C0CD0041A8B4 /* IAPHelper.h */,
+				4A0E1DFE1873C0CD0041A8B4 /* IAPHelper.m */,
 				53586A241860142600B77920 /* New.storyboard */,
 				539D296D187211C20015B46A /* SettingTVC.h */,
 				539D296E187211C20015B46A /* SettingTVC.m */,
@@ -538,6 +548,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A0E1DFF1873C0CD0041A8B4 /* IAPHelper.m in Sources */,
 				535C5DEA1869BD8F0063C256 /* SetsTVC.m in Sources */,
 				535C5DED1869D6630063C256 /* BeginWorkoutViewController.m in Sources */,
 				53586A16185F927E00B77920 /* RestCell.m in Sources */,
@@ -552,6 +563,7 @@
 				539D296F187211C20015B46A /* SettingTVC.m in Sources */,
 				535C5E01186E34470063C256 /* EndPageVC.m in Sources */,
 				53AEABAD1864DAD1006E0D48 /* WorkoutSelectionTVC.m in Sources */,
+				4A0E1E021875A00F0041A8B4 /* FitwirrHelper.m in Sources */,
 				5320920B18687FBE009B4F50 /* Workout.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -671,8 +683,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Misato Alexandre (HU84T82W6C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Misato Alexandre (HU84T82W6C)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/misatotinaalexandre/Documents/Developer/FitwirrApp,
@@ -682,7 +694,7 @@
 				GCC_PREFIX_HEADER = "FitwirrApp/FitwirrApp-Prefix.pch";
 				INFOPLIST_FILE = "FitwirrApp/FitwirrApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "527E0DA5-579D-4E5F-8FBD-427705961703";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -692,8 +704,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Misato Alexandre (HU84T82W6C)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Misato Alexandre (HU84T82W6C)";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					/Users/misatotinaalexandre/Documents/Developer/FitwirrApp,
@@ -703,7 +715,7 @@
 				GCC_PREFIX_HEADER = "FitwirrApp/FitwirrApp-Prefix.pch";
 				INFOPLIST_FILE = "FitwirrApp/FitwirrApp-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE = "527E0DA5-579D-4E5F-8FBD-427705961703";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

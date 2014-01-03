@@ -31,6 +31,13 @@
     pageControl.currentPageIndicatorTintColor=[UIColor blackColor];
     pageControl.backgroundColor=[UIColor clearColor];*/
     
+//    NSMutableDictionary* dict = [NSMutableDictionary dictionary];
+//    
+//    [dict setObject:(__bridge id) kSecClassGenericPassword  forKey:(__bridge id) kSecClass];
+//    [dict setObject:kYourUpgradeStateKey           forKey:(id)kSecAttrService];
+//    [dict setObject:kYourUpgradeStateValue         forKey:(id)kSecValueData];
+//    
+//    SecItemAdd ((__bridge CFDictionaryRef)dict, NULL);
     
      //Nav Bar Customization
     [[UINavigationBar appearance] setBarTintColor:UIColorFromRGB(0x191919)];

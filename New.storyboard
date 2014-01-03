@@ -166,11 +166,13 @@
                                 <segment title="ABS"/>
                                 <segment title="BUTTS"/>
                             </segments>
+                            <connections>
+                                <action selector="selectSegment:" destination="W56-rq-r0p" eventType="valueChanged" id="p56-vc-5JJ"/>
+                            </connections>
                         </segmentedControl>
                     </navigationItem>
                     <connections>
-                        <outlet property="segmentedControl" destination="17R-uS-Q0T" id="U02-CL-HoS"/>
-                        <outlet property="tableView" destination="4lZ-E5-goG" id="4sR-ym-teR"/>
+                        <outlet property="segmentedControl" destination="17R-uS-Q0T" id="5kH-uV-wmF"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="WQb-WM-987" userLabel="First Responder" sceneMemberID="firstResponder"/>

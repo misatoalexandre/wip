@@ -70,16 +70,15 @@
 }
 
 #pragma mark-SetsTVC Delegate Method
--(void)setsSelected:(SetsTVC *)controller{
-    self.selectedSets=controller.selectedSets;
-    self.selectedCell=controller.selectedCell;
+-(void)setsSelected:(NSDictionary *)dictionary{
+    self.selectedSets = dictionary[@"SelectedSets"];
+    self.selectedCell = [dictionary[@"SelectedCell"] intValue];
     
     if ([self.selectedSets isEqualToString:@"1"]) {
         self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ set", self.selectedSets];
     } else{
-         self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
+        self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
     }
-    [controller.navigationController popViewControllerAnimated:YES];
 }
 
 

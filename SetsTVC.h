@@ -12,13 +12,13 @@
 
 @interface SetsTVC : UITableViewController
 @property (nonatomic, strong) NSString *selectedSets;
-@property (nonatomic, weak) id<SetsTVCDelegate>delegate;
-@property(nonatomic,readwrite)int selectedCell;
+@property (nonatomic, assign) id<SetsTVCDelegate>delegate;
+@property(nonatomic, assign)int selectedCell;
 
 @end
 
-@protocol SetsTVCDelegate
+@protocol SetsTVCDelegate<NSObject>
 
--(void)setsSelected:(SetsTVC *)controller;
+-(void)setsSelected:(NSDictionary *)controller;
 
 @end

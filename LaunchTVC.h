@@ -13,7 +13,7 @@
 @interface LaunchTVC : UITableViewController<SetsTVCDelegate>
 //sets selection 
 @property (nonatomic, strong)NSString *selectedSets;
-@property(nonatomic,readwrite)int selectedCell;
+@property(nonatomic, assign)int selectedCell;
 
 // data to pass to begin workout
 @property (nonatomic, strong)NSString *workoutPlantoBeginId;

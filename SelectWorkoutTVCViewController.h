@@ -62,4 +62,6 @@
 
 @interface SelectWorkoutTVCViewController : UITableViewController
 
+@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+- (IBAction)selectSegment:(id)sender;
 @end

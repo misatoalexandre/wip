@@ -47,8 +47,6 @@
 }
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [self.displayImageView setImage:nil];

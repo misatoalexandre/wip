@@ -108,7 +108,9 @@
     self.selectedSets=[setsArray objectAtIndex:indexPath.row];
     
     [self.tableView reloadData];
-    [self.delegate setsSelected:self];
+    if([self.delegate respondsToSelector:@selector(setsSelected:)])
+        [self.delegate setsSelected:@{@"SelectedCell":[NSNumber numberWithInt:self.selectedCell], @"SelectedSets":self.selectedSets}];
+    [self.navigationController popViewControllerAnimated:YES];
 }
 
 
