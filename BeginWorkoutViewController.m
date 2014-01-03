@@ -80,24 +80,20 @@
             [[NSNotificationCenter defaultCenter]postNotificationName:@"workoutObjectCameThrough"
                                                                object:self
                                                              userInfo:pfObject];
-            
-            NSLog(@"%@", [object objectForKey:@"title"]);
 
         }else if (error){
             NSLog(@"error in query beginWorkoutVC %@", [error localizedDescription]);
         }
-        
-            
-        
-           }];
-    
+    }];
 }
 -(void)interfaceUpdates:(NSNotification*)note{
     NSDictionary *theWorkoutObject=[note userInfo];
     if (theWorkoutObject!=nil)
     {
         self.currentWorkout=[theWorkoutObject objectForKey:@"workoutObject"];
-        self.equipmentLabel.text=[self.currentWorkout objectForKey:@"title"];
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.equipmentLabel.text=[self.currentWorkout objectForKey:@"title"];
+        });
         //PFFile *imageFile=[self.currentWorkout objectForKey:@"displayImage"];
        /* [imageFile getDataInBackgroundWithBlock:^(NSData *data, NSError *error){
            

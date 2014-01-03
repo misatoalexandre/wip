@@ -8,6 +8,7 @@
 
 #import "SelectWorkoutTVCViewController.h"
 #import "FitwirrHelper.h"
+#import <Parse/Parse.h>
 
 @interface SelectWorkoutTVCViewController ()
 {
@@ -100,7 +101,7 @@
 - (void)reload {
     _absProducts = nil;
     _buttsProducts = nil;
-    [self.tableView reloadData];
+
     [[FitwirrIAPHelper sharedInstance] requestProductsWithCompletionHandler:^(BOOL success, NSArray *products) {
         if (success) {
             _absProducts = [NSMutableArray array];
@@ -116,7 +117,6 @@
             }
             [self.tableView reloadData];
         }
-        [self.refreshControl endRefreshing];
     }];
 }
 
@@ -124,8 +124,6 @@
 
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView
 {
-    if(_absProducts == nil)
-        return 0;
     return 3;
 }
 
@@ -137,7 +135,7 @@
     else
         products = _buttsProducts;
     if(products == nil)
-        return 0;
+        return 1;
     int numRows = 0;
     for(SKProduct *product in products)
     {
@@ -170,6 +168,19 @@
     else
         products = _buttsProducts;
     
+    if(products == nil) // Refreshing
+    {
+        cell.textLabel.text = @"";
+        cell.detailTextLabel.text = @"";
+        cell.accessoryType = UITableViewCellAccessoryNone;
+        UIActivityIndicatorView *activityIndicator = [[UIActivityIndicatorView alloc] initWithActivityIndicatorStyle:UIActivityIndicatorViewStyleGray];
+        [activityIndicator startAnimating];
+        activityIndicator.center = CGPointMake(cell.bounds.size.width / 2, cell.bounds.size.height / 2);
+//        activityIndicator.hidesWhenStopped = YES;
+        [cell addSubview:activityIndicator];
+        return cell;
+    }
+    
     SKProduct *homeProduct, *gymProduct;
     for(SKProduct *product in products)
     {
@@ -195,7 +206,7 @@
     {
         if(indexPath.row < 6 - freeRow)
         {
-            cell.textLabel.text = [NSString stringWithFormat:@"Home Workout %d", (int)indexPath.row];
+            cell.textLabel.text = [NSString stringWithFormat:@"Home Workout %d", (int)indexPath.row + freeRow];
             cell.accessoryType = UITableViewCellAccessoryCheckmark;
             cell.detailTextLabel.text = @"";
         } else {
@@ -267,6 +278,39 @@
         else
             productToBuy = gymProduct;
         [[FitwirrIAPHelper sharedInstance] buyProduct:productToBuy];
+    } else {
+        if(_delegate != nil && [_delegate respondsToSelector:@selector(workoutSelected:)])
+        {
+            NSString *segment, *location, *level;
+            if(_segmentedControl.selectedSegmentIndex == 0)
+                segment = @"Abs";
+            else
+                segment = @"Butts";
+            if([cell.textLabel.text rangeOfString:@"Home"].location != NSNotFound)
+                location = @"home";
+            else
+                location  = @"gym";
+            level = [NSString stringWithFormat:@"%d", (int)indexPath.section + 1];
+            
+            PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
+            [query whereKey:@"segment" equalTo:segment];
+            [query whereKey:@"location" equalTo:location];
+            [query whereKey:@"level" equalTo:level];
+            [query whereKey:@"title" hasSuffix:[cell.textLabel.text substringFromIndex:cell.textLabel.text.length - 1]];
+            [query findObjectsInBackgroundWithBlock:^(NSArray *objects, NSError *error) {
+                if (!error) {
+                    if(objects != nil) {
+                        PFObject *object = objects[0];
+                        NSString *workoutID = object.objectId;
+                        [_delegate workoutSelected:workoutID];
+                        [self.navigationController popViewControllerAnimated:YES];
+                    }
+                } else {
+                    // Log details of the failure
+                    NSLog(@"Error: %@ %@", error, [error userInfo]);
+                }
+            }];
+        }
     }
 }
 

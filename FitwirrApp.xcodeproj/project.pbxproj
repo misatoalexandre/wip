@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		4A0E1DFF1873C0CD0041A8B4 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1DFE1873C0CD0041A8B4 /* IAPHelper.m */; };
 		4A0E1E021875A00F0041A8B4 /* FitwirrHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */; };
+		4A0E1E061876B53A0041A8B4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1E051876B53A0041A8B4 /* MBProgressHUD.m */; };
 		4A64C07318729C4F0009FA94 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A64C07218729C4F0009FA94 /* Parse.framework */; };
 		5320920B18687FBE009B4F50 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5320920A18687FBE009B4F50 /* Workout.m */; };
 		535869D2185F5BD900B77920 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D0185F5BD900B77920 /* account.png */; };
@@ -88,6 +89,8 @@
 		4A0E1DFE1873C0CD0041A8B4 /* IAPHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = IAPHelper.m; sourceTree = "<group>"; };
 		4A0E1E001875A00E0041A8B4 /* FitwirrHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FitwirrHelper.h; sourceTree = "<group>"; };
 		4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitwirrHelper.m; sourceTree = "<group>"; };
+		4A0E1E041876B53A0041A8B4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
+		4A0E1E051876B53A0041A8B4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
 		4A64C07218729C4F0009FA94 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5320920918687FBE009B4F50 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		5320920A18687FBE009B4F50 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
@@ -203,6 +206,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4A0E1E031876B53A0041A8B4 /* MBProgressHUD */ = {
+			isa = PBXGroup;
+			children = (
+				4A0E1E041876B53A0041A8B4 /* MBProgressHUD.h */,
+				4A0E1E051876B53A0041A8B4 /* MBProgressHUD.m */,
+			);
+			path = MBProgressHUD;
+			sourceTree = "<group>";
+		};
 		5320920C18687FCB009B4F50 /* Object Classes */ = {
 			isa = PBXGroup;
 			children = (
@@ -307,6 +319,7 @@
 		53878172185DE3AB00641237 = {
 			isa = PBXGroup;
 			children = (
+				4A0E1E031876B53A0041A8B4 /* MBProgressHUD */,
 				4A0E1E001875A00E0041A8B4 /* FitwirrHelper.h */,
 				4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */,
 				4A0E1DFD1873C0CD0041A8B4 /* IAPHelper.h */,
@@ -561,6 +574,7 @@
 				5387818B185DE3AB00641237 /* main.m in Sources */,
 				535C5DF2186B19820063C256 /* Exercise.m in Sources */,
 				539D296F187211C20015B46A /* SettingTVC.m in Sources */,
+				4A0E1E061876B53A0041A8B4 /* MBProgressHUD.m in Sources */,
 				535C5E01186E34470063C256 /* EndPageVC.m in Sources */,
 				53AEABAD1864DAD1006E0D48 /* WorkoutSelectionTVC.m in Sources */,
 				4A0E1E021875A00F0041A8B4 /* FitwirrHelper.m in Sources */,

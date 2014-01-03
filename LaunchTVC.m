@@ -29,26 +29,24 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    
    
     self.selectedSets=@"2";
     self.selectedCell=1;
     self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
 
-}
-- (void)viewDidAppear:(BOOL)animated{
     self.workoutPlantoBeginId=@"Tpugk5X6AZ";
-    NSLog(@"LaunchTV viewDidLoad %@", self.workoutPlantoBeginId);
     
     //Notification sending out
     NSMutableDictionary *workoutIdDictionary=[[NSMutableDictionary alloc]init];
     [workoutIdDictionary setObject:self.workoutPlantoBeginId forKey:@"workoutId"];
     [workoutIdDictionary setObject:self.selectedSets forKey:@"setsCount"];
-                                          
+    
     //dictionaryWithObject:self.workoutPlantoBeginId forKey:@"workoutId"];
     
-    [[NSNotificationCenter defaultCenter]postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
-    workoutIdDictionary=nil;
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
+}
+- (void)viewDidAppear:(BOOL)animated{
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -66,20 +64,38 @@
         SetsTVC *setsTV=(SetsTVC *)[segue destinationViewController];
         setsTV.delegate=self;
         setsTV.selectedCell=self.selectedCell;
+    } else if([segue.identifier isEqualToString:@"workout"])
+    {
+        SelectWorkoutTVCViewController *selectVC = (SelectWorkoutTVCViewController *)[segue destinationViewController];
+        selectVC.delegate = self;
     }
 }
 
 #pragma mark-SetsTVC Delegate Method
--(void)setsSelected:(NSDictionary *)dictionary{
-    self.selectedSets = dictionary[@"SelectedSets"];
-    self.selectedCell = [dictionary[@"SelectedCell"] intValue];
+-(void)setsSelected:(NSDictionary *)sets{
+    self.selectedSets = sets[@"SelectedSets"];
+    self.selectedCell = [sets[@"SelectedCell"] intValue];
     
     if ([self.selectedSets isEqualToString:@"1"]) {
         self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ set", self.selectedSets];
     } else{
         self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
     }
+    
 }
 
+#pragma mark - WorkoutTVCDelegate methods
+- (void)workoutSelected:(NSString *)workout
+{
+    self.workoutPlantoBeginId = workout;
+    //Notification sending out
+    NSMutableDictionary *workoutIdDictionary=[[NSMutableDictionary alloc]init];
+    [workoutIdDictionary setObject:self.workoutPlantoBeginId forKey:@"workoutId"];
+    [workoutIdDictionary setObject:self.selectedSets forKey:@"setsCount"];
+    
+    //dictionaryWithObject:self.workoutPlantoBeginId forKey:@"workoutId"];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
+}
 
 @end

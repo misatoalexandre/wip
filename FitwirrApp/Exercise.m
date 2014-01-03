@@ -7,9 +7,15 @@
 //
 
 #import "Exercise.h"
+#import <Parse/PFObject+Subclass.h>
 
 @implementation Exercise
 @synthesize name, time, imageFile, repeat, goal ;
+
++ (NSString *)parseClassName
+{
+    return @"Exercise";
+}
 
 
 @end

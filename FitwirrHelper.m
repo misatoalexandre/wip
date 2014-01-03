@@ -10,6 +10,7 @@
 
 @implementation FitwirrIAPHelper
 
+// In-App Purchase Ids
 #define kAbsGymLevel1       @"com.misato.absGymLevel1"
 #define kAbsGymLevel2       @"com.misato.absGymLevel2"
 #define kAbsGymLevel3       @"com.misato.absGymLevel3"
@@ -34,6 +35,5 @@
     });
     return sharedInstance;
 }
-
 
 @end

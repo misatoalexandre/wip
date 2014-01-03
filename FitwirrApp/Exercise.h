@@ -8,7 +8,7 @@
 
 #import <Parse/Parse.h>
 
-@interface Exercise : PFObject
+@interface Exercise : PFObject<PFSubclassing>
 
 @property (nonatomic, strong) NSString *name;
 @property (nonatomic, strong) PFFile *imageFile;
@@ -16,5 +16,5 @@
 @property NSNumber *time;
 @property BOOL repeat;
 @property (nonatomic, strong) NSString *goal;
-
++ (NSString *)parseClassName;
 @end

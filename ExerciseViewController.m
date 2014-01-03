@@ -16,9 +16,6 @@
  Check set and exercise count
  Add repeat timer for exercises with two sides. 
  Memory management issues.
- 
- 
- 
  */
 
 @interface ExerciseViewController (){
@@ -28,7 +25,6 @@
     BOOL lastExercise;
     BOOL lastSet;
 }
-
 
 @end
 
@@ -43,8 +39,7 @@
     return self;
 }
 -(void)viewWillAppear:(BOOL)animated{
-    [self query];
-   if ((lastExercise)&&(lastSet)) {
+    if ((lastExercise)&&(lastSet)) {
         self.nextButton.hidden=YES;
         self.nextButton.enabled=NO;
     }
@@ -54,27 +49,19 @@
 {
     [super viewDidLoad];
   
-    self.index=0;
-    self.currentSet=1;
+    self.index = 0;
+    self.currentSet = 1;
     
-    self.exercise=[[Exercise alloc]initWithClassName:@"PFObject"];
+    self.exerciseImage.contentMode = UIViewContentModeScaleAspectFit;
     
+    self.exercise=[Exercise object];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(updateInterface:)
-                                                name:@"ExerciseArrayFetched"
-                                              object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self
-                                            selector:@selector(beginTimer:)
-                                                name:@"secondsValue"
-                                              object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(setsCount:)
                                                 name:@"Passing SetsCount"
                                               object:nil];
     
-    
-    
+    [self query];
     
     NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
 }
@@ -82,8 +69,6 @@
 -(void)dealloc{
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     self.timer=nil;
-  
-    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -102,7 +87,6 @@
 #pragma mark-Rest View Controller Delegate
 -(void)restIsUp:(RestViewController *)controller {
     [controller.navigationController popViewControllerAnimated:YES];
-    
     if (controller.index<self.exerciseArray.count-1) {
          self.index=controller.index;
         lastExercise=NO;
@@ -122,42 +106,33 @@
     }else {
         NSLog(@"Index, set Error");
     }
+    [self presentUI];
 }
+
 #pragma mark-Timer Methods
--(void)beginTimer:(NSNotification *)note{
-    NSDictionary *secondsNSNumber=[note userInfo];
-    if (secondsNSNumber!=nil) {
-        seconds=[[secondsNSNumber objectForKey:@"secondsNSNumber"]intValue];
-        self.timer=[NSTimer scheduledTimerWithTimeInterval:1.0
-                                                    target:self
-                                                  selector:@selector(timerFireMethods:)
-                    
-                                                  userInfo:nil
-                                                   repeats:YES];
-        
-    }else{
-        NSLog(@"Begin Tiemr Error");
-    }
+-(void)beginTimer:(NSNumber *)time{
+    seconds = [time intValue];
+    self.timerPaused = NO;
+    [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
+    self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
+                                                target:self
+                                              selector:@selector(timerFireMethods:)
+                                              userInfo:nil
+                                               repeats:YES];    
 }
 -(void)timerFireMethods:(NSTimer *)theTimer{
-    
-        if (seconds>=10) {
-            self.timerDisplay.text=[NSString
-                                              stringWithFormat:@"00:%d",seconds];
-            seconds--;
-        } else if (seconds>=0){
-            self.timerDisplay.text=[NSString
-                                             stringWithFormat:@"00:0%d",seconds];
-            seconds--;
+    if (seconds >= 0) {
+        self.timerDisplay.text=[NSString stringWithFormat:@"%02d:%02d", seconds / 60, seconds % 60];
+        seconds--;
+    }else{
+        [self.timer invalidate];
+        if ((lastExercise)&&(lastSet)) {
+            [self performSegueWithIdentifier:@"end" sender:self];
         }else{
-            [self.timer invalidate];
-            if ((lastExercise)&&(lastSet)) {
-                [self performSegueWithIdentifier:@"end" sender:self];
-            }else{
-                 [self performSegueWithIdentifier:@"rest" sender:self];
-            }
+             [self performSegueWithIdentifier:@"rest" sender:self];
         }
-   }
+    }
+}
 
 #pragma mark-Query
 -(void)query{
@@ -166,45 +141,28 @@
     PFQuery *query=[relation query];
     query.cachePolicy=kPFCachePolicyCacheElseNetwork;
     [query findObjectsInBackgroundWithBlock:^(NSArray *results, NSError *error){
-        NSLog(@"Exercise cout Inside query %lu: %@", (unsigned long)results.count, results);
+//        NSLog(@"Exercise cout Inside query %lu: %@", (unsigned long)results.count, results);
         if (!error) {
-            NSDictionary *resultsArrayDictionary=[NSDictionary dictionaryWithObject:results
-                                                                             forKey:@"results"];
-            [[NSNotificationCenter defaultCenter] postNotificationName:@"ExerciseArrayFetched"
-                                                                object:self
-                                                              userInfo:resultsArrayDictionary];
-            
-        }else
-        {
+            self.exerciseArray = [NSMutableArray arrayWithArray:results];
+            [self presentUI];
+        } else {
             NSLog(@"Query error ExerciseVC %@", [error localizedDescription]);
-           
         }
-        
     }];
 }
--(void)updateInterface:(NSNotification*)note{
-    NSDictionary *theExerciseArray=[note userInfo];
-    if (theExerciseArray!=nil) {
-        self.exerciseArray=[theExerciseArray objectForKey:@"results"];
-        [self presentUI];
-    }
-}
+
 -(void)presentUI{
-    NSLog(@"present UI %lu %@", (unsigned long)self.exerciseArray.count, self.exerciseArray);
-    self.exercise.name=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"name"];
-    self.exercise.imageFile=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"image"];
-    self.exercise.time=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"time"];
-    self.exercise.goal=[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"goal"];
-    self.title=self.exercise.name;
-    self.goalLabel.text=[NSString stringWithFormat:@"GOAL   %@", self.exercise.goal];
+//    NSLog(@"present UI %lu %@", (unsigned long)self.exerciseArray.count, self.exerciseArray);
+    self.exercise.name = [self.exerciseArray objectAtIndex:self.index][@"name"];
+    self.exercise.imageFile = [self.exerciseArray objectAtIndex:self.index][@"image"];
+    self.exercise.time = [self.exerciseArray objectAtIndex:self.index][@"time"];
+    self.exercise.goal = [self.exerciseArray objectAtIndex:self.index][@"goal"];
+    self.title = self.exercise.name;
+    self.goalLabel.text = [NSString stringWithFormat:@"GOAL   %@", self.exercise.goal];
     
-    NSDictionary *sec=[NSDictionary dictionaryWithObject:self.exercise.time
-                                                                     forKey:@"secondsNSNumber"];
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"secondsValue"
-                                                        object:self
-                                                      userInfo:sec];
+    [self beginTimer:self.exercise.time];
    
-    self.exerciseImage.file=self.exercise.imageFile;
+    self.exerciseImage.file = self.exercise.imageFile;
     [self.exerciseImage loadInBackground];
   
 }
@@ -213,46 +171,44 @@
 - (IBAction)nextPressed:(id)sender {
     [self.timer invalidate];
 }
+
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    
     if ([segue.identifier isEqualToString:@"rest"])
         {
-            RestViewController *restVC=(RestViewController *)[segue destinationViewController];
+            RestViewController *restVC = (RestViewController *)[segue destinationViewController];
             NSLog(@"prepare for segue %@", self.exerciseArray);
-            restVC.delegate=self;
-            restVC.exerciseArray=self.exerciseArray;
-            restVC.currentSet=self.currentSet;
-            restVC.setsCount=self.setsCount;
+            restVC.delegate = self;
+            restVC.exerciseArray = self.exerciseArray;
+            restVC.currentSet = self.currentSet;
+            restVC.setsCount = self.setsCount;
             
-            
-            if ((lastExercise)&&(!lastSet)) {
-                restVC.index=0;
+            if ((lastExercise) && (!lastSet)) {
+                restVC.index = 0;
             }else if (!lastExercise){
-                restVC.index=self.index+1;
+                restVC.index = self.index + 1;
             }
-            
         }
     if ([segue.identifier isEqualToString:@"end"]) {
-        EndPageVC *lastVC=(EndPageVC *)[segue destinationViewController];
-        lastVC.title=@"YOU DID IT!";
+        EndPageVC *lastVC = (EndPageVC *)[segue destinationViewController];
+        lastVC.title = @"YOU DID IT!";
     }
    
 }
 
 - (IBAction)PausePressed:(id)sender {
-    if (self.timerPaused==NO) {
-        self.timerPaused=YES;
+    if (self.timerPaused == NO) {
+        self.timerPaused = YES;
         [self.pauseButton setImage:[UIImage imageNamed:@"play button blue.png"] forState:UIControlStateNormal];
        
-        pauseStart=[NSDate dateWithTimeIntervalSinceNow:0];
-        previousFireDate=[self.timer fireDate];
+        pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
+        previousFireDate = [self.timer fireDate];
         [self.timer setFireDate:[NSDate distantFuture]];
 
     }else{
-        self.timerPaused=NO;
+        self.timerPaused = NO;
         [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
         
-        float pauseTime=-1*[pauseStart timeIntervalSinceNow];
+        float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
         [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
     }
 }
@@ -261,27 +217,4 @@
     NSLog(@"share");
 }
 
-
 @end
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

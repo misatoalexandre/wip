@@ -41,7 +41,6 @@
     self.setsLabel.text=[NSString stringWithFormat:@"%d / %d sets", self.currentSet, self.setsCount];
     self.nextExerciseTitleLabel.text=[NSString stringWithFormat:@"NEXT: %@",[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"name"]];
     
-    
     [self.collectionView reloadData];
     NSLog(@"array check. Current Index  %lu, %@ count %lu",(unsigned long)self.index, self.exerciseArray, self.exerciseArray.count);
 }
@@ -57,6 +56,7 @@
     [self.nextExerciseImage loadInBackground];
 }
 - (IBAction)timerPressed:(id)sender {
+    [self.timer invalidate];
     [self.delegate restIsUp:self];
 }
 
@@ -64,8 +64,8 @@
 #pragma mark-Timer
 - (IBAction)pausePressed:(id)sender {
     
-    if (self.timerPaused==NO) {
-        self.timerPaused=YES;
+    if (self.timerPaused == NO) {
+        self.timerPaused = YES;
         [self.pauseButton setImage:[UIImage imageNamed:@"play button blue.png"] forState:UIControlStateNormal];
        // [self.timerButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
        // [self.timerButton setTitle:@"Paused" forState:UIControlStateNormal];
@@ -85,16 +85,10 @@
     
 }
 -(void)timerFireMethods:(NSTimer *)theTimer{
-    
-    
-    if (seconds>=10) {
-        self.timeDisplay.text=[NSString stringWithFormat:@"00:%d",seconds];
+    if (seconds >= 0) {
+        self.timeDisplay.text = [NSString stringWithFormat:@"%02d:%02d", seconds / 60, seconds % 60];
         seconds--;
-    } else if (seconds>=0){
-        self.timeDisplay.text=[NSString
-                                          stringWithFormat:@"00:0%d",seconds];
-        seconds--;
-    }else{
+    } else {
         [self.timer invalidate];
         [self.delegate restIsUp:self];
     }
@@ -106,7 +100,7 @@
                                               selector:@selector(timerFireMethods:)
                                               userInfo:nil
                                                repeats:YES];
-    seconds=20;
+    seconds = 20;
 }
 #pragma mark-UICollectionView Data Source
 -(NSInteger) numberofSelectionsInCollectionView:(UICollectionView *)collectionView{

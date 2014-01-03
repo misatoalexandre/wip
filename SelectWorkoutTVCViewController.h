@@ -60,8 +60,14 @@
 
 #import <UIKit/UIKit.h>
 
-@interface SelectWorkoutTVCViewController : UITableViewController
+@protocol WorkoutTVCDelegate<NSObject>
 
-@property (weak, nonatomic) IBOutlet UISegmentedControl *segmentedControl;
+-(void)workoutSelected:(NSString *)workout;
+
+@end
+
+@interface SelectWorkoutTVCViewController : UITableViewController
+@property (nonatomic, assign)   id<WorkoutTVCDelegate> delegate;
+@property (weak, nonatomic)     IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)selectSegment:(id)sender;
 @end

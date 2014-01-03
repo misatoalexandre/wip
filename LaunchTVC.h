@@ -8,9 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "SetsTVC.h"
+#import "SelectWorkoutTVCViewController.h"
 
-
-@interface LaunchTVC : UITableViewController<SetsTVCDelegate>
+@interface LaunchTVC : UITableViewController<SetsTVCDelegate,WorkoutTVCDelegate>
 //sets selection 
 @property (nonatomic, strong)NSString *selectedSets;
 @property(nonatomic, assign)int selectedCell;

@@ -19,6 +19,6 @@
 
 @protocol SetsTVCDelegate<NSObject>
 
--(void)setsSelected:(NSDictionary *)controller;
+-(void)setsSelected:(NSDictionary *)sets;
 
 @end
