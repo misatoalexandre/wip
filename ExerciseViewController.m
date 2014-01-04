@@ -219,14 +219,15 @@
 
 - (IBAction)PausePressed:(id)sender {
     if (self.timerPaused == NO) {
+        [player pause];
         self.timerPaused = YES;
         [self.pauseButton setImage:[UIImage imageNamed:@"play button blue.png"] forState:UIControlStateNormal];
        
         pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
         previousFireDate = [self.timer fireDate];
         [self.timer setFireDate:[NSDate distantFuture]];
-
     }else{
+        [player play];
         self.timerPaused = NO;
         [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
         
