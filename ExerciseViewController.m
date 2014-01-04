@@ -39,10 +39,17 @@
     return self;
 }
 -(void)viewWillAppear:(BOOL)animated{
+    self.timerDisplay.text = @"--:--";
+    
     if ((lastExercise)&&(lastSet)) {
         self.nextButton.hidden=YES;
         self.nextButton.enabled=NO;
     }
+}
+
+- (void)viewDidDisappear:(BOOL)animated
+{
+    [self.timer invalidate];
 }
 
 - (void)viewDidLoad
@@ -67,6 +74,7 @@
 }
 
 -(void)dealloc{
+    NSLog(@"Dealloc");
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     self.timer=nil;
 }
@@ -169,7 +177,8 @@
 #pragma mark-IBActions
 
 - (IBAction)nextPressed:(id)sender {
-    [self.timer invalidate];
+//  Will be invalidated automatically by viewDidDisappear
+//  [self.timer invalidate];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
