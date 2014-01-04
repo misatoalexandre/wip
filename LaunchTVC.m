@@ -10,7 +10,9 @@
 #import "BeginWorkoutViewController.h"
 
 @interface LaunchTVC ()
-
+{
+    int _selectedSection, _selectedRow; // Selected Workout
+}
 @end
 
 @implementation LaunchTVC
@@ -31,7 +33,12 @@
     [super viewDidLoad];
    
     self.selectedSets=@"2";
+    
     self.selectedCell=1;
+    
+    _selectedSection = 0;
+    _selectedRow = 0;
+    
     self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
 
     self.workoutPlantoBeginId=@"Tpugk5X6AZ";
@@ -68,6 +75,8 @@
     {
         SelectWorkoutTVCViewController *selectVC = (SelectWorkoutTVCViewController *)[segue destinationViewController];
         selectVC.delegate = self;
+        selectVC.selectedRow = _selectedRow;
+        selectVC.selectedSection = _selectedSection;
     }
 }
 
@@ -96,6 +105,12 @@
     //dictionaryWithObject:self.workoutPlantoBeginId forKey:@"workoutId"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
+}
+
+- (void)setWorkoutIndexPath:(NSIndexPath *)indexPath
+{
+    _selectedRow = (int)indexPath.row;
+    _selectedSection = (int)indexPath.section;
 }
 
 @end

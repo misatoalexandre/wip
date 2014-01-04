@@ -62,7 +62,8 @@
 
 @protocol WorkoutTVCDelegate<NSObject>
 
--(void)workoutSelected:(NSString *)workout;
+- (void)workoutSelected:(NSString *)workout;
+- (void)setWorkoutIndexPath:(NSIndexPath *)indexPath;
 
 @end
 
@@ -70,4 +71,6 @@
 @property (nonatomic, assign)   id<WorkoutTVCDelegate> delegate;
 @property (weak, nonatomic)     IBOutlet UISegmentedControl *segmentedControl;
 - (IBAction)selectSegment:(id)sender;
+@property (nonatomic, assign)   int selectedSection;
+@property (nonatomic, assign)   int selectedRow;
 @end

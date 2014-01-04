@@ -161,7 +161,7 @@
     {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
     }
-    
+    cell.accessoryType = UITableViewCellAccessoryNone;
     NSArray *products = nil;
     if(_segmentedControl.selectedSegmentIndex == 0)
         products = _absProducts;
@@ -200,26 +200,22 @@
     {
         cell.textLabel.text = @"Free Home Workout";
         cell.detailTextLabel.text = @"";
-        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     }
     else if([[FitwirrIAPHelper sharedInstance] productPurchased:homeProduct.productIdentifier])
     {
         if(indexPath.row < 6 - freeRow)
         {
             cell.textLabel.text = [NSString stringWithFormat:@"Home Workout %d", (int)indexPath.row + freeRow];
-            cell.accessoryType = UITableViewCellAccessoryCheckmark;
             cell.detailTextLabel.text = @"";
         } else {
             if([[FitwirrIAPHelper sharedInstance] productPurchased:gymProduct.productIdentifier])
             {
                 cell.textLabel.text = [NSString stringWithFormat:@"Gym Workout %d", (int)indexPath.row - (5 - freeRow)];
                 cell.detailTextLabel.text = @"";
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             } else {
                 [_priceFormatter setLocale:gymProduct.priceLocale];
                 cell.detailTextLabel.text = [_priceFormatter stringFromNumber:gymProduct.price];
                 cell.textLabel.text = @"Gym Workouts";
-                cell.accessoryType = UITableViewCellAccessoryNone;
             }
         }
     } else {
@@ -228,21 +224,21 @@
             cell.textLabel.text = @"Home Workouts";
             [_priceFormatter setLocale:homeProduct.priceLocale];
             cell.detailTextLabel.text = [_priceFormatter stringFromNumber:homeProduct.price];
-            cell.accessoryType = UITableViewCellAccessoryNone;
         } else {
             if([[FitwirrIAPHelper sharedInstance] productPurchased:gymProduct.productIdentifier])
             {
                 cell.textLabel.text = [NSString stringWithFormat:@"Gym Workout %d", (int)indexPath.row - (1 - freeRow)];
                 cell.detailTextLabel.text = @"";
-                cell.accessoryType = UITableViewCellAccessoryCheckmark;
             } else {
                 [_priceFormatter setLocale:gymProduct.priceLocale];
                 cell.detailTextLabel.text = [_priceFormatter stringFromNumber:gymProduct.price];
                 cell.textLabel.text = @"Gym Workouts";
-                cell.accessoryType = UITableViewCellAccessoryNone;
             }
         }
     }
+    
+    if(indexPath.row == _selectedRow && indexPath.section == _selectedSection)
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
     
     return cell;
 }
@@ -255,7 +251,7 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    if(cell.accessoryType == UITableViewCellAccessoryNone)
+    if(![cell.detailTextLabel.text isEqualToString:@""])
     {
         NSArray *products = nil;
         if(_segmentedControl.selectedSegmentIndex == 0)
@@ -302,6 +298,7 @@
                     if(objects != nil) {
                         PFObject *object = objects[0];
                         NSString *workoutID = object.objectId;
+                        [_delegate setWorkoutIndexPath:indexPath];
                         [_delegate workoutSelected:workoutID];
                         [self.navigationController popViewControllerAnimated:YES];
                     }
