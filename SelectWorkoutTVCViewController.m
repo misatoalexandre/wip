@@ -248,8 +248,16 @@
     return [NSString stringWithFormat:@"Level %d", (int)(section + 1)];
 }
 
+- (BOOL)tableView:(UITableView *)tableView shouldHighlightRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if(!_absProducts || !_buttsProducts)
+        return NO;
+    return YES;
+}
+
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
+    
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     if(![cell.detailTextLabel.text isEqualToString:@""])
     {

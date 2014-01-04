@@ -21,5 +21,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *selectedSetsLabel;
 @property (weak, nonatomic) IBOutlet UILabel *selectedWorkoutLabel;
 
+@property (weak, nonatomic) IBOutlet UIView *containerView;
 
 @end

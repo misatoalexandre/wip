@@ -9,8 +9,8 @@
             <objects>
                 <viewController id="hEK-fy-3JL" customClass="ExerciseViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="HeY-EO-sa0"/>
-                        <viewControllerLayoutGuide type="bottom" id="ZlI-mf-pCH"/>
+                        <viewControllerLayoutGuide type="top" id="dL5-LK-ueT"/>
+                        <viewControllerLayoutGuide type="bottom" id="j6n-dy-sKJ"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="tWg-Cy-C9d">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -229,8 +229,8 @@
             <objects>
                 <viewController id="KuK-e4-jie" customClass="PurchaseVC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="tVr-JX-XWd"/>
-                        <viewControllerLayoutGuide type="bottom" id="wmG-tK-nhl"/>
+                        <viewControllerLayoutGuide type="top" id="lFq-SQ-Wwt"/>
+                        <viewControllerLayoutGuide type="bottom" id="N6K-cu-Tit"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="dGU-4w-u2G">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -298,8 +298,8 @@
             <objects>
                 <viewController id="KqB-ah-cBp" customClass="RestViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="w0C-RQ-nsq"/>
-                        <viewControllerLayoutGuide type="bottom" id="qgP-Q5-J9o"/>
+                        <viewControllerLayoutGuide type="top" id="cdB-cl-df8"/>
+                        <viewControllerLayoutGuide type="bottom" id="DKI-nR-wV0"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="MkO-FS-369">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -439,8 +439,8 @@
             <objects>
                 <viewController id="Dwj-gw-KjX" customClass="EndPageVC" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="BDL-4J-oKh"/>
-                        <viewControllerLayoutGuide type="bottom" id="1Vb-U5-bsX"/>
+                        <viewControllerLayoutGuide type="top" id="51y-Ui-iV4"/>
+                        <viewControllerLayoutGuide type="bottom" id="wpL-lT-Tzf"/>
                     </layoutGuides>
                     <view key="view" contentMode="scaleToFill" id="sLk-pf-PK5">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
@@ -620,6 +620,7 @@
                         </view>
                     </navigationItem>
                     <connections>
+                        <outlet property="containerView" destination="UIX-OY-fOc" id="Gr6-CT-kyl"/>
                         <outlet property="selectedSetsLabel" destination="bSx-yU-DCO" id="WOM-Ls-XJ1"/>
                         <outlet property="selectedWorkoutLabel" destination="fn1-vX-wch" id="tSA-90-3Nb"/>
                     </connections>
@@ -633,8 +634,8 @@
             <objects>
                 <viewController automaticallyAdjustsScrollViewInsets="NO" id="wxO-y1-Z56" customClass="BeginWorkoutViewController" sceneMemberID="viewController">
                     <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uUs-jA-pV7"/>
-                        <viewControllerLayoutGuide type="bottom" id="u11-P6-Gjo"/>
+                        <viewControllerLayoutGuide type="top" id="wWt-1M-KgG"/>
+                        <viewControllerLayoutGuide type="bottom" id="QU6-c1-gdO"/>
                     </layoutGuides>
                     <view key="view" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" id="d6M-44-oJk">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="395"/>

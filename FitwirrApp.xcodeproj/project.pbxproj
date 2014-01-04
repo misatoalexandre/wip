@@ -10,6 +10,8 @@
 		4A0E1DFF1873C0CD0041A8B4 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1DFE1873C0CD0041A8B4 /* IAPHelper.m */; };
 		4A0E1E021875A00F0041A8B4 /* FitwirrHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */; };
 		4A0E1E061876B53A0041A8B4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1E051876B53A0041A8B4 /* MBProgressHUD.m */; };
+		4A5B6BE818782CF600368FB3 /* clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A5B6BE718782CF600368FB3 /* clock.mp3 */; };
+		4A5B6BEA18782DAB00368FB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5B6BE918782DAB00368FB3 /* AVFoundation.framework */; };
 		4A64C07318729C4F0009FA94 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A64C07218729C4F0009FA94 /* Parse.framework */; };
 		5320920B18687FBE009B4F50 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5320920A18687FBE009B4F50 /* Workout.m */; };
 		535869D2185F5BD900B77920 /* account.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D0185F5BD900B77920 /* account.png */; };
@@ -91,6 +93,8 @@
 		4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitwirrHelper.m; sourceTree = "<group>"; };
 		4A0E1E041876B53A0041A8B4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4A0E1E051876B53A0041A8B4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		4A5B6BE718782CF600368FB3 /* clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clock.mp3; sourceTree = SOURCE_ROOT; };
+		4A5B6BE918782DAB00368FB3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4A64C07218729C4F0009FA94 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
 		5320920918687FBE009B4F50 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		5320920A18687FBE009B4F50 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
@@ -177,6 +181,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4A5B6BEA18782DAB00368FB3 /* AVFoundation.framework in Frameworks */,
 				53AEAB7A18615382006E0D48 /* StoreKit.framework in Frameworks */,
 				53AEAB9A18637A9D006E0D48 /* SystemConfiguration.framework in Frameworks */,
 				53AEAB9818637A91006E0D48 /* Security.framework in Frameworks */,
@@ -346,6 +351,7 @@
 		5387817D185DE3AB00641237 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				4A5B6BE918782DAB00368FB3 /* AVFoundation.framework */,
 				4A64C07218729C4F0009FA94 /* Parse.framework */,
 				53AEAB9918637A9D006E0D48 /* SystemConfiguration.framework */,
 				53AEAB9718637A91006E0D48 /* Security.framework */,
@@ -387,6 +393,7 @@
 		53878185185DE3AB00641237 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				4A5B6BE718782CF600368FB3 /* clock.mp3 */,
 				535869E7185F5D6200B77920 /* Photos */,
 				535869E6185F5D5500B77920 /* Other Accessories */,
 				535869E4185F5D1F00B77920 /* Icons */,
@@ -535,6 +542,7 @@
 				53586A251860142600B77920 /* New.storyboard in Resources */,
 				535869D6185F5BE700B77920 /* settings.png in Resources */,
 				535869D2185F5BD900B77920 /* account.png in Resources */,
+				4A5B6BE818782CF600368FB3 /* clock.mp3 in Resources */,
 				535869D7185F5BE700B77920 /* settings@2x.png in Resources */,
 				539D296818714B750015B46A /* play button blue.png in Resources */,
 				538781DA185DF86F00641237 /* SELECT.png in Resources */,

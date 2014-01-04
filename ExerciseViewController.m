@@ -11,6 +11,8 @@
 #import "Workout.h"
 #import "RestViewController.h"
 #import "EndPageVC.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 /*
  Check timer. when workout runs for the second time, timer gets messed up.
  Check set and exercise count
@@ -24,6 +26,7 @@
     int seconds;
     BOOL lastExercise;
     BOOL lastSet;
+    AVAudioPlayer *player;
 }
 
 @end
@@ -49,6 +52,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated
 {
+    [player stop];
     [self.timer invalidate];
 }
 
@@ -58,6 +62,11 @@
   
     self.index = 0;
     self.currentSet = 1;
+    
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"clock" ofType:@"mp3"];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+    player.numberOfLoops = -1;
     
     self.exerciseImage.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -121,6 +130,9 @@
 -(void)beginTimer:(NSNumber *)time{
     seconds = [time intValue];
     self.timerPaused = NO;
+    
+    [player play];
+    
     [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                 target:self
@@ -133,6 +145,7 @@
         self.timerDisplay.text=[NSString stringWithFormat:@"%02d:%02d", seconds / 60, seconds % 60];
         seconds--;
     }else{
+        [player stop];
         [self.timer invalidate];
         if ((lastExercise)&&(lastSet)) {
             [self performSegueWithIdentifier:@"end" sender:self];

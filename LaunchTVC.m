@@ -66,6 +66,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)viewDidLayoutSubviews
+{
+//    _containerView.frame = CGRectMake(0, 0, 320, 300);
+}
+
 #pragma mark - Navigation
 
 // In a story board-based application, you will often want to do a little preparation before navigation
@@ -94,7 +99,6 @@
     } else{
         self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
     }
-    
 }
 
 #pragma mark - WorkoutTVCDelegate methods
