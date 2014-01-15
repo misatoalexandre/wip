@@ -70,7 +70,7 @@
     
     self.exerciseImage.contentMode = UIViewContentModeScaleAspectFit;
     
-    self.exercise=[Exercise object];
+    self.exercise = [Exercise object];
     
     [[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(setsCount:)
@@ -83,7 +83,6 @@
 }
 
 -(void)dealloc{
-    NSLog(@"Dealloc");
     [[NSNotificationCenter defaultCenter]removeObserver:self];
     self.timer=nil;
 }
@@ -94,9 +93,9 @@
 }
 
 -(void)setsCount:(NSNotification *)note{
-    NSDictionary *theSetsData=[note userInfo];
-    if (theSetsData!=nil) {
-        self.setsCount=[[theSetsData objectForKey:@"setsCount"]intValue];
+    NSDictionary *theSetsData = [note userInfo];
+    if (theSetsData != nil) {
+        self.setsCount = [[theSetsData objectForKey:@"setsCount"]intValue];
         NSLog(@"sets count %d notified", self.setsCount);
     }
     

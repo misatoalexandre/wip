@@ -11,7 +11,7 @@
 
 @interface LaunchTVC ()
 {
-    int _selectedSection, _selectedRow; // Selected Workout
+    int _selectedSegment, _selectedRow; // Selected Workout
 }
 @end
 
@@ -32,19 +32,19 @@
 {
     [super viewDidLoad];
    
-    self.selectedSets=@"2";
+    self.selectedSets = @"2";
     
-    self.selectedCell=1;
+    self.selectedCell = 1;
     
-    _selectedSection = 0;
+    _selectedSegment = 0;
     _selectedRow = 0;
     
-    self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ sets", self.selectedSets];
+    self.selectedSetsLabel.text = [NSString stringWithFormat:@"%@ sets", self.selectedSets];
 
-    self.workoutPlantoBeginId=@"Tpugk5X6AZ";
+    self.workoutPlantoBeginId = @"PIp9N5a5Zk";
     
     //Notification sending out
-    NSMutableDictionary *workoutIdDictionary=[[NSMutableDictionary alloc]init];
+    NSMutableDictionary *workoutIdDictionary = [[NSMutableDictionary alloc]init];
     [workoutIdDictionary setObject:self.workoutPlantoBeginId forKey:@"workoutId"];
     [workoutIdDictionary setObject:self.selectedSets forKey:@"setsCount"];
     
@@ -85,7 +85,7 @@
         SelectWorkoutTVCViewController *selectVC = (SelectWorkoutTVCViewController *)[segue destinationViewController];
         selectVC.delegate = self;
         selectVC.selectedRow = _selectedRow;
-        selectVC.selectedSection = _selectedSection;
+        selectVC.selectedSegment = _selectedSegment;
     }
 }
 
@@ -115,10 +115,10 @@
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
 }
 
-- (void)setWorkoutIndexPath:(NSIndexPath *)indexPath
+- (void)setWorkoutIndexPath:(NSDictionary *)data
 {
-    _selectedRow = (int)indexPath.row;
-    _selectedSection = (int)indexPath.section;
+    _selectedRow = [data[@"row"] intValue];
+    _selectedSegment = [data[@"section"] intValue];
 }
 
 @end

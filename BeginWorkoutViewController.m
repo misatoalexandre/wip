@@ -46,7 +46,7 @@
 	// Do any additional setup after loading the view.
 }
 -(void)dealloc{
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 -(void)viewWillDisappear:(BOOL)animated{
     [self.displayImageView setImage:nil];
@@ -61,23 +61,23 @@
 }
 
 -(void)query:(NSNotification *)note{
-    NSDictionary *theWorkoutID=[note userInfo];
-    if (theWorkoutID!=nil) {
-        self.workoutId=[theWorkoutID objectForKey:@"workoutId"];
-        self.setCount=[[theWorkoutID objectForKey:@"setsCount"]intValue];
+    NSDictionary *theWorkoutID = [note userInfo];
+    if (theWorkoutID != nil) {
+        self.workoutId = [theWorkoutID objectForKey:@"workoutId"];
+        self.setCount = [[theWorkoutID objectForKey:@"setsCount"]intValue];
         NSLog(@"query: %@ setsCount :%d", self.workoutId, self.setCount);
     }
     
-    PFQuery *query = [PFQuery queryWithClassName:@"Workout"];
-    query.cachePolicy=kPFCachePolicyCacheElseNetwork;
+    PFQuery *query = [PFQuery queryWithClassName:@"WorkoutPlans"];
+    query.cachePolicy = kPFCachePolicyCacheElseNetwork;
     [query getObjectInBackgroundWithId:self.workoutId
                                  block:^(PFObject *object, NSError *error)
     {
         if (!error) {
-            NSDictionary *pfObject=[NSDictionary dictionaryWithObject:object
+            NSDictionary *pfObject = [NSDictionary dictionaryWithObject:object
                                                                forKey:@"workoutObject"];
             
-            [[NSNotificationCenter defaultCenter]postNotificationName:@"workoutObjectCameThrough"
+            [[NSNotificationCenter defaultCenter] postNotificationName:@"workoutObjectCameThrough"
                                                                object:self
                                                              userInfo:pfObject];
 
@@ -87,8 +87,8 @@
     }];
 }
 -(void)interfaceUpdates:(NSNotification*)note{
-    NSDictionary *theWorkoutObject=[note userInfo];
-    if (theWorkoutObject!=nil)
+    NSDictionary *theWorkoutObject = [note userInfo];
+    if (theWorkoutObject != nil)
     {
         self.currentWorkout=[theWorkoutObject objectForKey:@"workoutObject"];
         dispatch_async(dispatch_get_main_queue(), ^{
@@ -114,8 +114,8 @@
     //[self prepareForSegue:@"start" sender:sender];
 }
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender{
-    ExerciseViewController *evc=(ExerciseViewController *)[segue destinationViewController];
-    evc.currentWorkout=self.currentWorkout;
-    evc.setsCount=self.setCount;
+    ExerciseViewController *evc = (ExerciseViewController *)[segue destinationViewController];
+    evc.currentWorkout = self.currentWorkout;
+    evc.setsCount = self.setCount;
 }
 @end

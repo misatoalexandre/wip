@@ -10,6 +10,7 @@
 		4A0E1DFF1873C0CD0041A8B4 /* IAPHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1DFE1873C0CD0041A8B4 /* IAPHelper.m */; };
 		4A0E1E021875A00F0041A8B4 /* FitwirrHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */; };
 		4A0E1E061876B53A0041A8B4 /* MBProgressHUD.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A0E1E051876B53A0041A8B4 /* MBProgressHUD.m */; };
+		4A4FEC6C1885602700176E17 /* WorkoutCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 4A4FEC6B1885602700176E17 /* WorkoutCell.m */; };
 		4A5B6BE818782CF600368FB3 /* clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A5B6BE718782CF600368FB3 /* clock.mp3 */; };
 		4A5B6BEA18782DAB00368FB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5B6BE918782DAB00368FB3 /* AVFoundation.framework */; };
 		4A64C07318729C4F0009FA94 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A64C07218729C4F0009FA94 /* Parse.framework */; };
@@ -93,6 +94,8 @@
 		4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FitwirrHelper.m; sourceTree = "<group>"; };
 		4A0E1E041876B53A0041A8B4 /* MBProgressHUD.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MBProgressHUD.h; sourceTree = "<group>"; };
 		4A0E1E051876B53A0041A8B4 /* MBProgressHUD.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MBProgressHUD.m; sourceTree = "<group>"; };
+		4A4FEC6A1885602700176E17 /* WorkoutCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WorkoutCell.h; sourceTree = "<group>"; };
+		4A4FEC6B1885602700176E17 /* WorkoutCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WorkoutCell.m; sourceTree = "<group>"; };
 		4A5B6BE718782CF600368FB3 /* clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clock.mp3; sourceTree = SOURCE_ROOT; };
 		4A5B6BE918782DAB00368FB3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4A64C07218729C4F0009FA94 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
@@ -324,6 +327,8 @@
 		53878172185DE3AB00641237 = {
 			isa = PBXGroup;
 			children = (
+				4A4FEC6A1885602700176E17 /* WorkoutCell.h */,
+				4A4FEC6B1885602700176E17 /* WorkoutCell.m */,
 				4A0E1E031876B53A0041A8B4 /* MBProgressHUD */,
 				4A0E1E001875A00E0041A8B4 /* FitwirrHelper.h */,
 				4A0E1E011875A00F0041A8B4 /* FitwirrHelper.m */,
@@ -573,6 +578,7 @@
 				535C5DEA1869BD8F0063C256 /* SetsTVC.m in Sources */,
 				535C5DED1869D6630063C256 /* BeginWorkoutViewController.m in Sources */,
 				53586A16185F927E00B77920 /* RestCell.m in Sources */,
+				4A4FEC6C1885602700176E17 /* WorkoutCell.m in Sources */,
 				53586A19185F930500B77920 /* RestViewController.m in Sources */,
 				53AEAB8718635523006E0D48 /* PurchaseVC.m in Sources */,
 				53AEABB51865631B006E0D48 /* ExerciseViewController.m in Sources */,
