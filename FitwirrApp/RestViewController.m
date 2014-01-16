@@ -42,7 +42,7 @@
     self.nextExerciseTitleLabel.text=[NSString stringWithFormat:@"NEXT: %@",[[self.exerciseArray objectAtIndex:self.index]objectForKey:@"name"]];
     
     [self.collectionView reloadData];
-    NSLog(@"array check. Current Index  %lu, %@ count %lu",(unsigned long)self.index, self.exerciseArray, self.exerciseArray.count);
+    NSLog(@"array check. Current Index  %lu, %@ count %lu",(unsigned long)self.index, self.exerciseArray, (unsigned long)self.exerciseArray.count);
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endWorkout)];
     self.navigationItem.rightBarButtonItem = backButton;
     self.navigationItem.rightBarButtonItem =backButton;

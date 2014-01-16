@@ -34,5 +34,5 @@
 
 - (IBAction)startPressed:(id)sender;
 //-(void)query:(NSDictionary *)workoutDictionary;
--(void)UpdateUserInterface:(PFObject *)object;
+-(void)UpdateUserInterface:(PFObject *)pfObject;
 @end

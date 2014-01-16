@@ -7,7 +7,7 @@
 //
 
 #import "LaunchTVC.h"
-#import "BeginWorkoutViewController.h"
+//#import "BeginWorkoutViewController.h"
 #import "EquipmentCell.h"
 #import "ExerciseViewController.h"
 #import <Parse/Parse.h>
@@ -16,6 +16,7 @@
 {
     int _selectedSegment, _selectedRow; // Selected Workout
     NSArray *equipmentArray;
+    NSString *workoutTitle;
 }
 @end
 
@@ -44,22 +45,22 @@
 
     self.selectedSets = @"2";
     self.selectedSetsLabel.text = [NSString stringWithFormat:@"%@ sets", self.selectedSets];
-    self.workoutPlantoBeginId = @"wmpDYvJ1qz";
+    self.workoutPlantoBeginId = @"PIp9N5a5Zk";
     [self query:self.workoutPlantoBeginId];
     
     //Collection View Related
     self.collectionView.delegate=self;
     self.collectionView.dataSource=self;
-    [self.collectionView reloadData];
+   //[self.collectionView reloadData];
     
     
 }
 - (void)viewDidAppear:(BOOL)animated{
-    
+   
 }
 
 - (void)viewDidDisappear:(BOOL)animated{
-    self.collectionView=nil;
+ //self.collectionView=nil;
     
 }
 
@@ -83,7 +84,8 @@
         PFQuery *query=[PFQuery queryWithClassName:@"WorkoutPlans"];
         [query includeKey:@"exerciseList"];
         [query includeKey:@"equipmentList"];
-        //query.cachePolicy=kPFCachePolicyCacheEleseNetwork;
+        query.cachePolicy=kPFCachePolicyCacheElseNetwork;
+        
         [query getObjectInBackgroundWithId:self.workoutPlantoBeginId block:^(PFObject *object, NSError *error){
             if (!error) {
                 self.currentWorkout=object;
@@ -95,29 +97,29 @@
     }
     
 }
--(void)UpdateUserInterface:(PFObject *)object{
-    if (object!=nil) {
-       //main que
-            self.workoutTitleLabel.text=[self.currentWorkout objectForKey:@"title"];
-            equipmentArray=[self.currentWorkout objectForKey:@"equipmentList"];
-            NSLog(@"equipmentArray: %@", equipmentArray);
-        if (equipmentArray) {
-            NSLog(@"BB:");
-            self.equipmentLabel.text=@"You'll need";
-            [self.collectionView reloadData];
-        }
-        else if (!equipmentArray) {
-                NSLog(@"AA:");
-                if ([[self.currentWorkout objectForKey:@"Location"]isEqualToString:@"Gym"]) {
-                    self.equipmentLabel.text=@"Gym Workout";
-                    self.collectionView=nil;
-                }else if ([[self.currentWorkout objectForKey:@"Location"]isEqualToString:@"Home"]){
-                    self.equipmentLabel.text=@"No Equipments Required";
-                    self.collectionView=nil;
-                }
+-(void)UpdateUserInterface:(PFObject * ) pfObject{
+    if (pfObject!=nil) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.workoutTitleLabel.text=[pfObject objectForKey:@"title"];
+            self.selectedWorkoutLabel.text=[pfObject objectForKey:@"title"];
+            
+            equipmentArray=[pfObject objectForKey:@"equipmentList"];
+            if (equipmentArray) {
+                NSLog(@"AA: %@", equipmentArray);
+                [self.collectionView reloadData];
+                self.equipmentLabel.text=@"You'll need";
             }
-     
-    }
+            else if (!equipmentArray) {
+                if ([[pfObject objectForKey:@"Location"] isEqualToString:@"Gym"]) {
+                    self.equipmentLabel.text=@"Gym Workout";
+                    self.collectionView.hidden=YES;
+                }else if ([[pfObject objectForKey:@"Location"]isEqualToString:@"Home"]){
+                    self.equipmentLabel.text=@"No Equipments Required";
+                    self.collectionView.hidden=YES;
+                }
+            }        }
+                       );}
+    
 }
 
 #pragma mark - Navigation
@@ -167,6 +169,7 @@
     [cell.imageView loadInBackground];
     
     return cell;
+    
     
 }
 
