@@ -48,6 +48,11 @@
         self.nextButton.hidden=YES;
         self.nextButton.enabled=NO;
     }
+    if (self.firstExerciseInWorkoutPlan==NO) {
+        NSLog(@"First Exercise %d", self.firstExerciseInWorkoutPlan);
+        //[self timerAndSoundBegins];
+        //[Player Play];
+    }
 }
 
 - (void)viewDidDisappear:(BOOL)animated
@@ -71,13 +76,15 @@
     self.exerciseImage.contentMode = UIViewContentModeScaleAspectFit;
     
     self.exercise = [Exercise object];
+    self.exerciseArray=[self.currentWorkout objectForKey:@"exerciseList"];
+    [self presentUI];
     
-    [[NSNotificationCenter defaultCenter]addObserver:self
+    /*[[NSNotificationCenter defaultCenter]addObserver:self
                                             selector:@selector(setsCount:)
                                                 name:@"Passing SetsCount"
-                                              object:nil];
+                                              object:nil];*/
     
-    [self query];
+    //[self query];
     
     NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
 }
@@ -92,14 +99,14 @@
     // Dispose of any resources that can be recreated.
 }
 
--(void)setsCount:(NSNotification *)note{
+/*-(void)setsCount:(NSNotification *)note{
     NSDictionary *theSetsData = [note userInfo];
     if (theSetsData != nil) {
         self.setsCount = [[theSetsData objectForKey:@"setsCount"]intValue];
         NSLog(@"sets count %d notified", self.setsCount);
     }
     
-}
+}*/
 #pragma mark-Rest View Controller Delegate
 -(void)restIsUp:(RestViewController *)controller {
     [controller.navigationController popViewControllerAnimated:YES];
@@ -154,7 +161,7 @@
     }
 }
 
-#pragma mark-Query
+/*#pragma mark-Query
 -(void)query{
     //Fetch all the objects in the relations and load them into an array
     PFRelation *relation=[self.currentWorkout relationforKey:@"exercise"];
@@ -169,7 +176,7 @@
             NSLog(@"Query error ExerciseVC %@", [error localizedDescription]);
         }
     }];
-}
+}*/
 
 -(void)presentUI{
 //    NSLog(@"present UI %lu %@", (unsigned long)self.exerciseArray.count, self.exerciseArray);
@@ -179,6 +186,7 @@
     self.exercise.goal = [self.exerciseArray objectAtIndex:self.index][@"goal"];
     self.title = self.exercise.name;
     self.goalLabel.text = [NSString stringWithFormat:@"GOAL   %@", self.exercise.goal];
+    self.exercise.repeat=[self.exerciseArray objectAtIndex:self.index][@"repeat"];
     
     [self beginTimer:self.exercise.time];
    
@@ -187,6 +195,9 @@
   
 }
 #pragma mark-IBActions
+
+- (IBAction)workoutTimerStartButtonPressed:(id)sender {
+}
 
 - (IBAction)nextPressed:(id)sender {
 //  Will be invalidated automatically by viewDidDisappear

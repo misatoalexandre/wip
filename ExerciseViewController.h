@@ -20,6 +20,8 @@
 @property  int setsCount;
 @property  int currentSet;
 
+@property BOOL firstExerciseInWorkoutPlan;
+
 //Timer related
 @property (nonatomic, strong) NSTimer *timer;
 @property BOOL timerPaused;
@@ -31,8 +33,9 @@
 @property (weak, nonatomic) IBOutlet UIButton *pauseButton;
 @property (weak, nonatomic) IBOutlet UIButton *lastExerciseButton;
 @property (weak, nonatomic) IBOutlet UILabel *goalLabel;
+@property (weak, nonatomic) IBOutlet UIButton *workoutTimerStartButton;
 
-
+- (IBAction)workoutTimerStartButtonPressed:(id)sender;
 - (IBAction)nextPressed:(id)sender;
 - (IBAction)PausePressed:(id)sender;
 - (IBAction)lastExercisePressed:(id)sender;

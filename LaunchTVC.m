@@ -8,10 +8,14 @@
 
 #import "LaunchTVC.h"
 #import "BeginWorkoutViewController.h"
+#import "EquipmentCell.h"
+#import "ExerciseViewController.h"
+#import <Parse/Parse.h>
 
 @interface LaunchTVC ()
 {
     int _selectedSegment, _selectedRow; // Selected Workout
+    NSArray *equipmentArray;
 }
 @end
 
@@ -32,32 +36,37 @@
 {
     [super viewDidLoad];
    
-    self.selectedSets = @"2";
     
     self.selectedCell = 1;
-    
     _selectedSegment = 0;
     _selectedRow = 0;
     
-    self.selectedSetsLabel.text = [NSString stringWithFormat:@"%@ sets", self.selectedSets];
 
-    self.workoutPlantoBeginId = @"PIp9N5a5Zk";
-    
+    self.selectedSets = @"2";
+    self.selectedSetsLabel.text = [NSString stringWithFormat:@"%@ sets", self.selectedSets];
+    self.workoutPlantoBeginId = @"BSGoaeZrZt";
+
     //Notification sending out
-    NSMutableDictionary *workoutIdDictionary = [[NSMutableDictionary alloc]init];
-    [workoutIdDictionary setObject:self.workoutPlantoBeginId forKey:@"workoutId"];
-    [workoutIdDictionary setObject:self.selectedSets forKey:@"setsCount"];
+    /*NSMutableDictionary *workoutDic = [[NSMutableDictionary alloc]init];
+    [workoutDic setObject:self.workoutPlantoBeginId forKey:@"workoutId"];
+    [workoutDic setObject:self.selectedSets forKey:@"setsCount"];
+    [self query:workoutDic];*/
+    [self query:self.workoutPlantoBeginId];
+    
+    //Collection View Related
+    self.collectionView.delegate=self;
+    self.collectionView.dataSource=self;
+    [self.collectionView reloadData];
     
     //dictionaryWithObject:self.workoutPlantoBeginId forKey:@"workoutId"];
-    
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
+    //[[NSNotificationCenter defaultCenter] postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
 }
 - (void)viewDidAppear:(BOOL)animated{
     
 }
 
-- (void)viewDidDisappear:(BOOL)animated
-{
+- (void)viewDidDisappear:(BOOL)animated{
+    self.collectionView=nil;
 }
 
 - (void)didReceiveMemoryWarning
@@ -68,7 +77,52 @@
 
 - (void)viewDidLayoutSubviews
 {
-//    _containerView.frame = CGRectMake(0, 0, 320, 300);
+    //    _containerView.frame = CGRectMake(0, 0, 320, 300);
+}
+
+-(void)query:(NSString*)workoutId{
+    if (workoutId!=nil) {
+       // self.workoutPlantoBeginId=[workoutDictionary objectForKey:@"workotuId"];
+       self.workoutPlantoBeginId=workoutId;
+        NSLog(@"Query: %@", self.workoutPlantoBeginId);
+        
+       // self.selectedSets=[workoutDictionary objectForKey:@"setsCount"];
+        
+        PFQuery *query=[PFQuery queryWithClassName:@"WorkoutPlans"];
+        [query includeKey:@"exerciseList"];
+        [query includeKey:@"equipmentList"];
+        //query.cachePolicy=kPFCachePolicyCacheEleseNetwork;
+        [query getObjectInBackgroundWithId:self.workoutPlantoBeginId block:^(PFObject *object, NSError *error){
+            if (!error) {
+               
+                self.currentWorkout=object;
+                [self UpdateUserInterface:self.currentWorkout];
+            }else if (error){
+                NSLog(@"error in query Launch TVC: %@", [error localizedDescription]);
+            }
+        }];
+    }
+    
+}
+-(void)UpdateUserInterface:(PFObject *)object{
+    if (object!=nil) {
+        dispatch_async(dispatch_get_main_queue(), ^{
+            self.workoutTitleLabel.text=[self.currentWorkout objectForKey:@"title"];
+            equipmentArray=[self.currentWorkout objectForKey:@"equipmentList"];
+            if (!equipmentArray) {
+                if ([[self.currentWorkout objectForKey:@"Location"]isEqualToString:@"Gym"]) {
+                    self.equipmentLabel.text=@"Gym Workout";
+                    self.collectionView=nil;
+                }else if ([[self.currentWorkout objectForKey:@"Location"]isEqualToString:@"Home"]){
+                    self.equipmentLabel.text=@"No Equipments Required";
+                    self.collectionView=nil;
+                }
+            }else{
+                self.equipmentLabel.text=nil;
+                [self.collectionView reloadData];
+            }
+        });
+    }
 }
 
 #pragma mark - Navigation
@@ -86,8 +140,44 @@
         selectVC.delegate = self;
         selectVC.selectedRow = _selectedRow;
         selectVC.selectedSegment = _selectedSegment;
+    }else if ([segue.identifier isEqualToString:@"start"]){
+        ExerciseViewController *exerciseVC=(ExerciseViewController*)[segue destinationViewController];
+        exerciseVC.currentWorkout=self.currentWorkout;
+        exerciseVC.setsCount=[self.selectedSets intValue];
+        NSLog(@"SetsCount: %@",self.selectedSets);
+        exerciseVC.firstExerciseInWorkoutPlan=YES;
     }
 }
+#pragma mark-UICollectionView Data Source
+-(NSInteger) numberofSelectionsInCollectionView:(UICollectionView *)collectionView{
+    return 1;
+}
+
+-(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
+    
+    return equipmentArray.count;
+}
+
+-(UICollectionViewCell *) collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath{
+    
+    static NSString *cellIdentifier=@"Cell";
+    
+    //Add Custom Cell here
+   EquipmentCell *cell=(EquipmentCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
+    
+    //Configure the cell
+    
+    cell.equipmentNameLabel.text=[[equipmentArray objectAtIndex:indexPath.row]objectForKey:@"name"];
+    cell.imageView.file=[[equipmentArray objectAtIndex:indexPath.row]objectForKey:@"equipmentImageFile"];
+    [cell.imageView loadInBackground];
+    
+    return cell;
+    equipmentArray=nil;
+    self.collectionView=nil;
+    cell.imageView.file=nil;
+}
+
+
 
 #pragma mark-SetsTVC Delegate Method
 -(void)setsSelected:(NSDictionary *)sets{
@@ -110,6 +200,8 @@
     [workoutIdDictionary setObject:self.workoutPlantoBeginId forKey:@"workoutId"];
     [workoutIdDictionary setObject:self.selectedSets forKey:@"setsCount"];
     
+    [self query:self.workoutPlantoBeginId];
+    //[self query:workoutIdDictionary];
     //dictionaryWithObject:self.workoutPlantoBeginId forKey:@"workoutId"];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
@@ -121,4 +213,6 @@
     _selectedSegment = [data[@"section"] intValue];
 }
 
+- (IBAction)startPressed:(id)sender {
+}
 @end
