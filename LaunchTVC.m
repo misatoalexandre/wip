@@ -38,19 +38,13 @@
    
     
     self.selectedCell = 1;
-    _selectedSegment = 0;
+    _selectedSegment = 1;
     _selectedRow = 0;
     
 
     self.selectedSets = @"2";
     self.selectedSetsLabel.text = [NSString stringWithFormat:@"%@ sets", self.selectedSets];
-    self.workoutPlantoBeginId = @"BSGoaeZrZt";
-
-    //Notification sending out
-    /*NSMutableDictionary *workoutDic = [[NSMutableDictionary alloc]init];
-    [workoutDic setObject:self.workoutPlantoBeginId forKey:@"workoutId"];
-    [workoutDic setObject:self.selectedSets forKey:@"setsCount"];
-    [self query:workoutDic];*/
+    self.workoutPlantoBeginId = @"wmpDYvJ1qz";
     [self query:self.workoutPlantoBeginId];
     
     //Collection View Related
@@ -58,8 +52,7 @@
     self.collectionView.dataSource=self;
     [self.collectionView reloadData];
     
-    //dictionaryWithObject:self.workoutPlantoBeginId forKey:@"workoutId"];
-    //[[NSNotificationCenter defaultCenter] postNotificationName:@"Passing selected workout ID" object:self userInfo:workoutIdDictionary];
+    
 }
 - (void)viewDidAppear:(BOOL)animated{
     
@@ -67,6 +60,7 @@
 
 - (void)viewDidDisappear:(BOOL)animated{
     self.collectionView=nil;
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -82,11 +76,9 @@
 
 -(void)query:(NSString*)workoutId{
     if (workoutId!=nil) {
-       // self.workoutPlantoBeginId=[workoutDictionary objectForKey:@"workotuId"];
+      
        self.workoutPlantoBeginId=workoutId;
         NSLog(@"Query: %@", self.workoutPlantoBeginId);
-        
-       // self.selectedSets=[workoutDictionary objectForKey:@"setsCount"];
         
         PFQuery *query=[PFQuery queryWithClassName:@"WorkoutPlans"];
         [query includeKey:@"exerciseList"];
@@ -94,7 +86,6 @@
         //query.cachePolicy=kPFCachePolicyCacheEleseNetwork;
         [query getObjectInBackgroundWithId:self.workoutPlantoBeginId block:^(PFObject *object, NSError *error){
             if (!error) {
-               
                 self.currentWorkout=object;
                 [self UpdateUserInterface:self.currentWorkout];
             }else if (error){
@@ -106,10 +97,17 @@
 }
 -(void)UpdateUserInterface:(PFObject *)object{
     if (object!=nil) {
-        dispatch_async(dispatch_get_main_queue(), ^{
+       //main que
             self.workoutTitleLabel.text=[self.currentWorkout objectForKey:@"title"];
             equipmentArray=[self.currentWorkout objectForKey:@"equipmentList"];
-            if (!equipmentArray) {
+            NSLog(@"equipmentArray: %@", equipmentArray);
+        if (equipmentArray) {
+            NSLog(@"BB:");
+            self.equipmentLabel.text=@"You'll need";
+            [self.collectionView reloadData];
+        }
+        else if (!equipmentArray) {
+                NSLog(@"AA:");
                 if ([[self.currentWorkout objectForKey:@"Location"]isEqualToString:@"Gym"]) {
                     self.equipmentLabel.text=@"Gym Workout";
                     self.collectionView=nil;
@@ -117,11 +115,8 @@
                     self.equipmentLabel.text=@"No Equipments Required";
                     self.collectionView=nil;
                 }
-            }else{
-                self.equipmentLabel.text=nil;
-                [self.collectionView reloadData];
             }
-        });
+     
     }
 }
 
@@ -154,7 +149,7 @@
 }
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    
+    NSLog(@"%d", equipmentArray.count);
     return equipmentArray.count;
 }
 
@@ -166,15 +161,13 @@
    EquipmentCell *cell=(EquipmentCell*)[collectionView dequeueReusableCellWithReuseIdentifier:cellIdentifier forIndexPath:indexPath];
     
     //Configure the cell
-    
+    NSLog(@"CC");
     cell.equipmentNameLabel.text=[[equipmentArray objectAtIndex:indexPath.row]objectForKey:@"name"];
     cell.imageView.file=[[equipmentArray objectAtIndex:indexPath.row]objectForKey:@"equipmentImageFile"];
     [cell.imageView loadInBackground];
     
     return cell;
-    equipmentArray=nil;
-    self.collectionView=nil;
-    cell.imageView.file=nil;
+    
 }
 
 

@@ -43,8 +43,13 @@
     
     [self.collectionView reloadData];
     NSLog(@"array check. Current Index  %lu, %@ count %lu",(unsigned long)self.index, self.exerciseArray, self.exerciseArray.count);
+    UIBarButtonItem *backButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endWorkout)];
+    self.navigationItem.rightBarButtonItem = backButton;
+    self.navigationItem.rightBarButtonItem =backButton;
 }
-
+-(void)endWorkout{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

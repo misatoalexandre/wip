@@ -50,8 +50,8 @@
     }
     if (self.firstExerciseInWorkoutPlan==NO) {
         NSLog(@"First Exercise %d", self.firstExerciseInWorkoutPlan);
-        //[self timerAndSoundBegins];
-        //[Player Play];
+        [self timerAndSoundBegins];
+        [player play];
     }
 }
 
@@ -68,10 +68,6 @@
     self.index = 0;
     self.currentSet = 1;
     
-    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"clock" ofType:@"mp3"];
-    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
-    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
-    player.numberOfLoops = -1;
     
     self.exerciseImage.contentMode = UIViewContentModeScaleAspectFit;
     
@@ -87,10 +83,19 @@
     //[self query];
     
     NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
-}
+    
+    //End Workout Bar Button
+    UIBarButtonItem *backButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endWorkout)];
+    self.navigationItem.rightBarButtonItem = backButton;
+    
+    self.nextButton.enabled=NO;
 
+}
+-(void)endWorkout{
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
 -(void)dealloc{
-    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    //[[NSNotificationCenter defaultCenter]removeObserver:self];
     self.timer=nil;
 }
 - (void)didReceiveMemoryWarning
@@ -110,6 +115,7 @@
 #pragma mark-Rest View Controller Delegate
 -(void)restIsUp:(RestViewController *)controller {
     [controller.navigationController popViewControllerAnimated:YES];
+    self.firstExerciseInWorkoutPlan=NO;
     if (controller.index<self.exerciseArray.count-1) {
          self.index=controller.index;
         lastExercise=NO;
@@ -188,15 +194,28 @@
     self.goalLabel.text = [NSString stringWithFormat:@"GOAL   %@", self.exercise.goal];
     self.exercise.repeat=[self.exerciseArray objectAtIndex:self.index][@"repeat"];
     
-    [self beginTimer:self.exercise.time];
+    //[self beginTimer:self.exercise.time];
    
     self.exerciseImage.file = self.exercise.imageFile;
     [self.exerciseImage loadInBackground];
   
 }
+-(void)timerAndSoundBegins{
+    [self beginTimer:self.exercise.time];
+    NSString *soundFilePath = [[NSBundle mainBundle] pathForResource:@"clock" ofType:@"mp3"];
+    NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+    player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+    player.numberOfLoops = -1;
+
+}
 #pragma mark-IBActions
 
 - (IBAction)workoutTimerStartButtonPressed:(id)sender {
+    [self timerAndSoundBegins];
+    [player play];
+    self.workoutTimerStartButton.hidden=YES;
+    self.firstExerciseInWorkoutPlan=NO;
+    self.nextButton.enabled=YES;
 }
 
 - (IBAction)nextPressed:(id)sender {
