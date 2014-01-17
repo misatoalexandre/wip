@@ -7,7 +7,6 @@
 //
 
 #import "LaunchTVC.h"
-//#import "BeginWorkoutViewController.h"
 #import "EquipmentCell.h"
 #import "ExerciseViewController.h"
 #import <Parse/Parse.h>
@@ -104,18 +103,19 @@
             self.selectedWorkoutLabel.text=[pfObject objectForKey:@"title"];
             
             equipmentArray=[pfObject objectForKey:@"equipmentList"];
+            [self.collectionView reloadData];
             if (equipmentArray) {
                 NSLog(@"AA: %@", equipmentArray);
-                [self.collectionView reloadData];
+                //[self.collectionView reloadData];
                 self.equipmentLabel.text=@"You'll need";
             }
             else if (!equipmentArray) {
                 if ([[pfObject objectForKey:@"Location"] isEqualToString:@"Gym"]) {
                     self.equipmentLabel.text=@"Gym Workout";
-                    self.collectionView.hidden=YES;
+                    //self.collectionView.hidden=YES;
                 }else if ([[pfObject objectForKey:@"Location"]isEqualToString:@"Home"]){
                     self.equipmentLabel.text=@"No Equipments Required";
-                    self.collectionView.hidden=YES;
+                    //self.collectionView.hidden=YES;
                 }
             }        }
                        );}
@@ -151,7 +151,10 @@
 }
 
 -(NSInteger) collectionView:(UICollectionView *)collectionView numberOfItemsInSection:(NSInteger)section{
-    NSLog(@"%d", equipmentArray.count);
+    NSLog(@"%d", (unsigned)equipmentArray.count);
+    if (!equipmentArray) {
+       return 1;
+    }else
     return equipmentArray.count;
 }
 
@@ -164,9 +167,15 @@
     
     //Configure the cell
     NSLog(@"CC");
-    cell.equipmentNameLabel.text=[[equipmentArray objectAtIndex:indexPath.row]objectForKey:@"name"];
-    cell.imageView.file=[[equipmentArray objectAtIndex:indexPath.row]objectForKey:@"equipmentImageFile"];
-    [cell.imageView loadInBackground];
+    if (equipmentArray) {
+        cell.equipmentNameLabel.text=[[equipmentArray objectAtIndex:indexPath.row]objectForKey:@"name"];
+        cell.imageView.file=[[equipmentArray objectAtIndex:indexPath.row]objectForKey:@"equipmentImageFile"];
+        [cell.imageView loadInBackground];
+    }else if (!equipmentArray){
+        cell.equipmentNameLabel.text=nil;
+        cell.imageView.image=nil;
+        }
+   
     
     return cell;
     
