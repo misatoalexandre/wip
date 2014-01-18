@@ -189,6 +189,7 @@
     self.selectedSets = sets[@"SelectedSets"];
     self.selectedCell = [sets[@"SelectedCell"] intValue];
     
+    
     if ([self.selectedSets isEqualToString:@"1"]) {
         self.selectedSetsLabel.text=[NSString stringWithFormat:@"%@ set", self.selectedSets];
     } else{
