@@ -137,6 +137,7 @@
         selectVC.delegate = self;
         selectVC.selectedRow = _selectedRow;
         selectVC.selectedSegment = _selectedSegment;
+        
     }else if ([segue.identifier isEqualToString:@"start"]){
         ExerciseViewController *exerciseVC=(ExerciseViewController*)[segue destinationViewController];
         exerciseVC.currentWorkout=self.currentWorkout;

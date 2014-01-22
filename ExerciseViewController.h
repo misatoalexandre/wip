@@ -10,8 +10,13 @@
 #import <Parse/Parse.h>
 #import "Exercise.h"
 #import "RestViewController.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
-@interface ExerciseViewController : UIViewController<RestVCDelegate>
+
+@interface ExerciseViewController : UIViewController<RestVCDelegate, AVAudioPlayerDelegate>
+
+
 
 @property (nonatomic, strong) PFObject *currentWorkout;
 @property (nonatomic, strong) Exercise *exercise;

@@ -14,6 +14,13 @@
 		4A5B6BE818782CF600368FB3 /* clock.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 4A5B6BE718782CF600368FB3 /* clock.mp3 */; };
 		4A5B6BEA18782DAB00368FB3 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A5B6BE918782DAB00368FB3 /* AVFoundation.framework */; };
 		4A64C07318729C4F0009FA94 /* Parse.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4A64C07218729C4F0009FA94 /* Parse.framework */; };
+		53122A0C188DDE5C009E987E /* SupportDetailVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 53122A0B188DDE5C009E987E /* SupportDetailVC.m */; };
+		53122A0E188F0493009E987E /* MessageUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 53122A0D188F0493009E987E /* MessageUI.framework */; };
+		53122A10188F0573009E987E /* SweatLogo.png in Resources */ = {isa = PBXBuildFile; fileRef = 53122A0F188F0573009E987E /* SweatLogo.png */; };
+		53122A12188F1A01009E987E /* rest-2.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53122A11188F1A01009E987E /* rest-2.mp3 */; };
+		53122A14188F1A66009E987E /* EndofRest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53122A13188F1A66009E987E /* EndofRest.mp3 */; };
+		53122A16188F1A7C009E987E /* FirstExerciseinWorkout.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53122A15188F1A7C009E987E /* FirstExerciseinWorkout.mp3 */; };
+		53122A18188F1A8D009E987E /* switchSides.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53122A17188F1A8D009E987E /* switchSides.mp3 */; };
 		5320920B18687FBE009B4F50 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5320920A18687FBE009B4F50 /* Workout.m */; };
 		535869D6185F5BE700B77920 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D4185F5BE700B77920 /* settings.png */; };
 		535869D7185F5BE700B77920 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D5185F5BE700B77920 /* settings@2x.png */; };
@@ -87,6 +94,14 @@
 		4A5B6BE718782CF600368FB3 /* clock.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = clock.mp3; sourceTree = SOURCE_ROOT; };
 		4A5B6BE918782DAB00368FB3 /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		4A64C07218729C4F0009FA94 /* Parse.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = Parse.framework; sourceTree = "<group>"; };
+		53122A0A188DDE5C009E987E /* SupportDetailVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SupportDetailVC.h; sourceTree = "<group>"; };
+		53122A0B188DDE5C009E987E /* SupportDetailVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SupportDetailVC.m; sourceTree = "<group>"; };
+		53122A0D188F0493009E987E /* MessageUI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MessageUI.framework; path = System/Library/Frameworks/MessageUI.framework; sourceTree = SDKROOT; };
+		53122A0F188F0573009E987E /* SweatLogo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = SweatLogo.png; sourceTree = "<group>"; };
+		53122A11188F1A01009E987E /* rest-2.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; name = "rest-2.mp3"; path = "../rest-2.mp3"; sourceTree = "<group>"; };
+		53122A13188F1A66009E987E /* EndofRest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = EndofRest.mp3; sourceTree = "<group>"; };
+		53122A15188F1A7C009E987E /* FirstExerciseinWorkout.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = FirstExerciseinWorkout.mp3; sourceTree = "<group>"; };
+		53122A17188F1A8D009E987E /* switchSides.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switchSides.mp3; sourceTree = "<group>"; };
 		5320920918687FBE009B4F50 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		5320920A18687FBE009B4F50 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		535869D4185F5BE700B77920 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
@@ -111,8 +126,8 @@
 		535C5DF1186B19820063C256 /* Exercise.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Exercise.m; sourceTree = "<group>"; };
 		535C5DFF186E34470063C256 /* EndPageVC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = EndPageVC.h; path = ../EndPageVC.h; sourceTree = "<group>"; };
 		535C5E00186E34470063C256 /* EndPageVC.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = EndPageVC.m; path = ../EndPageVC.m; sourceTree = "<group>"; };
-		53844EF4187058A700D24240 /* SelectWorkoutTVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SelectWorkoutTVCViewController.h; sourceTree = "<group>"; };
-		53844EF5187058A700D24240 /* SelectWorkoutTVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SelectWorkoutTVCViewController.m; sourceTree = "<group>"; };
+		53844EF4187058A700D24240 /* SelectWorkoutTVCViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = SelectWorkoutTVCViewController.h; path = ../SelectWorkoutTVCViewController.h; sourceTree = "<group>"; };
+		53844EF5187058A700D24240 /* SelectWorkoutTVCViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = SelectWorkoutTVCViewController.m; path = ../SelectWorkoutTVCViewController.m; sourceTree = "<group>"; };
 		53844EFC18706B1C00D24240 /* START Round Corner Pink Font (1).png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "START Round Corner Pink Font (1).png"; sourceTree = "<group>"; };
 		5387817B185DE3AB00641237 /* FitwirrApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FitwirrApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5387817E185DE3AB00641237 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -161,6 +176,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				53122A0E188F0493009E987E /* MessageUI.framework in Frameworks */,
 				4A5B6BEA18782DAB00368FB3 /* AVFoundation.framework in Frameworks */,
 				53AEAB7A18615382006E0D48 /* StoreKit.framework in Frameworks */,
 				53AEAB9A18637A9D006E0D48 /* SystemConfiguration.framework in Frameworks */,
@@ -225,6 +241,7 @@
 		535869E4185F5D1F00B77920 /* Icons */ = {
 			isa = PBXGroup;
 			children = (
+				53122A0F188F0573009E987E /* SweatLogo.png */,
 				535869E0185F5C5C00B77920 /* check.png */,
 				535869E1185F5C5C00B77920 /* check@2x.png */,
 				535869DC185F5C2800B77920 /* menu.png */,
@@ -259,6 +276,8 @@
 		535C5DEE1869D6820063C256 /* Selections TVC */ = {
 			isa = PBXGroup;
 			children = (
+				53844EF4187058A700D24240 /* SelectWorkoutTVCViewController.h */,
+				53844EF5187058A700D24240 /* SelectWorkoutTVCViewController.m */,
 				535C5DE81869BD8F0063C256 /* SetsTVC.h */,
 				535C5DE91869BD8F0063C256 /* SetsTVC.m */,
 			);
@@ -278,13 +297,15 @@
 			name = WorkoutWalkThrough;
 			sourceTree = "<group>";
 		};
-		53844EF718705A9F00D24240 /* Workout Selection */ = {
+		53844EF718705A9F00D24240 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				53844EF4187058A700D24240 /* SelectWorkoutTVCViewController.h */,
-				53844EF5187058A700D24240 /* SelectWorkoutTVCViewController.m */,
+				539D296D187211C20015B46A /* SettingTVC.h */,
+				539D296E187211C20015B46A /* SettingTVC.m */,
+				53122A0A188DDE5C009E987E /* SupportDetailVC.h */,
+				53122A0B188DDE5C009E987E /* SupportDetailVC.m */,
 			);
-			name = "Workout Selection";
+			name = Support;
 			path = ..;
 			sourceTree = "<group>";
 		};
@@ -292,8 +313,6 @@
 			isa = PBXGroup;
 			children = (
 				53586A241860142600B77920 /* New.storyboard */,
-				539D296D187211C20015B46A /* SettingTVC.h */,
-				539D296E187211C20015B46A /* SettingTVC.m */,
 				53878184185DE3AB00641237 /* FitwirrApp */,
 				4A0E1E031876B53A0041A8B4 /* MBProgressHUD */,
 				538781A3185DE3AB00641237 /* FitwirrAppTests */,
@@ -314,6 +333,7 @@
 		5387817D185DE3AB00641237 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				53122A0D188F0493009E987E /* MessageUI.framework */,
 				4A5B6BE918782DAB00368FB3 /* AVFoundation.framework */,
 				4A64C07218729C4F0009FA94 /* Parse.framework */,
 				53AEAB9918637A9D006E0D48 /* SystemConfiguration.framework */,
@@ -341,7 +361,7 @@
 				535C5DE518696D3E0063C256 /* LaunchTVC.h */,
 				535C5DE618696D3E0063C256 /* LaunchTVC.m */,
 				535C5DEF1869D69C0063C256 /* WorkoutWalkThrough */,
-				53844EF718705A9F00D24240 /* Workout Selection */,
+				53844EF718705A9F00D24240 /* Support */,
 				535C5DEE1869D6820063C256 /* Selections TVC */,
 				5320920D1868A572009B4F50 /* Cells */,
 				53C0857318884CF900D19639 /* IAP */,
@@ -357,6 +377,10 @@
 			isa = PBXGroup;
 			children = (
 				4A5B6BE718782CF600368FB3 /* clock.mp3 */,
+				53122A13188F1A66009E987E /* EndofRest.mp3 */,
+				53122A15188F1A7C009E987E /* FirstExerciseinWorkout.mp3 */,
+				53122A17188F1A8D009E987E /* switchSides.mp3 */,
+				53122A11188F1A01009E987E /* rest-2.mp3 */,
 				535869E7185F5D6200B77920 /* Photos */,
 				535869E6185F5D5500B77920 /* Other Accessories */,
 				535869E4185F5D1F00B77920 /* Icons */,
@@ -503,6 +527,7 @@
 				539D296718714B750015B46A /* Pause button blue.png in Resources */,
 				535869FB185F6BE800B77920 /* WHITE LINE.png in Resources */,
 				535869DD185F5C2800B77920 /* menu.png in Resources */,
+				53122A10188F0573009E987E /* SweatLogo.png in Resources */,
 				535869DF185F5C4100B77920 /* menu@2x.png in Resources */,
 				53878197185DE3AB00641237 /* Images.xcassets in Resources */,
 				535869E2185F5C5C00B77920 /* check.png in Resources */,
@@ -511,11 +536,15 @@
 				53878189185DE3AB00641237 /* InfoPlist.strings in Resources */,
 				539D296A187204560015B46A /* FitwirrIcon120.png in Resources */,
 				53586A251860142600B77920 /* New.storyboard in Resources */,
+				53122A16188F1A7C009E987E /* FirstExerciseinWorkout.mp3 in Resources */,
 				535869D6185F5BE700B77920 /* settings.png in Resources */,
+				53122A14188F1A66009E987E /* EndofRest.mp3 in Resources */,
 				4A5B6BE818782CF600368FB3 /* clock.mp3 in Resources */,
 				535869D7185F5BE700B77920 /* settings@2x.png in Resources */,
+				53122A18188F1A8D009E987E /* switchSides.mp3 in Resources */,
 				539D296818714B750015B46A /* play button blue.png in Resources */,
 				539D29641871491E0015B46A /* Next Button.png in Resources */,
+				53122A12188F1A01009E987E /* rest-2.mp3 in Resources */,
 				535869E3185F5C5C00B77920 /* check@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -542,6 +571,7 @@
 				4A4FEC6C1885602700176E17 /* WorkoutCell.m in Sources */,
 				53586A19185F930500B77920 /* RestViewController.m in Sources */,
 				53C0857218884C2D00D19639 /* EquipmentCell.m in Sources */,
+				53122A0C188DDE5C009E987E /* SupportDetailVC.m in Sources */,
 				53AEAB8718635523006E0D48 /* PurchaseVC.m in Sources */,
 				53AEABB51865631B006E0D48 /* ExerciseViewController.m in Sources */,
 				535C5DE718696D3E0063C256 /* LaunchTVC.m in Sources */,

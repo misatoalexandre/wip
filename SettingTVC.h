@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import <MessageUI/MessageUI.h>
 
-@interface SettingTVC : UITableViewController
+@interface SettingTVC : UITableViewController<MFMailComposeViewControllerDelegate>
+@property (weak, nonatomic) IBOutlet UITableViewCell *shareCell;
+@property (weak, nonatomic) IBOutlet UITableViewCell *contactCell;
 
 @end

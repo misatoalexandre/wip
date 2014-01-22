@@ -245,11 +245,11 @@
     } else {
         if(_delegate != nil && [_delegate respondsToSelector:@selector(workoutSelected:)])
         {
-            /*NSString *segment;
+            NSString *segment;
             if(_segmentedControl.selectedSegmentIndex == 0)
                 segment = @"Abs";
             else
-                segment = @"Butts";*/
+                segment = @"Butts";
             
             [_delegate setWorkoutIndexPath:@{@"row": [NSNumber numberWithInteger:indexPath.row], @"segment":[NSNumber numberWithInteger:_segmentedControl.selectedSegmentIndex]}];
             if(indexPath.row == 0)

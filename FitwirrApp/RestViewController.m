@@ -10,13 +10,17 @@
 #import <QuartzCore/QuartzCore.h>
 #import "RestCell.h"
 #import "Exercise.h"
+#import <AudioToolbox/AudioToolbox.h>
+#import <AVFoundation/AVFoundation.h>
 
+#define SetUpAudio  @"EndofRest"
 
 @interface RestViewController ()
 {
     NSDate *pauseStart;
     NSDate *previousFireDate;
     int seconds;
+    AVAudioPlayer *player;
 }
 
 @end
@@ -36,6 +40,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self beginTimer];
     [self displayNextExerciseInLarge:self.index];
     self.setsLabel.text=[NSString stringWithFormat:@"%d / %d sets", self.currentSet, self.setsCount];
@@ -90,12 +95,17 @@
     
 }
 -(void)timerFireMethods:(NSTimer *)theTimer{
+    if (seconds==9) {
+        
+        [self timerAndSoundBegins:SetUpAudio loopCount:0];
+    }
     if (seconds >= 0) {
         self.timeDisplay.text = [NSString stringWithFormat:@"%02d:%02d", seconds / 60, seconds % 60];
         seconds--;
     } else {
         [self.timer invalidate];
         [self.delegate restIsUp:self];
+        [player stop];
     }
 }
 -(void)beginTimer{
@@ -107,6 +117,18 @@
                                                repeats:YES];
     seconds = 20;
 }
+-(void)timerAndSoundBegins:(NSString*)audioFile loopCount:(int)loopCount {
+        
+        NSString *soundFilePath=[[NSBundle mainBundle]pathForResource:audioFile ofType:@"mp3"];
+        NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
+        player = [[AVAudioPlayer alloc] initWithContentsOfURL:soundFileURL error:nil];
+        
+        player.numberOfLoops=loopCount;
+        [player play];
+        
+    
+    }
+
 #pragma mark-UICollectionView Data Source
 -(NSInteger) numberofSelectionsInCollectionView:(UICollectionView *)collectionView{
     return 1;
