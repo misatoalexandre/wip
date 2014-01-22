@@ -146,6 +146,18 @@
                                                repeats:YES];    
 }
 -(void)timerFireMethods:(NSTimer *)theTimer{
+    if (self.exercise.repeat==[NSNumber numberWithBool:YES]) {
+        NSLog(@"Repeat came through");
+        if (seconds==[self.exercise.time intValue]/2) {
+            [player stop];
+            pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
+            previousFireDate = [self.timer fireDate];
+            [self.timer setFireDate:[NSDate distantFuture]];
+            [self timerAndSoundBegins:switchSidesAudio loopCount:0 audioFileCount:0];
+            
+        }
+    }
+    
     
     if (seconds==9) {
         [player stop];
@@ -165,7 +177,7 @@
 }
 #pragma mark-UI Related
 -(void)presentUI{
-//  NSLog(@"present UI %lu %@", (unsigned long)self.exerciseArray.count, self.exerciseArray);
+
     self.exercise.name = [self.exerciseArray objectAtIndex:self.index][@"name"];
     self.exercise.imageFile = [self.exerciseArray objectAtIndex:self.index][@"image"];
     self.exercise.time = [self.exerciseArray objectAtIndex:self.index][@"time"];
@@ -184,7 +196,7 @@
     [self timerAndSoundBegins:SetUpAudio loopCount:0 audioFileCount:0];
   
     self.workoutTimerStartButton.hidden=YES;
-    self.firstExerciseInWorkoutPlan=NO;
+    //self.firstExerciseInWorkoutPlan=NO;
     self.nextButton.enabled=YES;
 }
 #pragma mark- Audio
@@ -204,11 +216,20 @@
     }else if  (audioFileCount==2){
         [self.timer invalidate];
         [self beginTimer:[NSNumber numberWithInt:8]];
+    }else if (audioFileCount==3){
+        float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
+        [self.timer setFireDate:[ NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
     };
     
 }
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-    [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:1];
+    if (self.firstExerciseInWorkoutPlan) {
+        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:1];
+    }else {
+        [player stop];
+        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:3];
+
+    }
 }
 
 - (IBAction)nextPressed:(id)sender {
@@ -257,7 +278,7 @@
     }
     if ([segue.identifier isEqualToString:@"end"]) {
         EndPageVC *lastVC = (EndPageVC *)[segue destinationViewController];
-        lastVC.title = @"YOU DID IT!";
+        lastVC.title = @"Workout Complete!";
     }
     
 }

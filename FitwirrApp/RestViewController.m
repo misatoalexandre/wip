@@ -95,7 +95,7 @@
     
 }
 -(void)timerFireMethods:(NSTimer *)theTimer{
-    if (seconds==9) {
+    if (seconds==10) {
         
         [self timerAndSoundBegins:SetUpAudio loopCount:0];
     }
