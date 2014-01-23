@@ -22,6 +22,9 @@
 		53122A16188F1A7C009E987E /* FirstExerciseinWorkout.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53122A15188F1A7C009E987E /* FirstExerciseinWorkout.mp3 */; };
 		53122A18188F1A8D009E987E /* switchSides.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53122A17188F1A8D009E987E /* switchSides.mp3 */; };
 		5320920B18687FBE009B4F50 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5320920A18687FBE009B4F50 /* Workout.m */; };
+		53495B131890E384007F7E84 /* switchSidesCut.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53495B121890E384007F7E84 /* switchSidesCut.mp3 */; };
+		53495B151890EA85007F7E84 /* Last5secs.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53495B141890EA85007F7E84 /* Last5secs.mp3 */; };
+		53495B171890EEE6007F7E84 /* checkmark-128.png in Resources */ = {isa = PBXBuildFile; fileRef = 53495B161890EEE6007F7E84 /* checkmark-128.png */; };
 		535869D6185F5BE700B77920 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D4185F5BE700B77920 /* settings.png */; };
 		535869D7185F5BE700B77920 /* settings@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D5185F5BE700B77920 /* settings@2x.png */; };
 		535869DD185F5C2800B77920 /* menu.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869DC185F5C2800B77920 /* menu.png */; };
@@ -104,6 +107,9 @@
 		53122A17188F1A8D009E987E /* switchSides.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switchSides.mp3; sourceTree = "<group>"; };
 		5320920918687FBE009B4F50 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		5320920A18687FBE009B4F50 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
+		53495B121890E384007F7E84 /* switchSidesCut.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = switchSidesCut.mp3; sourceTree = "<group>"; };
+		53495B141890EA85007F7E84 /* Last5secs.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Last5secs.mp3; sourceTree = "<group>"; };
+		53495B161890EEE6007F7E84 /* checkmark-128.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "checkmark-128.png"; sourceTree = "<group>"; };
 		535869D4185F5BE700B77920 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
 		535869D5185F5BE700B77920 /* settings@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "settings@2x.png"; sourceTree = "<group>"; };
 		535869DC185F5C2800B77920 /* menu.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = menu.png; sourceTree = "<group>"; };
@@ -242,6 +248,7 @@
 			isa = PBXGroup;
 			children = (
 				53122A0F188F0573009E987E /* SweatLogo.png */,
+				53495B161890EEE6007F7E84 /* checkmark-128.png */,
 				535869E0185F5C5C00B77920 /* check.png */,
 				535869E1185F5C5C00B77920 /* check@2x.png */,
 				535869DC185F5C2800B77920 /* menu.png */,
@@ -377,6 +384,8 @@
 			isa = PBXGroup;
 			children = (
 				4A5B6BE718782CF600368FB3 /* clock.mp3 */,
+				53495B141890EA85007F7E84 /* Last5secs.mp3 */,
+				53495B121890E384007F7E84 /* switchSidesCut.mp3 */,
 				53122A13188F1A66009E987E /* EndofRest.mp3 */,
 				53122A15188F1A7C009E987E /* FirstExerciseinWorkout.mp3 */,
 				53122A17188F1A8D009E987E /* switchSides.mp3 */,
@@ -530,14 +539,17 @@
 				53122A10188F0573009E987E /* SweatLogo.png in Resources */,
 				535869DF185F5C4100B77920 /* menu@2x.png in Resources */,
 				53878197185DE3AB00641237 /* Images.xcassets in Resources */,
+				53495B131890E384007F7E84 /* switchSidesCut.mp3 in Resources */,
 				535869E2185F5C5C00B77920 /* check.png in Resources */,
 				53AEAB9E1864C6B7006E0D48 /* light pink #fef9ffff.png in Resources */,
 				53844EFD18706B1C00D24240 /* START Round Corner Pink Font (1).png in Resources */,
+				53495B151890EA85007F7E84 /* Last5secs.mp3 in Resources */,
 				53878189185DE3AB00641237 /* InfoPlist.strings in Resources */,
 				539D296A187204560015B46A /* FitwirrIcon120.png in Resources */,
 				53586A251860142600B77920 /* New.storyboard in Resources */,
 				53122A16188F1A7C009E987E /* FirstExerciseinWorkout.mp3 in Resources */,
 				535869D6185F5BE700B77920 /* settings.png in Resources */,
+				53495B171890EEE6007F7E84 /* checkmark-128.png in Resources */,
 				53122A14188F1A66009E987E /* EndofRest.mp3 in Resources */,
 				4A5B6BE818782CF600368FB3 /* clock.mp3 in Resources */,
 				535869D7185F5BE700B77920 /* settings@2x.png in Resources */,

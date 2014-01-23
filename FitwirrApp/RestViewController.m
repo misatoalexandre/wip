@@ -5,7 +5,7 @@
 //  Created by Misato Tina Alexandre on 12/16/13.
 //  Copyright (c) 2013 Misato Tina Alexandre. All rights reserved.
 //
-#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:0.4]
+#define UIColorFromRGB(rgbValue) [UIColor colorWithRed:((float)((rgbValue & 0xFF0000) >> 16))/255.0 green:((float)((rgbValue & 0xFF00) >> 8))/255.0 blue:((float)(rgbValue & 0xFF))/255.0 alpha:0.6]
 #import "RestViewController.h"
 #import <QuartzCore/QuartzCore.h>
 #import "RestCell.h"
@@ -35,8 +35,6 @@
     }
     return self;
 }
-
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -49,10 +47,15 @@
     [self.collectionView reloadData];
     NSLog(@"array check. Current Index  %lu, %@ count %lu",(unsigned long)self.index, self.exerciseArray, (unsigned long)self.exerciseArray.count);
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endWorkout)];
-    self.navigationItem.rightBarButtonItem = backButton;
     self.navigationItem.rightBarButtonItem =backButton;
 }
+-(void)viewDidDisappear:(BOOL)animated{
+    self.timer=nil;
+    player=nil;
+}
 -(void)endWorkout{
+    [player stop];
+    [self.timer invalidate];
     [self.navigationController popToRootViewControllerAnimated:YES];
 }
 - (void)didReceiveMemoryWarning
@@ -65,10 +68,6 @@
     self.nextExerciseImage.file=[[self.exerciseArray objectAtIndex:index]objectForKey:@"image"];
     [self.nextExerciseImage loadInBackground];
 }
-- (IBAction)timerPressed:(id)sender {
-    [self.timer invalidate];
-    [self.delegate restIsUp:self];
-}
 
 
 #pragma mark-Timer
@@ -77,32 +76,40 @@
     if (self.timerPaused == NO) {
         self.timerPaused = YES;
         [self.pauseButton setImage:[UIImage imageNamed:@"play button blue.png"] forState:UIControlStateNormal];
-       // [self.timerButton setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-       // [self.timerButton setTitle:@"Paused" forState:UIControlStateNormal];
         
         pauseStart=[NSDate dateWithTimeIntervalSinceNow:0];
         previousFireDate=[self.timer fireDate];
         [self.timer setFireDate:[NSDate distantFuture]];
-                
+        if (player) {
+            [player pause];
+        }
+        
     }else{
         self.timerPaused=NO;
         [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
         
         float pauseTime=-1*[pauseStart timeIntervalSinceNow];
         [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
+        if (player) {
+            [player play];
+        }
         
     }
-    
 }
+- (IBAction)timerPressed:(id)sender {
+    [self.timer invalidate];
+    [player stop];
+    [self.delegate restIsUp:self];
+}
+
 -(void)timerFireMethods:(NSTimer *)theTimer{
-    if (seconds==10) {
-        
-        [self timerAndSoundBegins:SetUpAudio loopCount:0];
-    }
+   
     if (seconds >= 0) {
         self.timeDisplay.text = [NSString stringWithFormat:@"%02d:%02d", seconds / 60, seconds % 60];
         seconds--;
-    } else {
+    } if (seconds==10) {
+        [self timerAndSoundBegins:SetUpAudio loopCount:0];
+    }else {
         [self.timer invalidate];
         [self.delegate restIsUp:self];
         [player stop];
@@ -168,7 +175,7 @@
     else{
         cell.label.layer.cornerRadius=25.0;
         cell.label.layer.masksToBounds=YES;
-        cell.label.backgroundColor=UIColorFromRGB(0x000000);
+        cell.label.backgroundColor=UIColorFromRGB(0xa2a2a2);
         cell.checkmarkImage.image=nil;
     }
    

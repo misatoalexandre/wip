@@ -21,6 +21,7 @@
 #define ExerciseGoingRestAudio  @"rest-2"
 #define clockAudio  @"clock"
 #define SetUpAudio  @"EndofRest"
+#define LastExerciseAudio @"Last5secs"
 
 
 @interface ExerciseViewController (){
@@ -55,7 +56,7 @@
     }
     if (self.firstExerciseInWorkoutPlan==NO) {
         NSLog(@"First Exercise %d", self.firstExerciseInWorkoutPlan);
-        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:1];
+        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:1]];
         [player play];
     }
 }
@@ -92,6 +93,7 @@
 -(void)dealloc{
     
     self.timer=nil;
+    player=nil;
 }
 - (void)didReceiveMemoryWarning
 {
@@ -100,10 +102,7 @@
 }
 
 
-#pragma mark - Nav Bar Button method
--(void)endWorkout{
-    [self.navigationController popToRootViewControllerAnimated:YES];
-}
+
 
 #pragma mark-Rest View Controller Delegate
 -(void)restIsUp:(RestViewController *)controller {
@@ -145,24 +144,37 @@
                                               userInfo:nil
                                                repeats:YES];    
 }
+-(void)pausetimer{
+    pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
+    previousFireDate = [self.timer fireDate];
+    [self.timer setFireDate:[NSDate distantFuture]];
+}
 -(void)timerFireMethods:(NSTimer *)theTimer{
     if (self.exercise.repeat==[NSNumber numberWithBool:YES]) {
-        NSLog(@"Repeat came through");
-        if (seconds==[self.exercise.time intValue]/2) {
+        //NSLog(@"Repeat came through");
+        if (seconds==([self.exercise.time intValue]/2)+10) {
             [player stop];
-            pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
-            previousFireDate = [self.timer fireDate];
-            [self.timer setFireDate:[NSDate distantFuture]];
             [self timerAndSoundBegins:switchSidesAudio loopCount:0 audioFileCount:0];
-            
+            [self performSelector:@selector(pausetimer) withObject:nil afterDelay:10];
         }
     }
-    
-    
-    if (seconds==9) {
+    if ((lastExercise)&&(lastSet)) {
+        if (seconds==6) {
+            [self timerAndSoundBegins:LastExerciseAudio loopCount:0 audioFileCount:nil];
+        }
+    } else{
+        if (seconds==9) {
+            [player stop];
+            [self.timer invalidate];
+            [self timerAndSoundBegins:ExerciseGoingRestAudio loopCount:0 audioFileCount:[NSNumber numberWithInt:2]];//2
+        }
+    }
+    /*if ((seconds==9)&&(!lastExercise)&&(!lastSet)) {
         [player stop];
-        [self timerAndSoundBegins:ExerciseGoingRestAudio loopCount:0 audioFileCount:2];
-    }else if (seconds >= 0) {
+        [self.timer invalidate];
+        [self timerAndSoundBegins:ExerciseGoingRestAudio loopCount:0 audioFileCount:[NSNumber numberWithInt:2]];
+    }*/
+    if (seconds >= 0) {
         self.timerDisplay.text=[NSString stringWithFormat:@"%02d:%02d", seconds / 60, seconds % 60];
         seconds--;
     }else{
@@ -177,7 +189,6 @@
 }
 #pragma mark-UI Related
 -(void)presentUI{
-
     self.exercise.name = [self.exerciseArray objectAtIndex:self.index][@"name"];
     self.exercise.imageFile = [self.exerciseArray objectAtIndex:self.index][@"image"];
     self.exercise.time = [self.exerciseArray objectAtIndex:self.index][@"time"];
@@ -191,16 +202,8 @@
     [self.exerciseImage loadInBackground];
   
 }
-#pragma mark-IBActions
-- (IBAction)workoutTimerStartButtonPressed:(id)sender {
-    [self timerAndSoundBegins:SetUpAudio loopCount:0 audioFileCount:0];
-  
-    self.workoutTimerStartButton.hidden=YES;
-    //self.firstExerciseInWorkoutPlan=NO;
-    self.nextButton.enabled=YES;
-}
 #pragma mark- Audio
--(void)timerAndSoundBegins:(NSString*)audioFile loopCount:(int)loopCount audioFileCount:(int)audioFileCount{
+-(void)timerAndSoundBegins:(NSString*)audioFile loopCount:(int)loopCount audioFileCount:(NSNumber*)audioFileCount{
     
     NSString *soundFilePath=[[NSBundle mainBundle]pathForResource:audioFile ofType:@"mp3"];
     NSURL *soundFileURL = [NSURL fileURLWithPath:soundFilePath];
@@ -209,27 +212,37 @@
     player.numberOfLoops=loopCount;
     [player play];
     
-    if (audioFileCount==0) {
+    if (audioFileCount==0){//first exercise in the program. Going to play clock audio.
         player.delegate=self;
-    }else if (audioFileCount==1){
+    }else if (audioFileCount==[NSNumber numberWithInt:1]){//Clock audio started. Starting the timer.
         [self beginTimer:self.exercise.time];
-    }else if  (audioFileCount==2){
-        [self.timer invalidate];
+    }else if  (audioFileCount==[NSNumber numberWithInt:2]){//last 5 sec count to rest audio.
         [self beginTimer:[NSNumber numberWithInt:8]];
-    }else if (audioFileCount==3){
+    }else if (audioFileCount==[NSNumber numberWithInt:3]){//switch sides. Pausing timer until the clock audio for new sides start.
         float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
         [self.timer setFireDate:[ NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
     };
-    
 }
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
     if (self.firstExerciseInWorkoutPlan) {
-        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:1];
-    }else {
-        [player stop];
-        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:3];
-
+        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:1]];
+    }else if (self.exercise.repeat==[NSNumber numberWithBool:YES])   {
+        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:3]];
     }
+}
+#pragma mark - Nav Bar Button method
+-(void)endWorkout{
+    [player stop];
+    [self.timer invalidate];
+    [self.navigationController popToRootViewControllerAnimated:YES];
+}
+#pragma mark-IBActions
+- (IBAction)workoutTimerStartButtonPressed:(id)sender {
+    [self timerAndSoundBegins:SetUpAudio loopCount:0 audioFileCount:0];
+    
+    self.workoutTimerStartButton.hidden=YES;
+    //self.firstExerciseInWorkoutPlan=NO;
+    self.nextButton.enabled=YES;
 }
 
 - (IBAction)nextPressed:(id)sender {
