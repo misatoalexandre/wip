@@ -12,6 +12,10 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light pink #fef9ffff.png" id="Hnx-sc-krq">
+                                <rect key="frame" x="0.0" y="65" width="320" height="416"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            </imageView>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="DumbbellOverhaedSquat.jpg" id="vH1-Fc-szz" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="65" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -44,7 +48,7 @@
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="GOAL   10 REPS" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="7mi-dU-nR7">
                                 <rect key="frame" x="0.0" y="485" width="320" height="24"/>
-                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMinY="YES"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <fontDescription key="fontDescription" name="Thonburi-Bold" family="Thonburi" pointSize="20"/>
                                 <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
@@ -61,7 +65,7 @@
                                 </connections>
                             </button>
                             <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="--:--" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="6OE-d8-qXS">
-                                <rect key="frame" x="99" y="503" width="123" height="59"/>
+                                <rect key="frame" x="94" y="507" width="123" height="59"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES" heightSizable="YES"/>
                                 <fontDescription key="fontDescription" name="TrebuchetMS" family="Trebuchet MS" pointSize="35"/>
                                 <color key="textColor" red="1" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
@@ -96,7 +100,7 @@
             </objects>
             <point key="canvasLocation" x="2822" y="-564"/>
         </scene>
-        <!--SettingTVC-->
+        <!--SettingTVC - Help-->
         <scene sceneID="5MP-OR-DUw">
             <objects>
                 <tableViewController id="hJD-Kr-JT8" customClass="SettingTVC" sceneMemberID="viewController">
@@ -213,7 +217,7 @@
                             <outlet property="delegate" destination="hJD-Kr-JT8" id="v1Y-P0-PQT"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" id="QyV-wP-GDK"/>
+                    <navigationItem key="navigationItem" title="Help" id="QyV-wP-GDK"/>
                     <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
                     <connections>
                         <outlet property="contactCell" destination="cI8-pP-IZv" id="bWW-KK-Nnn"/>
@@ -377,7 +381,7 @@
                 <viewController id="KqB-ah-cBp" customClass="RestViewController" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="MkO-FS-369">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
-                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="light pink #fef9ffff.png" id="a98-J6-NeJ">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
@@ -811,7 +815,7 @@
         <image name="play button blue.png" width="125" height="99"/>
         <image name="settings.png" width="16" height="16"/>
     </resources>
-    <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+    <color key="tintColor" red="1" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">
         <simulatedStatusBarMetrics key="statusBar"/>
         <simulatedOrientationMetrics key="orientation"/>
