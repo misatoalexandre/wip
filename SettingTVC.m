@@ -54,7 +54,7 @@
         sdVC.title=@"Privacy Policy";
     }
     if ([segue.identifier isEqualToString:@"terms"]) {
-        sdVC.uRLstring=@"http://www.fitwirr.com/terms_app";
+        sdVC.uRLstring=@"http://fitwirr.com/iphoneterms/";
         sdVC.terms=YES;
         sdVC.title=@"Disclaimer/Terms of Service";
         

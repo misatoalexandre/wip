@@ -46,6 +46,7 @@
     
     [self.collectionView reloadData];
     NSLog(@"array check. Current Index  %lu, %@ count %lu",(unsigned long)self.index, self.exerciseArray, (unsigned long)self.exerciseArray.count);
+    [self.navigationItem setHidesBackButton:YES animated:YES];
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endWorkout)];
     self.navigationItem.rightBarButtonItem =backButton;
 }
@@ -104,11 +105,12 @@
 
 -(void)timerFireMethods:(NSTimer *)theTimer{
    
+    if (seconds==10) {
+        [self timerAndSoundBegins:SetUpAudio loopCount:0];}
+    
     if (seconds >= 0) {
         self.timeDisplay.text = [NSString stringWithFormat:@"%02d:%02d", seconds / 60, seconds % 60];
         seconds--;
-    } if (seconds==10) {
-        [self timerAndSoundBegins:SetUpAudio loopCount:0];
     }else {
         [self.timer invalidate];
         [self.delegate restIsUp:self];

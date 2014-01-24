@@ -17,8 +17,8 @@
  Memory management issues.
  */
 //#define firstExerciseSetUpAudio  @"FirstExerciseinWorkout"
-#define switchSidesAudio  @"switchSides"
-#define ExerciseGoingRestAudio  @"rest-2"
+#define switchSidesAudio  @"switchSidesCut copy"
+#define ExerciseGoingRestAudio  @"5toRest"
 #define clockAudio  @"clock"
 #define SetUpAudio  @"EndofRest"
 #define LastExerciseAudio @"Last5secs"
@@ -85,6 +85,7 @@
     NSLog(@"Exercise VC view Did load self.currentWorkout %@", self.currentWorkout);
     
     //End Workout Bar Button
+    [self.navigationItem setHidesBackButton:YES animated:YES];
     UIBarButtonItem *backButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endWorkout)];
     self.navigationItem.rightBarButtonItem = backButton;
     
@@ -148,14 +149,15 @@
     pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
     previousFireDate = [self.timer fireDate];
     [self.timer setFireDate:[NSDate distantFuture]];
+    self.timerPaused = YES;
 }
 -(void)timerFireMethods:(NSTimer *)theTimer{
     if (self.exercise.repeat==[NSNumber numberWithBool:YES]) {
         //NSLog(@"Repeat came through");
-        if (seconds==([self.exercise.time intValue]/2)+10) {
+        if (seconds==([self.exercise.time intValue]/2)+7) {
             [player stop];
             [self timerAndSoundBegins:switchSidesAudio loopCount:0 audioFileCount:0];
-            [self performSelector:@selector(pausetimer) withObject:nil afterDelay:10];
+            [self performSelector:@selector(pausetimer) withObject:nil afterDelay:7];
         }
     }
     if ((lastExercise)&&(lastSet)) {
@@ -163,17 +165,13 @@
             [self timerAndSoundBegins:LastExerciseAudio loopCount:0 audioFileCount:nil];
         }
     } else{
-        if (seconds==9) {
+        if (seconds==7) {
             [player stop];
             [self.timer invalidate];
             [self timerAndSoundBegins:ExerciseGoingRestAudio loopCount:0 audioFileCount:[NSNumber numberWithInt:2]];//2
         }
     }
-    /*if ((seconds==9)&&(!lastExercise)&&(!lastSet)) {
-        [player stop];
-        [self.timer invalidate];
-        [self timerAndSoundBegins:ExerciseGoingRestAudio loopCount:0 audioFileCount:[NSNumber numberWithInt:2]];
-    }*/
+  
     if (seconds >= 0) {
         self.timerDisplay.text=[NSString stringWithFormat:@"%02d:%02d", seconds / 60, seconds % 60];
         seconds--;
@@ -217,18 +215,26 @@
     }else if (audioFileCount==[NSNumber numberWithInt:1]){//Clock audio started. Starting the timer.
         [self beginTimer:self.exercise.time];
     }else if  (audioFileCount==[NSNumber numberWithInt:2]){//last 5 sec count to rest audio.
-        [self beginTimer:[NSNumber numberWithInt:8]];
+        [self beginTimer:[NSNumber numberWithInt:7]];
     }else if (audioFileCount==[NSNumber numberWithInt:3]){//switch sides. Pausing timer until the clock audio for new sides start.
         float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
         [self.timer setFireDate:[ NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
+        self.timerPaused=NO;
     };
 }
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
-    if (self.firstExerciseInWorkoutPlan) {
+    if ((self.firstExerciseInWorkoutPlan) && (!self.timerPaused)) {
         [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:1]];
-    }else if (self.exercise.repeat==[NSNumber numberWithBool:YES])   {
-        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:3]];
     }
+    else if((self.exercise.repeat==[NSNumber numberWithBool:YES]) && (self.timerPaused)){
+        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:3]];
+        }
+    /*if (self.firstExerciseInWorkoutPlan){
+        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:1]];
+    }
+    else if (self.exercise.repeat==[NSNumber numberWithBool:YES])   {
+        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:3]];
+    }*/
 }
 #pragma mark - Nav Bar Button method
 -(void)endWorkout{
