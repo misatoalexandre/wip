@@ -38,7 +38,7 @@
    
     
     self.selectedCell = 1;
-    _selectedSegment = 1;
+    _selectedSegment = 0;
     _selectedRow = 0;
     
 
@@ -137,6 +137,7 @@
         selectVC.delegate = self;
         selectVC.selectedRow = _selectedRow;
         selectVC.selectedSegment = _selectedSegment;
+        selectVC.segmentedControl.selectedSegmentIndex=_selectedSegment;
         
     }else if ([segue.identifier isEqualToString:@"start"]){
         ExerciseViewController *exerciseVC=(ExerciseViewController*)[segue destinationViewController];
@@ -217,7 +218,7 @@
 - (void)setWorkoutIndexPath:(NSDictionary *)data
 {
     _selectedRow = [data[@"row"] intValue];
-    _selectedSegment = [data[@"section"] intValue];
+    _selectedSegment = [data[@"segment"] intValue];
 }
 
 - (IBAction)startPressed:(id)sender {
