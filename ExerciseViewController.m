@@ -30,6 +30,7 @@
     int seconds;
     BOOL lastExercise;
     BOOL lastSet;
+    
     AVAudioPlayer *player;
 }
 
@@ -87,15 +88,20 @@
     //End Workout Bar Button
     [self.navigationItem setHidesBackButton:YES animated:YES];
     UIBarButtonItem *endButton=[[UIBarButtonItem alloc]initWithTitle:@"End" style:UIBarButtonItemStyleBordered target:self action:@selector(endWorkout)];
-
     self.navigationItem.rightBarButtonItem = endButton;
-    
+
     self.nextButton.enabled=NO;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pausetimer) name:@"willReseignActive" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(startPausedTimer) name:@"didBecomeActive" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appWillTerminate) name:@"willTerminate" object:nil];
 }
 -(void)dealloc{
     
     self.timer=nil;
     player=nil;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+    
 }
 - (void)didReceiveMemoryWarning
 {
@@ -103,8 +109,12 @@
     // Dispose of any resources that can be recreated.
 }
 
-
-
+-(void)appWillTerminate{
+    [self.timer invalidate];
+    self.timer=nil;
+    player=nil;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
+}
 
 #pragma mark-Rest View Controller Delegate
 -(void)restIsUp:(RestViewController *)controller {
@@ -137,8 +147,6 @@
     seconds = [time intValue];
     self.timerPaused = NO;
     
-    //[player play];
-    
     [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
     self.timer = [NSTimer scheduledTimerWithTimeInterval:1.0
                                                 target:self
@@ -150,16 +158,27 @@
     pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
     previousFireDate = [self.timer fireDate];
     [self.timer setFireDate:[NSDate distantFuture]];
-    self.timerPaused = YES;
+    self.pauseButton.enabled=NO;
+    
+}
+-(void)startPausedTimer{
+    float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
+    [self.timer setFireDate:[ NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
+    self.timerPaused=NO;
+    
 }
 -(void)timerFireMethods:(NSTimer *)theTimer{
     if (self.exercise.repeat==[NSNumber numberWithBool:YES]) {
-        //NSLog(@"Repeat came through");
         if (seconds==([self.exercise.time intValue]/2)+7) {
             [player stop];
+            
             [self timerAndSoundBegins:switchSidesAudio loopCount:0 audioFileCount:0];
-            [self performSelector:@selector(pausetimer) withObject:nil afterDelay:7];
         }
+        if (seconds==([self.exercise.time intValue]/2)) {
+            
+            [self performSelector:@selector(pausetimer)];
+        }
+
     }
     if ((lastExercise)&&(lastSet)) {
         if (seconds==6) {
@@ -172,7 +191,6 @@
             [self timerAndSoundBegins:ExerciseGoingRestAudio loopCount:0 audioFileCount:[NSNumber numberWithInt:2]];//2
         }
     }
-  
     if (seconds >= 0) {
         self.timerDisplay.text=[NSString stringWithFormat:@"%02d:%02d", seconds / 60, seconds % 60];
         seconds--;
@@ -218,24 +236,21 @@
     }else if  (audioFileCount==[NSNumber numberWithInt:2]){//last 5 sec count to rest audio.
         [self beginTimer:[NSNumber numberWithInt:7]];
     }else if (audioFileCount==[NSNumber numberWithInt:3]){//switch sides. Pausing timer until the clock audio for new sides start.
-        float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
-        [self.timer setFireDate:[ NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
-        self.timerPaused=NO;
+        NSLog(@"starting the paused timer");
+      [self startPausedTimer];
+        self.pauseButton.enabled=YES;
+        
+       
     };
 }
 - (void) audioPlayerDidFinishPlaying:(AVAudioPlayer *)player successfully:(BOOL)flag{
     if ((self.firstExerciseInWorkoutPlan) && (!self.timerPaused)) {
         [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:1]];
     }
-    else if((self.exercise.repeat==[NSNumber numberWithBool:YES]) && (self.timerPaused)){
+    else if(self.exercise.repeat==[NSNumber numberWithBool:YES]){
         [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:3]];
+
         }
-    /*if (self.firstExerciseInWorkoutPlan){
-        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:1]];
-    }
-    else if (self.exercise.repeat==[NSNumber numberWithBool:YES])   {
-        [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:3]];
-    }*/
 }
 #pragma mark - Nav Bar Button method
 -(void)endWorkout{
@@ -259,20 +274,30 @@
 
 - (IBAction)PausePressed:(id)sender {
     if (self.timerPaused == NO) {
-        [player pause];
+        NSLog(@"Pause it");
         self.timerPaused = YES;
         [self.pauseButton setImage:[UIImage imageNamed:@"play button blue.png"] forState:UIControlStateNormal];
-       
+        
+        //[self pausetimer];
+        [player pause];
         pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
         previousFireDate = [self.timer fireDate];
         [self.timer setFireDate:[NSDate distantFuture]];
-    }else{
-        [player play];
-        self.timerPaused = NO;
-        [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
         
-        float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
-        [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
+    }else{
+       
+            NSLog(@"Audio and Timer starts");
+            self.timerPaused = NO;
+            [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
+            
+            //[self startPausedTimer];
+            float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
+            [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
+            [player play];
+
+    
+        
+        
     }
 }
 

@@ -50,10 +50,22 @@
    
     UIBarButtonItem *endButton=[[UIBarButtonItem alloc]initWithTitle:@"End" style:UIBarButtonItemStyleBordered target:self action:@selector(endWorkout)];
     self.navigationItem.rightBarButtonItem =endButton;
+    
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pausetimer) name:@"willReseignActive" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(startPausedTimer) name:@"didBecomeActive" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appWillTerminate) name:@"willTerminate" object:nil];
+
 }
--(void)viewDidDisappear:(BOOL)animated{
+-(void)appWillTerminate{
+    [self.timer invalidate];
     self.timer=nil;
     player=nil;
+    
+}
+-(void)dealloc{
+    self.timer=nil;
+    player=nil;
+    [[NSNotificationCenter defaultCenter]removeObserver:self];
 }
 -(void)endWorkout{
     [player stop];
@@ -73,6 +85,7 @@
 
 
 #pragma mark-Timer
+
 - (IBAction)pausePressed:(id)sender {
     
     if (self.timerPaused == NO) {
@@ -137,7 +150,21 @@
         [player play];
         
     
-    }
+}
+-(void)pausetimer{
+    pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
+    previousFireDate = [self.timer fireDate];
+    [self.timer setFireDate:[NSDate distantFuture]];
+    self.timerPaused = YES;
+    [player stop];
+}
+-(void)startPausedTimer{
+    float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
+    [self.timer setFireDate:[ NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
+    self.timerPaused=NO;
+    [player play];
+}
+
 
 #pragma mark-UICollectionView Data Source
 -(NSInteger) numberofSelectionsInCollectionView:(UICollectionView *)collectionView{

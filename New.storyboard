@@ -16,7 +16,7 @@
                                 <rect key="frame" x="0.0" y="65" width="320" height="503"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dumbbell Overhead Squat.jpg" id="vH1-Fc-szz" customClass="PFImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="vH1-Fc-szz" customClass="PFImageView">
                                 <rect key="frame" x="0.0" y="65" width="320" height="416"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             </imageView>
@@ -446,7 +446,7 @@
                                     <outlet property="delegate" destination="KqB-ah-cBp" id="vw3-Sn-LIL"/>
                                 </connections>
                             </collectionView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Dumbbell Overhead Squat.jpg" id="bBI-eb-G1A" customClass="PFImageView">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" id="bBI-eb-G1A" customClass="PFImageView">
                                 <rect key="frame" x="63" y="137" width="195" height="225"/>
                                 <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -792,7 +792,6 @@
         </scene>
     </scenes>
     <resources>
-        <image name="Dumbbell Overhead Squat.jpg" width="640" height="824"/>
         <image name="DumbbellOverhaedSquat.jpg" width="1254" height="1614"/>
         <image name="Next Button.png" width="125" height="99"/>
         <image name="Pause button blue.png" width="125" height="99"/>

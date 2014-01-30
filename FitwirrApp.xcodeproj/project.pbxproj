@@ -23,7 +23,6 @@
 		53122A18188F1A8D009E987E /* switchSides.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53122A17188F1A8D009E987E /* switchSides.mp3 */; };
 		5320920B18687FBE009B4F50 /* Workout.m in Sources */ = {isa = PBXBuildFile; fileRef = 5320920A18687FBE009B4F50 /* Workout.m */; };
 		53495B151890EA85007F7E84 /* Last5secs.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53495B141890EA85007F7E84 /* Last5secs.mp3 */; };
-		53495B1F18922D5E007F7E84 /* Dumbbell Overhead Squat.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 53495B1E18922D5E007F7E84 /* Dumbbell Overhead Squat.jpg */; };
 		53495B2118922FE5007F7E84 /* switchSidesCut copy.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53495B2018922FE5007F7E84 /* switchSidesCut copy.mp3 */; };
 		53495B2318922FEC007F7E84 /* 5toRest.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 53495B2218922FEC007F7E84 /* 5toRest.mp3 */; };
 		535869D6185F5BE700B77920 /* settings.png in Resources */ = {isa = PBXBuildFile; fileRef = 535869D4185F5BE700B77920 /* settings.png */; };
@@ -105,7 +104,6 @@
 		5320920918687FBE009B4F50 /* Workout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Workout.h; sourceTree = "<group>"; };
 		5320920A18687FBE009B4F50 /* Workout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Workout.m; sourceTree = "<group>"; };
 		53495B141890EA85007F7E84 /* Last5secs.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Last5secs.mp3; sourceTree = "<group>"; };
-		53495B1E18922D5E007F7E84 /* Dumbbell Overhead Squat.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "Dumbbell Overhead Squat.jpg"; sourceTree = "<group>"; };
 		53495B2018922FE5007F7E84 /* switchSidesCut copy.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "switchSidesCut copy.mp3"; sourceTree = "<group>"; };
 		53495B2218922FEC007F7E84 /* 5toRest.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = 5toRest.mp3; sourceTree = "<group>"; };
 		535869D4185F5BE700B77920 /* settings.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = settings.png; sourceTree = "<group>"; };
@@ -252,7 +250,6 @@
 		535869E7185F5D6200B77920 /* Photos */ = {
 			isa = PBXGroup;
 			children = (
-				53495B1E18922D5E007F7E84 /* Dumbbell Overhead Squat.jpg */,
 				539D2969187204560015B46A /* FitwirrIcon120.png */,
 				539D29631871491E0015B46A /* Next Button.png */,
 				53844EFC18706B1C00D24240 /* START Round Corner Pink Font (1).png */,
@@ -516,7 +513,6 @@
 				53878189185DE3AB00641237 /* InfoPlist.strings in Resources */,
 				539D296A187204560015B46A /* FitwirrIcon120.png in Resources */,
 				53586A251860142600B77920 /* New.storyboard in Resources */,
-				53495B1F18922D5E007F7E84 /* Dumbbell Overhead Squat.jpg in Resources */,
 				53495B2318922FEC007F7E84 /* 5toRest.mp3 in Resources */,
 				53122A16188F1A7C009E987E /* FirstExerciseinWorkout.mp3 in Resources */,
 				535869D6185F5BE700B77920 /* settings.png in Resources */,
