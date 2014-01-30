@@ -47,8 +47,9 @@
     [self.collectionView reloadData];
     NSLog(@"array check. Current Index  %lu, %@ count %lu",(unsigned long)self.index, self.exerciseArray, (unsigned long)self.exerciseArray.count);
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    UIBarButtonItem *backButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endWorkout)];
-    self.navigationItem.rightBarButtonItem =backButton;
+   
+    UIBarButtonItem *endButton=[[UIBarButtonItem alloc]initWithTitle:@"End" style:UIBarButtonItemStyleBordered target:self action:@selector(endWorkout)];
+    self.navigationItem.rightBarButtonItem =endButton;
 }
 -(void)viewDidDisappear:(BOOL)animated{
     self.timer=nil;

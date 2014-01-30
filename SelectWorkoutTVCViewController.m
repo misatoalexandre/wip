@@ -38,7 +38,8 @@
     // self.clearsSelectionOnViewWillAppear = NO;
  
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+   UIBarButtonItem *restoreButton=[[UIBarButtonItem alloc]initWithTitle:@"Restore" style:UIBarButtonItemStyleBordered target:self action:@selector(restoreTapped:)];
+    self.navigationItem.rightBarButtonItem =restoreButton;
     _priceFormatter = [[NSNumberFormatter alloc] init];
     [_priceFormatter setFormatterBehavior:NSNumberFormatterBehavior10_4];
     [_priceFormatter setNumberStyle:NSNumberFormatterCurrencyStyle];
@@ -89,7 +90,9 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
+-(void)restoreTapped:(id)sender{
+    [[FitwirrIAPHelper sharedInstance]restoreCompletedTransactions];
+}
 - (void)reload {
     _absProducts = nil;
     _buttsProducts = nil;

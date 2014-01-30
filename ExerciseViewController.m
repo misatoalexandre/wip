@@ -86,8 +86,9 @@
     
     //End Workout Bar Button
     [self.navigationItem setHidesBackButton:YES animated:YES];
-    UIBarButtonItem *backButton=[[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self action:@selector(endWorkout)];
-    self.navigationItem.rightBarButtonItem = backButton;
+    UIBarButtonItem *endButton=[[UIBarButtonItem alloc]initWithTitle:@"End" style:UIBarButtonItemStyleBordered target:self action:@selector(endWorkout)];
+
+    self.navigationItem.rightBarButtonItem = endButton;
     
     self.nextButton.enabled=NO;
 }
