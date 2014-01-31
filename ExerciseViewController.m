@@ -158,7 +158,7 @@
     pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
     previousFireDate = [self.timer fireDate];
     [self.timer setFireDate:[NSDate distantFuture]];
-    self.pauseButton.enabled=NO;
+    //self.pauseButton.enabled=NO;
     
 }
 -(void)startPausedTimer{
@@ -175,7 +175,7 @@
             [self timerAndSoundBegins:switchSidesAudio loopCount:0 audioFileCount:0];
         }
         if (seconds==([self.exercise.time intValue]/2)) {
-            
+            self.pauseButton.enabled=NO;
             [self performSelector:@selector(pausetimer)];
         }
 
@@ -217,8 +217,8 @@
    
     self.exerciseImage.file = self.exercise.imageFile;
     [self.exerciseImage loadInBackground];
-  
 }
+
 #pragma mark- Audio
 -(void)timerAndSoundBegins:(NSString*)audioFile loopCount:(int)loopCount audioFileCount:(NSNumber*)audioFileCount{
     
@@ -247,7 +247,7 @@
     if ((self.firstExerciseInWorkoutPlan) && (!self.timerPaused)) {
         [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:1]];
     }
-    else if(self.exercise.repeat==[NSNumber numberWithBool:YES]){
+    else if((self.exercise.repeat==[NSNumber numberWithBool:YES])&& (self.timerPaused)){
         [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:3]];
 
         }

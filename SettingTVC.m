@@ -91,7 +91,7 @@
     //NSString *toEmailAddress=@"misato@fitwirr.com";
     NSString *emailTitle=@"Re: About your Ab & Butt Workouts for Women App";
     NSString *emailBody=[NSString
-                         stringWithFormat:@"App Version: 1.01 \n OS Version: %@ %@ \n Mode: %@",[[UIDevice currentDevice]systemName], [[UIDevice currentDevice]systemVersion], [[UIDevice currentDevice]model]];
+                         stringWithFormat:@"App Version: 1.0 \n OS Version: %@ %@ \n Mode: %@",[[UIDevice currentDevice]systemName], [[UIDevice currentDevice]systemVersion], [[UIDevice currentDevice]model]];
                          // NSString *appVersion=@"App Version: 1.01";
                          //NSString *osVersion=[NSString stringWithFormat:@"OS Version: %@ %@",[[UIDevice currentDevice]systemName], [[UIDevice currentDevice]systemVersion]];
                          //NSString *model=[NSString stringWithFormat:@"Mode: %@",[[UIDevice currentDevice]model]];
