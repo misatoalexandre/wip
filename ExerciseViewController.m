@@ -22,7 +22,8 @@
 #define clockAudio  @"clock"
 #define SetUpAudio  @"EndofRest"
 #define LastExerciseAudio @"Last5secs"
-
+/* Fix all play/pause functionalities to work flawlessly including when the app goes background, terminate, and foregroudn.
+ */
 
 @interface ExerciseViewController (){
     NSDate *pauseStart;
@@ -91,6 +92,7 @@
     self.navigationItem.rightBarButtonItem = endButton;
 
     self.nextButton.enabled=NO;
+    
     
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(PausePressed:) name:@"willReseignActive" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(PausePressed:) name:@"didBecomeActive" object:nil];
