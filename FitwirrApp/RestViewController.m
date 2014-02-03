@@ -51,8 +51,8 @@
     UIBarButtonItem *endButton=[[UIBarButtonItem alloc]initWithTitle:@"End" style:UIBarButtonItemStyleBordered target:self action:@selector(endWorkout)];
     self.navigationItem.rightBarButtonItem =endButton;
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pausetimer) name:@"willReseignActive" object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(startPausedTimer) name:@"didBecomeActive" object:nil];
+   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pausePressed:) name:@"willReseignActive" object:nil];
+   [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pausePressed:) name:@"didBecomeActive" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appWillTerminate) name:@"willTerminate" object:nil];
 
 }
@@ -92,12 +92,10 @@
         self.timerPaused = YES;
         [self.pauseButton setImage:[UIImage imageNamed:@"play button blue.png"] forState:UIControlStateNormal];
         
+        [player pause];
         pauseStart=[NSDate dateWithTimeIntervalSinceNow:0];
         previousFireDate=[self.timer fireDate];
         [self.timer setFireDate:[NSDate distantFuture]];
-        if (player) {
-            [player pause];
-        }
         
     }else{
         self.timerPaused=NO;
@@ -105,10 +103,7 @@
         
         float pauseTime=-1*[pauseStart timeIntervalSinceNow];
         [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
-        if (player) {
-            [player play];
-        }
-        
+        [player play];
     }
 }
 - (IBAction)timerPressed:(id)sender {
@@ -151,7 +146,7 @@
         
     
 }
--(void)pausetimer{
+/*-(void)pausetimer{
     pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
     previousFireDate = [self.timer fireDate];
     [self.timer setFireDate:[NSDate distantFuture]];
@@ -164,7 +159,7 @@
     self.timerPaused=NO;
     [player play];
 }
-
+*/
 
 #pragma mark-UICollectionView Data Source
 -(NSInteger) numberofSelectionsInCollectionView:(UICollectionView *)collectionView{

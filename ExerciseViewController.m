@@ -92,8 +92,8 @@
 
     self.nextButton.enabled=NO;
     
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(pausetimer) name:@"willReseignActive" object:nil];
-    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(startPausedTimer) name:@"didBecomeActive" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(PausePressed:) name:@"willReseignActive" object:nil];
+    [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(PausePressed:) name:@"didBecomeActive" object:nil];
     [[NSNotificationCenter defaultCenter]addObserver:self selector:@selector(appWillTerminate) name:@"willTerminate" object:nil];
 }
 -(void)dealloc{
@@ -110,7 +110,6 @@
 }
 
 -(void)appWillTerminate{
-    [self.timer invalidate];
     self.timer=nil;
     player=nil;
     [[NSNotificationCenter defaultCenter]removeObserver:self];
@@ -154,19 +153,6 @@
                                               userInfo:nil
                                                repeats:YES];    
 }
--(void)pausetimer{
-    pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
-    previousFireDate = [self.timer fireDate];
-    [self.timer setFireDate:[NSDate distantFuture]];
-    //self.pauseButton.enabled=NO;
-    
-}
--(void)startPausedTimer{
-    float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
-    [self.timer setFireDate:[ NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
-    self.timerPaused=NO;
-    
-}
 -(void)timerFireMethods:(NSTimer *)theTimer{
     if (self.exercise.repeat==[NSNumber numberWithBool:YES]) {
         if (seconds==([self.exercise.time intValue]/2)+7) {
@@ -175,8 +161,9 @@
             [self timerAndSoundBegins:switchSidesAudio loopCount:0 audioFileCount:0];
         }
         if (seconds==([self.exercise.time intValue]/2)) {
-            self.pauseButton.enabled=NO;
-            [self performSelector:@selector(pausetimer)];
+            //self.pauseButton.enabled=NO;
+            //[self performSelector:@selector(pausetimer)];
+            [self.timer invalidate];
         }
 
     }
@@ -237,8 +224,9 @@
         [self beginTimer:[NSNumber numberWithInt:7]];
     }else if (audioFileCount==[NSNumber numberWithInt:3]){//switch sides. Pausing timer until the clock audio for new sides start.
         NSLog(@"starting the paused timer");
-      [self startPausedTimer];
-        self.pauseButton.enabled=YES;
+        //[self startPausedTimer];
+        [self beginTimer:[NSNumber numberWithInt:([self.exercise.time intValue]/2)-1]];
+        //self.pauseButton.enabled=YES;
         
        
     };
@@ -247,9 +235,9 @@
     if ((self.firstExerciseInWorkoutPlan) && (!self.timerPaused)) {
         [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:1]];
     }
-    else if((self.exercise.repeat==[NSNumber numberWithBool:YES])&& (self.timerPaused)){
+    else if(self.exercise.repeat==[NSNumber numberWithBool:YES]){
         [self timerAndSoundBegins:clockAudio loopCount:-1 audioFileCount:[NSNumber numberWithInt:3]];
-
+        
         }
 }
 #pragma mark - Nav Bar Button method
@@ -263,7 +251,6 @@
     [self timerAndSoundBegins:SetUpAudio loopCount:0 audioFileCount:0];
     
     self.workoutTimerStartButton.hidden=YES;
-    //self.firstExerciseInWorkoutPlan=NO;
     self.nextButton.enabled=YES;
 }
 
@@ -278,26 +265,20 @@
         self.timerPaused = YES;
         [self.pauseButton setImage:[UIImage imageNamed:@"play button blue.png"] forState:UIControlStateNormal];
         
-        //[self pausetimer];
         [player pause];
         pauseStart = [NSDate dateWithTimeIntervalSinceNow:0];
         previousFireDate = [self.timer fireDate];
         [self.timer setFireDate:[NSDate distantFuture]];
         
     }else{
-       
             NSLog(@"Audio and Timer starts");
             self.timerPaused = NO;
             [self.pauseButton setImage:[UIImage imageNamed:@"Pause button blue.png"] forState:UIControlStateNormal];
-            
-            //[self startPausedTimer];
+        
             float pauseTime = -1 * [pauseStart timeIntervalSinceNow];
-            [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime sinceDate:previousFireDate]];
+            [self.timer setFireDate:[NSDate dateWithTimeInterval:pauseTime
+                                                       sinceDate:previousFireDate]];
             [player play];
-
-    
-        
-        
     }
 }
 
